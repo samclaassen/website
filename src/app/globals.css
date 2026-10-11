@@ -1,17 +1,19 @@
 @import "tailwindcss";
 
-/*
- * Global styles — keep this minimal.
- * Use Tailwind utility classes in components instead.
- */
+@theme {
+  --color-brand-dark: #1A1612;
+  --color-brand-gold: #A0845C;
+  --color-brand-cream: #FAF8F5;
+  --color-brand-warm: #F0EBE3;
+  --color-brand-muted: #6B6157;
+  --font-serif: "Cormorant Garamond", serif;
+}
 
-/* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
-/* Better focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #1d4ed8;
+  outline: 2px solid var(--color-brand-gold);
   outline-offset: 2px;
 }

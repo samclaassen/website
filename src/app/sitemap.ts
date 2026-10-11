@@ -1,24 +1,37 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
+import { getAllCollectionSlugs } from "@/lib/collections";
 
-/**
- * Dynamic sitemap generation.
- * Add new pages here as they're created.
- * For blog posts or dynamic routes, fetch from your data source.
- */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const collectionSlugs = getAllCollectionSlugs();
 
-  // Static pages — add new pages to this array
-  const staticPages = [
-    { path: "/", priority: 1.0, changeFrequency: "weekly" as const },
-    { path: "/about", priority: 0.8, changeFrequency: "monthly" as const },
+  const staticPages: MetadataRoute.Sitemap = [
+    {
+      url: SITE_URL,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${SITE_URL}/collections`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
-  return staticPages.map((page) => ({
-    url: `${SITE_URL}${page.path}`,
-    lastModified: now,
-    changeFrequency: page.changeFrequency,
-    priority: page.priority,
+  const collectionPages: MetadataRoute.Sitemap = collectionSlugs.map((slug) => ({
+    url: `${SITE_URL}/collections/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
   }));
+
+  return [...staticPages, ...collectionPages];
 }

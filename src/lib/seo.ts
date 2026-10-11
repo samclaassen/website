@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL } from "./constants";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL, SITE_TAGLINE } from "./constants";
 
 interface PageSeoOptions {
   title: string;
@@ -63,7 +63,7 @@ export function organizationJsonLd() {
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
-    // Add logo, sameAs (social links), contactPoint, etc. as needed
+    slogan: SITE_TAGLINE,
   };
 }
 
