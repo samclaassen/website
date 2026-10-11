@@ -1,16 +1,29 @@
-import { generatePageMetadata, webPageJsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import {
+  generatePageMetadata,
+  webPageJsonLd,
+  faqJsonLd,
+  breadcrumbJsonLd,
+} from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { COLLECTIONS, getCollection, getAllCollectionSlugs } from "@/lib/collections";
-import { SITE_NAME } from "@/lib/constants";
+import {
+  COLLECTIONS,
+  getCollection,
+  getAllCollectionSlugs,
+} from "@/lib/collections";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export function generateStaticParams() {
   return getAllCollectionSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const collection = getCollection(slug);
   if (!collection) return {};
@@ -23,7 +36,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   });
 }
 
-export default async function CollectionPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CollectionPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const collection = getCollection(slug);
   if (!collection) notFound();
@@ -43,10 +60,13 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
     },
   ];
 
-  // Find adjacent collections for navigation
   const currentIndex = COLLECTIONS.findIndex((c) => c.slug === slug);
-  const prevCollection = currentIndex > 0 ? COLLECTIONS[currentIndex - 1] : null;
-  const nextCollection = currentIndex < COLLECTIONS.length - 1 ? COLLECTIONS[currentIndex + 1] : null;
+  const prevCollection =
+    currentIndex > 0 ? COLLECTIONS[currentIndex - 1] : null;
+  const nextCollection =
+    currentIndex < COLLECTIONS.length - 1
+      ? COLLECTIONS[currentIndex + 1]
+      : null;
 
   return (
     <>
@@ -61,83 +81,123 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Collections", href: "/collections" },
-          { name: collection.name, href: `/collections/${collection.slug}` },
+          {
+            name: collection.name,
+            href: `/collections/${collection.slug}`,
+          },
         ])}
       />
 
-      {/* Hero */}
-      <section className="bg-brand-dark text-brand-cream py-20 px-6">
-        <div className="mx-auto max-w-4xl">
-          <Breadcrumbs
-            items={[
-              { name: "Collections", href: "/collections" },
-              { name: collection.name, href: `/collections/${collection.slug}` },
-            ]}
+      {/* Hero with collection image */}
+      <section className="relative min-h-[60vh] flex items-end overflow-hidden">
+        {collection.image ? (
+          <Image
+            src={collection.image}
+            alt={`${collection.name} collection — ${collection.era} decorative hardware by Legacy Homeware`}
+            fill
+            className="object-cover"
+            priority
+            quality={90}
           />
-          <div className="mt-8">
-            <p className="text-sm font-medium tracking-widest uppercase text-brand-gold">
-              {collection.era} · {collection.period}
-            </p>
-            <h1 className="mt-3 font-serif text-5xl font-semibold sm:text-6xl">
-              {collection.name}
-            </h1>
-            <p className="mt-2 text-xl italic text-brand-cream/60">
-              &ldquo;{collection.tagline}&rdquo;
-            </p>
-            <p className="mt-6 text-lg leading-relaxed text-brand-cream/70 max-w-2xl">
-              {collection.description}
-            </p>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-muted/40 to-brand-dark" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/50 to-brand-dark/20" />
+
+        <div className="relative z-10 w-full px-6 pb-12 pt-32">
+          <div className="mx-auto max-w-4xl">
+            <Breadcrumbs
+              items={[
+                { name: "Collections", href: "/collections" },
+                {
+                  name: collection.name,
+                  href: `/collections/${collection.slug}`,
+                },
+              ]}
+            />
+            <div className="mt-6">
+              <p className="text-sm font-medium tracking-[0.25em] uppercase text-brand-gold">
+                {collection.era} · {collection.period}
+              </p>
+              <h1 className="mt-3 font-serif text-5xl font-semibold text-brand-cream sm:text-6xl lg:text-7xl">
+                {collection.name}
+              </h1>
+              <p className="mt-3 text-xl italic text-brand-cream/60">
+                &ldquo;{collection.tagline}&rdquo;
+              </p>
+              <p className="mt-6 text-lg leading-relaxed text-brand-cream/70 max-w-2xl">
+                {collection.description}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* About this style */}
-      <section className="py-16 px-6 bg-brand-cream">
+      <section className="py-20 px-6 bg-brand-cream">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-serif text-3xl font-semibold text-brand-dark">
+          <p className="text-sm font-medium tracking-[0.25em] uppercase text-brand-gold">
+            The History
+          </p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold text-brand-dark sm:text-4xl">
             About {collection.era} Hardware
           </h2>
-          <p className="mt-6 text-brand-muted leading-relaxed text-lg">
+          <p className="mt-8 text-lg text-brand-muted leading-relaxed">
             {collection.longDescription}
           </p>
         </div>
       </section>
 
       {/* Details Grid */}
-      <section className="py-16 px-6 bg-brand-warm">
-        <div className="mx-auto max-w-4xl grid gap-8 sm:grid-cols-3">
+      <section className="py-20 px-6 bg-brand-warm">
+        <div className="mx-auto max-w-5xl grid gap-8 sm:grid-cols-3">
           {/* Materials */}
-          <div className="rounded-sm border border-brand-dark/10 bg-brand-cream p-6">
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-brand-gold">
+          <div className="bg-brand-cream p-8 rounded-sm">
+            <h3 className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-gold">
               Materials &amp; Finishes
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-6 space-y-3">
               {collection.materials.map((m) => (
-                <li key={m} className="text-brand-muted">{m}</li>
+                <li
+                  key={m}
+                  className="text-brand-dark font-medium border-b border-brand-dark/5 pb-3 last:border-0 last:pb-0"
+                >
+                  {m}
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Motifs */}
-          <div className="rounded-sm border border-brand-dark/10 bg-brand-cream p-6">
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-brand-gold">
+          <div className="bg-brand-cream p-8 rounded-sm">
+            <h3 className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-gold">
               Design Motifs
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-6 space-y-3">
               {collection.motifs.map((m) => (
-                <li key={m} className="text-brand-muted">{m}</li>
+                <li
+                  key={m}
+                  className="text-brand-dark font-medium border-b border-brand-dark/5 pb-3 last:border-0 last:pb-0"
+                >
+                  {m}
+                </li>
               ))}
             </ul>
           </div>
 
           {/* Home Styles */}
-          <div className="rounded-sm border border-brand-dark/10 bg-brand-cream p-6">
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-brand-gold">
+          <div className="bg-brand-cream p-8 rounded-sm">
+            <h3 className="text-xs font-semibold tracking-[0.25em] uppercase text-brand-gold">
               Ideal For
             </h3>
-            <ul className="mt-4 space-y-2">
+            <ul className="mt-6 space-y-3">
               {collection.homeStyles.map((s) => (
-                <li key={s} className="text-brand-muted">{s}</li>
+                <li
+                  key={s}
+                  className="text-brand-dark font-medium border-b border-brand-dark/5 pb-3 last:border-0 last:pb-0"
+                >
+                  {s}
+                </li>
               ))}
             </ul>
           </div>
@@ -145,16 +205,23 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       </section>
 
       {/* FAQ Section (AEO) */}
-      <section className="py-16 px-6 bg-brand-cream">
+      <section className="py-20 px-6 bg-brand-cream">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-serif text-2xl font-semibold text-brand-dark">
+          <p className="text-sm font-medium tracking-[0.25em] uppercase text-brand-gold">
+            Common Questions
+          </p>
+          <h2 className="mt-3 font-serif text-2xl font-semibold text-brand-dark sm:text-3xl">
             Frequently Asked Questions
           </h2>
-          <div className="mt-8 space-y-8">
+          <div className="mt-10 space-y-10">
             {faqs.map((faq) => (
-              <div key={faq.question}>
-                <h3 className="font-semibold text-brand-dark">{faq.question}</h3>
-                <p className="mt-2 text-brand-muted leading-relaxed">{faq.answer}</p>
+              <div key={faq.question} className="border-b border-brand-dark/5 pb-10 last:border-0">
+                <h3 className="font-semibold text-lg text-brand-dark">
+                  {faq.question}
+                </h3>
+                <p className="mt-3 text-brand-muted leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -162,36 +229,91 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       </section>
 
       {/* Collection Navigation */}
-      <section className="py-12 px-6 border-t border-brand-dark/10 bg-brand-warm">
-        <div className="mx-auto max-w-4xl flex items-center justify-between">
+      <section className="bg-brand-dark">
+        <div className="grid sm:grid-cols-2">
           {prevCollection ? (
             <Link
               href={`/collections/${prevCollection.slug}`}
-              className="group text-left"
+              className="group relative flex items-center justify-center p-12 sm:p-16 overflow-hidden border-r border-brand-cream/5"
             >
-              <p className="text-xs tracking-widest uppercase text-brand-muted">&larr; Previous</p>
-              <p className="mt-1 font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">
-                {prevCollection.name}
-              </p>
+              {prevCollection.image && (
+                <Image
+                  src={prevCollection.image}
+                  alt=""
+                  fill
+                  className="object-cover opacity-20 transition-opacity group-hover:opacity-30"
+                  aria-hidden="true"
+                />
+              )}
+              <div className="relative z-10 text-center">
+                <p className="text-xs tracking-[0.25em] uppercase text-brand-cream/40">
+                  ← Previous Collection
+                </p>
+                <p className="mt-2 font-serif text-2xl font-semibold text-brand-cream transition-colors group-hover:text-brand-gold">
+                  {prevCollection.name}
+                </p>
+                <p className="mt-1 text-sm text-brand-cream/40">
+                  {prevCollection.era}
+                </p>
+              </div>
             </Link>
-          ) : <div />}
-          <Link
-            href="/collections"
-            className="text-sm font-medium tracking-wide uppercase text-brand-gold hover:text-brand-dark transition-colors"
-          >
-            All Collections
-          </Link>
+          ) : (
+            <Link
+              href="/collections"
+              className="group flex items-center justify-center p-12 sm:p-16 border-r border-brand-cream/5"
+            >
+              <div className="text-center">
+                <p className="text-xs tracking-[0.25em] uppercase text-brand-cream/40">
+                  ←
+                </p>
+                <p className="mt-2 font-serif text-2xl font-semibold text-brand-cream transition-colors group-hover:text-brand-gold">
+                  All Collections
+                </p>
+              </div>
+            </Link>
+          )}
+
           {nextCollection ? (
             <Link
               href={`/collections/${nextCollection.slug}`}
-              className="group text-right"
+              className="group relative flex items-center justify-center p-12 sm:p-16 overflow-hidden"
             >
-              <p className="text-xs tracking-widest uppercase text-brand-muted">Next &rarr;</p>
-              <p className="mt-1 font-serif text-lg text-brand-dark group-hover:text-brand-gold transition-colors">
-                {nextCollection.name}
-              </p>
+              {nextCollection.image && (
+                <Image
+                  src={nextCollection.image}
+                  alt=""
+                  fill
+                  className="object-cover opacity-20 transition-opacity group-hover:opacity-30"
+                  aria-hidden="true"
+                />
+              )}
+              <div className="relative z-10 text-center">
+                <p className="text-xs tracking-[0.25em] uppercase text-brand-cream/40">
+                  Next Collection →
+                </p>
+                <p className="mt-2 font-serif text-2xl font-semibold text-brand-cream transition-colors group-hover:text-brand-gold">
+                  {nextCollection.name}
+                </p>
+                <p className="mt-1 text-sm text-brand-cream/40">
+                  {nextCollection.era}
+                </p>
+              </div>
             </Link>
-          ) : <div />}
+          ) : (
+            <Link
+              href="/collections"
+              className="group flex items-center justify-center p-12 sm:p-16"
+            >
+              <div className="text-center">
+                <p className="text-xs tracking-[0.25em] uppercase text-brand-cream/40">
+                  →
+                </p>
+                <p className="mt-2 font-serif text-2xl font-semibold text-brand-cream transition-colors group-hover:text-brand-gold">
+                  All Collections
+                </p>
+              </div>
+            </Link>
+          )}
         </div>
       </section>
     </>

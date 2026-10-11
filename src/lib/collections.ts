@@ -10,6 +10,7 @@ export interface Collection {
   motifs: string[];
   homeStyles: string[];
   searchTerms: string[];
+  image: string | null;
 }
 
 export const COLLECTIONS: Collection[] = [
@@ -25,6 +26,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Oak leaves & acorns", "Ginkgo leaves", "Geometric lines", "Mission-style rectilinear patterns"],
     homeStyles: ["Craftsman bungalow", "Prairie style", "Mission Revival", "American Foursquare"],
     searchTerms: ["craftsman hardware", "arts and crafts door hardware", "mission style switch plates", "bungalow hardware"],
+    image: "/images/collection-hearthstone.png",
   },
   {
     slug: "ashworth",
@@ -38,6 +40,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Acanthus leaves", "Egg-and-dart borders", "Floral garlands", "Beaded edges", "Rosette medallions"],
     homeStyles: ["Victorian", "Queen Anne", "Second Empire", "Italianate", "Folk Victorian"],
     searchTerms: ["victorian door hardware", "ornate switch plates", "antique style outlet covers", "victorian home hardware"],
+    image: "/images/collection-ashworth.png",
   },
   {
     slug: "meridian",
@@ -51,6 +54,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Sunburst fans", "Chevron lines", "Stepped forms", "Egyptian-inspired geometry", "Symmetrical rays"],
     homeStyles: ["Art Deco apartment", "1920s–30s revival", "Streamline Moderne", "Miami Beach style"],
     searchTerms: ["art deco hardware", "deco style switch plates", "1920s door hardware", "geometric hardware"],
+    image: "/images/collection-meridian.png",
   },
   {
     slug: "heritage",
@@ -64,6 +68,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Rope-twist borders", "Classic rosettes", "Gentle fluting", "Simple beading", "Federal-era symmetry"],
     homeStyles: ["Colonial", "Federal", "Georgian", "Cape Cod", "Traditional new construction"],
     searchTerms: ["colonial hardware", "traditional door hardware", "classic brass hardware", "federal style hardware"],
+    image: "/images/collection-heritage.png",
   },
   {
     slug: "solstice",
@@ -77,6 +82,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Iris & lily flowers", "Whiplash curves", "Dragonfly motifs", "Organic flowing lines", "Botanical tendrils"],
     homeStyles: ["Art Nouveau", "Late Victorian", "Turn-of-century", "Edwardian"],
     searchTerms: ["art nouveau hardware", "organic style hardware", "floral door hardware", "botanical switch plates"],
+    image: "/images/collection-solstice.png",
   },
   {
     slug: "ironforge",
@@ -90,6 +96,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Hammered surfaces", "Forged edges", "Square proportions", "Strap hinge forms", "Rivet details"],
     homeStyles: ["Farmhouse", "Modern rustic", "Mountain lodge", "Barn conversion", "Country estate"],
     searchTerms: ["farmhouse hardware", "rustic door hardware", "iron switch plates", "hammered hardware"],
+    image: "/images/collection-ironforge.png",
   },
   {
     slug: "provence",
@@ -103,6 +110,7 @@ export const COLLECTIONS: Collection[] = [
     motifs: ["Shell motifs", "Flowing scrollwork", "Gentle curves", "Acanthus accents", "Ribbon details"],
     homeStyles: ["French Country", "Provençal", "Mediterranean", "European traditional", "Cottage"],
     searchTerms: ["french country hardware", "provincial style hardware", "french door hardware", "cottage style hardware"],
+    image: "/images/collection-provence.png",
   },
 ];
 
