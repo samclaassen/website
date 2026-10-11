@@ -1,4 +1,4 @@
-import { generatePageMetadata, webPageJsonLd } from "@/lib/seo";
+import { generatePageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { COLLECTIONS } from "@/lib/collections";
@@ -6,125 +6,115 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = generatePageMetadata({
-  title: "Eras — Decorative Hardware Through History",
+  title: "Eras — Legacy Homeware",
   description:
-    "Explore seven architectural eras that defined decorative home hardware — from Colonial restraint to Art Nouveau extravagance. Each era tells a story through the hardware it left behind.",
+    "Seven architectural eras of decorative hardware design. From Arts & Crafts to Art Nouveau — explore the craft traditions that shaped ornamental home hardware.",
   path: "/collections",
-  keywords: [
-    "decorative hardware history",
-    "architectural hardware eras",
-    "hardware design styles",
-    "ornamental hardware",
-  ],
 });
 
 export default function CollectionsPage() {
+  const hero = COLLECTIONS[0];
+  const rest = COLLECTIONS.slice(1);
+
   return (
     <>
       <JsonLd
-        data={webPageJsonLd({
-          title: "Eras — Decorative Hardware Through History",
-          description:
-            "Seven architectural eras that defined decorative home hardware design.",
-          path: "/collections",
-        })}
+        data={breadcrumbJsonLd([
+          { name: "Home", href: "/" },
+          { name: "Eras", href: "/collections" },
+        ])}
+      />
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Eras" },
+        ]}
       />
 
-      {/* Header */}
-      <section className="px-6 pt-12 pb-8">
-        <div className="mx-auto max-w-5xl">
-          <Breadcrumbs items={[{ name: "Eras", href: "/collections" }]} />
-          <div className="mt-6">
-            <h1 className="font-serif text-4xl font-semibold text-brand-dark sm:text-5xl">
-              Eras
-            </h1>
-            <p className="mt-4 text-lg text-brand-muted leading-relaxed max-w-2xl">
-              Seven architectural movements that shaped the hardware in our
-              homes. Each era brought a distinct philosophy to the craft of
-              making the functional beautiful.
-            </p>
-          </div>
+      {/* Page title — editorial spread */}
+      <section className="px-8 lg:px-10 xl:px-16 pt-12 pb-20">
+        <div className="mx-auto max-w-[1400px]">
+          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            {COLLECTIONS.length} eras · {COLLECTIONS.reduce((n, c) => n + c.pieces.length, 0)} pieces
+          </p>
+          <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-[1.05] text-brand-dark max-w-3xl">
+            Seven centuries
+            <br />
+            of ornamental
+            <br />
+            hardware
+          </h1>
         </div>
       </section>
 
-      {/* Timeline grid — visual, editorial */}
-      <section className="px-6 pb-20">
-        <div className="mx-auto max-w-7xl">
-          {/* Era cards — stacked full-width with image + editorial text */}
-          <div className="space-y-px bg-brand-dark/5">
-            {COLLECTIONS.map((collection, index) => (
-              <Link
-                key={collection.slug}
-                href={`/collections/${collection.slug}`}
-                className="group block bg-brand-cream hover:bg-white transition-colors"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[280px]">
-                  {/* Image — fixed proportion */}
-                  <div
-                    className={`relative aspect-[16/9] lg:aspect-auto overflow-hidden ${
-                      index % 2 === 0
-                        ? "lg:col-span-5 lg:order-1"
-                        : "lg:col-span-5 lg:order-2"
-                    }`}
-                  >
-                    <Image
-                      src={collection.image}
-                      alt={`${collection.era} decorative hardware`}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      sizes="(max-width: 1024px) 100vw, 42vw"
-                    />
-                  </div>
-
-                  {/* Text */}
-                  <div
-                    className={`flex flex-col justify-center px-8 py-10 lg:px-14 lg:py-16 ${
-                      index % 2 === 0
-                        ? "lg:col-span-7 lg:order-2"
-                        : "lg:col-span-7 lg:order-1"
-                    }`}
-                  >
-                    <div className="flex items-baseline gap-3">
-                      <span className="text-xs font-medium tracking-[0.2em] uppercase text-brand-gold">
-                        {collection.period}
-                      </span>
-                      <span className="text-brand-dark/10">—</span>
-                      <span className="text-xs text-brand-muted">
-                        {collection.pieces.length} pieces
-                      </span>
-                    </div>
-
-                    <h2 className="mt-3 font-serif text-3xl font-semibold text-brand-dark group-hover:text-brand-gold transition-colors sm:text-4xl">
-                      {collection.era}
-                    </h2>
-
-                    <p className="mt-1 text-sm italic text-brand-muted">
-                      {collection.name} Collection
-                    </p>
-
-                    <p className="mt-4 text-brand-muted leading-relaxed max-w-lg">
-                      {collection.description}
-                    </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2">
-                      {collection.materials.map((m) => (
-                        <span
-                          key={m}
-                          className="text-xs text-brand-muted/70 border border-brand-dark/8 rounded-full px-3 py-1"
-                        >
-                          {m}
-                        </span>
-                      ))}
-                    </div>
-
-                    <p className="mt-6 text-xs font-medium tracking-[0.2em] uppercase text-brand-gold opacity-0 group-hover:opacity-100 transition-opacity">
-                      Explore this era →
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            ))}
+      {/* Hero era — full bleed */}
+      <section>
+        <Link
+          href={`/collections/${hero.slug}`}
+          className="group grid grid-cols-1 lg:grid-cols-12 min-h-[70vh] border-t border-brand-dark/10"
+        >
+          <div className="lg:col-span-8 relative min-h-[50vh]">
+            <Image
+              src={hero.image}
+              alt={`${hero.era} decorative hardware`}
+              fill
+              className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
+              sizes="(max-width: 1024px) 100vw, 67vw"
+              priority
+            />
           </div>
+          <div className="lg:col-span-4 flex flex-col justify-center px-8 lg:px-12 py-16">
+            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+              {hero.period}
+            </p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold text-brand-dark lg:text-5xl group-hover:text-brand-muted transition-colors">
+              {hero.era}
+            </h2>
+            <p className="mt-6 text-[15px] leading-[1.8] text-brand-muted max-w-sm">
+              {hero.description}
+            </p>
+            <p className="mt-6 text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark">
+              {hero.pieces.length} pieces →
+            </p>
+          </div>
+        </Link>
+      </section>
+
+      {/* Two-up grid — staggered */}
+      <section className="border-t border-brand-dark/10">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {rest.map((col, i) => (
+            <Link
+              key={col.slug}
+              href={`/collections/${col.slug}`}
+              className={`group relative border-b border-brand-dark/10 ${
+                i % 2 === 0 ? "md:border-r" : ""
+              }`}
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={col.image}
+                  alt={`${col.era} decorative hardware`}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 px-8 pb-10">
+                <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/70">
+                  {col.period}
+                </p>
+                <h3 className="mt-2 font-serif text-3xl font-semibold text-white group-hover:text-white/80 transition-colors lg:text-4xl">
+                  {col.era}
+                </h3>
+                <p className="mt-3 text-[13px] text-white/70">
+                  {col.pieces.length} pieces
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </section>
     </>

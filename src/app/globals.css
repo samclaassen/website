@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #1A1612;
-  --color-brand-gold: #A0845C;
-  --color-brand-cream: #FAF8F5;
-  --color-brand-warm: #F0EBE3;
-  --color-brand-muted: #6B6157;
+  --color-brand-dark: #111111;
+  --color-brand-gold: #8B7355;
+  --color-brand-cream: #FAFAF8;
+  --color-brand-warm: #F2F0EC;
+  --color-brand-muted: #777777;
+  --color-brand-light: #BBBBBB;
   --font-serif: "Cormorant Garamond", serif;
 }
 
@@ -14,16 +15,22 @@ html {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-brand-gold);
+  outline: 2px solid var(--color-brand-dark);
   outline-offset: 2px;
 }
 
-/* Hide scrollbar for era navigation */
+/* Hide scrollbar */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Editorial pull quote */
+.pull-quote {
+  font-style: italic;
+  border-left: 2px solid var(--color-brand-dark);
+  padding-left: 1.5rem;
 }

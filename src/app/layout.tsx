@@ -56,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className="min-h-screen flex flex-col bg-brand-cream text-brand-dark antialiased">
+      <body className="min-h-screen flex flex-col bg-white text-brand-dark antialiased">
         <JsonLd data={organizationJsonLd()} />
         <Header />
         <main className="flex-1 pt-[65px]">{children}</main>

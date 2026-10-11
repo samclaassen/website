@@ -1,44 +1,38 @@
 import Link from "next/link";
-import Image from "next/image";
 import { SITE_NAME } from "@/lib/constants";
 import { COLLECTIONS } from "@/lib/collections";
 
 export function Footer() {
   return (
-    <footer className="bg-brand-dark text-brand-cream/80">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="border-t border-brand-dark/10 bg-brand-dark text-white">
+      <div className="mx-auto max-w-[1400px] px-8 lg:px-10 xl:px-16">
+        {/* Main footer */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 py-20">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <Image
-                src="/images/logo-dark.png"
-                alt="Legacy Homeware"
-                width={36}
-                height={36}
-                className="rounded-sm"
-              />
-              <span className="font-serif text-lg font-semibold text-brand-cream">
+          <div className="md:col-span-5">
+            <Link href="/" className="group">
+              <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-white">
                 {SITE_NAME}
               </span>
             </Link>
-            <p className="mt-4 text-sm text-brand-cream/40 max-w-xs leading-relaxed">
-              The visual archive of decorative hardware — a curated study of
-              ornamental craft across seven architectural eras.
+            <p className="mt-6 text-[15px] leading-[1.8] text-white/50 max-w-sm">
+              A visual study of ornamental home hardware across seven
+              architectural eras. Documenting the craft traditions that built
+              beautiful homes.
             </p>
           </div>
 
           {/* Eras */}
-          <div>
-            <h3 className="text-[10px] font-medium tracking-[0.25em] uppercase text-brand-gold">
+          <div className="md:col-span-4">
+            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/40 mb-6">
               Eras
-            </h3>
-            <ul className="mt-4 space-y-2">
+            </p>
+            <ul className="space-y-3">
               {COLLECTIONS.map((col) => (
                 <li key={col.slug}>
                   <Link
                     href={`/collections/${col.slug}`}
-                    className="text-sm text-brand-cream/40 hover:text-brand-cream transition-colors"
+                    className="text-[14px] text-white/60 hover:text-white transition-colors"
                   >
                     {col.era}
                   </Link>
@@ -47,53 +41,40 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Browse */}
-          <div>
-            <h3 className="text-[10px] font-medium tracking-[0.25em] uppercase text-brand-gold">
-              Browse
-            </h3>
-            <ul className="mt-4 space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-sm text-brand-cream/40 hover:text-brand-cream transition-colors"
-                >
-                  Full Archive
-                </Link>
-              </li>
+          {/* Navigation */}
+          <div className="md:col-span-3">
+            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/40 mb-6">
+              Navigate
+            </p>
+            <ul className="space-y-3">
               <li>
                 <Link
                   href="/collections"
-                  className="text-sm text-brand-cream/40 hover:text-brand-cream transition-colors"
+                  className="text-[14px] text-white/60 hover:text-white transition-colors"
                 >
-                  All Eras
+                  All eras
                 </Link>
               </li>
               <li>
                 <Link
                   href="/about"
-                  className="text-sm text-brand-cream/40 hover:text-brand-cream transition-colors"
+                  className="text-[14px] text-white/60 hover:text-white transition-colors"
                 >
-                  About & Mission
+                  About
                 </Link>
               </li>
             </ul>
           </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-[10px] font-medium tracking-[0.25em] uppercase text-brand-gold">
-              Legacy Homeware
-            </h3>
-            <p className="mt-4 text-sm text-brand-cream/40 leading-relaxed">
-              Decorative home hardware cast in solid metal — inspired by the
-              great architectural eras.
-            </p>
-          </div>
         </div>
 
-        <div className="mt-16 border-t border-brand-cream/10 pt-6 text-center text-xs text-brand-cream/25">
-          &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <p className="text-[12px] text-white/30">
+            © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+          </p>
+          <p className="text-[12px] text-white/30">
+            Handmade hardware, historically grounded.
+          </p>
         </div>
       </div>
     </footer>
