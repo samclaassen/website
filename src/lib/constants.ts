@@ -1,8 +1,8 @@
-// Site-wide constants — update these once your domain is ready
-export const SITE_NAME = "Website";
+// Site-wide constants
+export const SITE_NAME = "Legacy Homeware";
 export const SITE_DESCRIPTION =
-  "Your site description — update this with your actual value proposition.";
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
+  "Quality homeware and home goods — timeless pieces for modern living.";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
 
 export const SOCIAL = {
   twitter: "", // @handle without the @
