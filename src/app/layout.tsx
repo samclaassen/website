@@ -23,7 +23,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME,
+    default: `${SITE_NAME} — The Visual Archive of Decorative Hardware`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -59,7 +59,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-brand-cream text-brand-dark antialiased">
         <JsonLd data={organizationJsonLd()} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-[65px]">{children}</main>
         <Footer />
       </body>
     </html>

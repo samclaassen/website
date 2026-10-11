@@ -1,7 +1,7 @@
 export const SITE_NAME = "Legacy Homeware";
-export const SITE_TAGLINE = "Crafted to outlast the home";
+export const SITE_TAGLINE = "The Visual Archive of Decorative Hardware";
 export const SITE_DESCRIPTION =
-  "Handcrafted decorative home hardware — switch plates, outlet covers, doorknobs, hinges, and fixtures cast in solid metal, inspired by the great architectural eras. Make your home beautiful again.";
+  "A curated visual study of ornamental home hardware design across seven architectural eras — from Arts & Crafts to Art Nouveau. Explore the craftsmanship that shaped the homes we live in.";
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
 
 export const SOCIAL = {
@@ -11,7 +11,18 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Collections", href: "/collections" },
+  { label: "Archive", href: "/" },
+  { label: "Eras", href: "/collections" },
   { label: "About", href: "/about" },
 ] as const;
+
+export const HARDWARE_TYPES = [
+  "Switch Plate",
+  "Outlet Cover",
+  "Door Knob",
+  "Hinge",
+  "Cabinet Pull",
+  "Door Knocker",
+] as const;
+
+export type HardwareType = (typeof HARDWARE_TYPES)[number];

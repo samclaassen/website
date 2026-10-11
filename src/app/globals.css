@@ -17,3 +17,13 @@ html {
   outline: 2px solid var(--color-brand-gold);
   outline-offset: 2px;
 }
+
+/* Hide scrollbar for era navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

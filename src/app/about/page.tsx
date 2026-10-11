@@ -154,16 +154,16 @@ export default function AboutPage() {
           {/* CTA */}
           <section className="mt-16 rounded-sm bg-brand-dark p-10 text-center">
             <h2 className="font-serif text-2xl font-semibold text-brand-cream">
-              Explore Our Collections
+              Explore the Archive
             </h2>
             <p className="mt-3 text-brand-cream/60">
-              Find the style that belongs in your home.
+              Browse decorative hardware across seven architectural eras.
             </p>
             <Link
-              href="/collections"
+              href="/"
               className="mt-6 inline-block rounded-sm bg-brand-gold px-8 py-3 text-sm font-semibold tracking-wide uppercase text-white hover:bg-brand-gold/90 transition-colors"
             >
-              View Collections
+              Enter the Archive
             </Link>
           </section>
         </article>
