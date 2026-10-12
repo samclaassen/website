@@ -33,7 +33,7 @@ export default function CollectionsPage() {
       {/* Page header */}
       <section className="px-6 lg:px-10 pt-8 pb-16">
         <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-xl mb-4">
-          Seven eras of ornamental hardware
+          Seven eras of ornamental hardware & lighting
         </h1>
         <p className="text-base text-muted max-w-lg">
           {COLLECTIONS.length} architectural eras. {totalPieces} curated pieces.

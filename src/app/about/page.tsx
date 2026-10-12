@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "About",
   description:
-    "Legacy Homeware creates handcrafted decorative hardware — switch plates, outlet covers, doorknobs, and fixtures cast in solid metal.",
+    "Legacy Homeware creates handcrafted decorative lighting and hardware — light fixtures, switch plates, outlet covers, doorknobs, and fixtures cast in solid metal.",
   path: "/about",
   keywords: [
     "about legacy homeware",
@@ -21,7 +21,7 @@ export default function AboutPage() {
     {
       question: "What does Legacy Homeware make?",
       answer:
-        "Legacy Homeware creates decorative home hardware — light switch plates, outlet covers, doorknobs, hinges, cabinet hardware, and fixtures. Every piece is designed and cast in solid metal (bronze, brass, or iron), inspired by the great architectural eras from Colonial to Art Deco.",
+        "Legacy Homeware creates decorative lighting and home hardware — chandeliers, wall sconces, pendant lights, light switch plates, outlet covers, doorknobs, hinges, cabinet hardware, and fixtures. Every piece is designed and cast in solid metal (bronze, brass, or iron), inspired by the great architectural eras from Colonial to Art Deco.",
     },
     {
       question: "How is Legacy Homeware different from mass-produced hardware?",
@@ -41,7 +41,7 @@ export default function AboutPage() {
         data={webPageJsonLd({
           title: "About",
           description:
-            "Legacy Homeware creates handcrafted decorative hardware cast in solid metal.",
+            "Legacy Homeware creates handcrafted decorative lighting and hardware cast in solid metal.",
           path: "/about",
         })}
       />
@@ -111,25 +111,26 @@ export default function AboutPage() {
               What we do
             </p>
             <h2 className="font-serif text-3xl font-semibold text-stone leading-snug">
-              Hardware cast in solid metal, rooted in real architectural eras
+              Lighting and hardware cast in solid metal, rooted in real architectural eras
             </h2>
           </div>
 
           <div className="space-y-6">
             <p className="text-base leading-[1.9] text-muted">
-              Legacy Homeware brings decorative hardware back to the quality it
-              had when craftspeople made it by hand. Every piece is designed with
-              attention to historical accuracy and cast in solid metal — real
-              bronze, brass, and iron that develops a natural patina and lasts
-              for generations.
+              Legacy Homeware brings decorative lighting and hardware back to the
+              quality it had when craftspeople made it by hand. Every piece —
+              from chandeliers and wall sconces to switch plates and doorknobs —
+              is designed with attention to historical accuracy and cast in solid
+              metal. Real bronze, brass, and iron that develops a natural patina
+              and lasts for generations.
             </p>
 
             <div className="pt-4 space-y-3">
               {[
+                "Chandeliers, pendant lights, wall sconces, and flush mounts",
                 "Light switch plates, outlet covers, and wall plates",
                 "Doorknobs, handles, and lever sets",
-                "Decorative hinges and door accessories",
-                "Cabinet knobs, pulls, and handles",
+                "Cabinet knobs, pulls, and door accessories",
               ].map((item) => (
                 <p
                   key={item}
@@ -175,7 +176,7 @@ export default function AboutPage() {
             Explore the archive
           </h2>
           <p className="text-base text-muted mb-10">
-            Browse decorative hardware across seven architectural eras.
+            Browse decorative lighting and hardware across seven architectural eras.
           </p>
           <Link
             href="/collections"
