@@ -42,7 +42,7 @@ export default function HomePage() {
 
         {/* Right: editorial intro */}
         <div className="flex flex-col justify-center px-8 py-20 lg:px-16 xl:px-24">
-          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
             Est. 2026
           </p>
 
@@ -54,7 +54,7 @@ export default function HomePage() {
             is missing
           </h1>
 
-          <p className="mt-8 text-[15px] leading-[1.8] text-brand-muted max-w-md">
+          <p className="mt-8 text-base leading-[1.8] text-brand-muted max-w-md">
             A visual study of ornamental hardware across seven architectural
             eras. The switch plates, doorknobs, and hinges that were once
             handmade, historically grounded, and built to outlast the home.
@@ -63,14 +63,14 @@ export default function HomePage() {
           <div className="mt-12 flex items-center gap-6">
             <Link
               href="/collections"
-              className="text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
             >
               Explore all eras
             </Link>
           </div>
 
           <div className="mt-20 pt-8 border-t border-brand-dark/10">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               Seven eras · 28 pieces · Centuries of craft
             </p>
           </div>
@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
           {/* Text — narrow left column */}
           <div className="lg:col-span-4 xl:col-span-3 flex flex-col justify-center px-8 py-16 lg:px-10 xl:px-16 lg:border-r border-brand-dark/10">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               {featured.period}
             </p>
 
@@ -90,13 +90,13 @@ export default function HomePage() {
               {featured.era}
             </h2>
 
-            <p className="mt-6 text-[15px] leading-[1.8] text-brand-muted">
+            <p className="mt-6 text-base leading-[1.8] text-brand-muted">
               {featured.description}
             </p>
 
             <div className="mt-8">
               {featured.materials.map((m) => (
-                <p key={m} className="text-[13px] text-brand-dark/60 leading-relaxed">
+                <p key={m} className="text-sm text-brand-dark/60 leading-relaxed">
                   {m}
                 </p>
               ))}
@@ -104,7 +104,7 @@ export default function HomePage() {
 
             <Link
               href={`/collections/${featured.slug}`}
-              className="mt-10 text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="mt-10 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
             >
               View {featured.pieces.length} pieces
             </Link>
@@ -145,7 +145,7 @@ export default function HomePage() {
 
           {/* Text — narrow right */}
           <div className="lg:col-span-4 xl:col-span-3 lg:order-2 flex flex-col justify-center px-8 py-16 lg:px-10 xl:px-16 lg:border-l border-brand-dark/10">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               {secondary.period}
             </p>
 
@@ -153,13 +153,13 @@ export default function HomePage() {
               {secondary.era}
             </h2>
 
-            <p className="mt-6 text-[15px] leading-[1.8] text-brand-muted">
+            <p className="mt-6 text-base leading-[1.8] text-brand-muted">
               {secondary.description}
             </p>
 
             <div className="mt-8">
               {secondary.materials.map((m) => (
-                <p key={m} className="text-[13px] text-brand-dark/60 leading-relaxed">
+                <p key={m} className="text-sm text-brand-dark/60 leading-relaxed">
                   {m}
                 </p>
               ))}
@@ -167,7 +167,7 @@ export default function HomePage() {
 
             <Link
               href={`/collections/${secondary.slug}`}
-              className="mt-10 text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="mt-10 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
             >
               View {secondary.pieces.length} pieces
             </Link>
@@ -178,7 +178,7 @@ export default function HomePage() {
       {/* Remaining eras — clean editorial list */}
       <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-16">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-16">
             Continue exploring
           </p>
 
@@ -202,23 +202,23 @@ export default function HomePage() {
 
                 {/* Info */}
                 <div className="lg:col-span-6 flex flex-col justify-center">
-                  <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+                  <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
                     {col.period}
                   </p>
                   <h3 className="mt-2 font-serif text-3xl font-semibold text-brand-dark group-hover:text-brand-muted transition-colors">
                     {col.era}
                   </h3>
-                  <p className="mt-3 text-[15px] leading-[1.8] text-brand-muted max-w-lg">
+                  <p className="mt-3 text-base leading-[1.8] text-brand-muted max-w-lg">
                     {col.description}
                   </p>
                 </div>
 
                 {/* Meta */}
                 <div className="lg:col-span-3 flex flex-col justify-center lg:items-end lg:text-right">
-                  <p className="text-[13px] text-brand-muted">
+                  <p className="text-sm text-brand-muted">
                     {col.pieces.length} pieces
                   </p>
-                  <p className="text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <p className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     View era →
                   </p>
                 </div>
@@ -239,7 +239,7 @@ export default function HomePage() {
           <div className="mt-10">
             <Link
               href="/about"
-              className="text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
             >
               Read our story
             </Link>

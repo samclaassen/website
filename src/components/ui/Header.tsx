@@ -3,20 +3,21 @@ import { NAV_LINKS } from "@/lib/constants";
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-10 py-5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-brand-dark/10">
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 lg:px-10 h-16">
         <Link href="/" className="group">
-          <span className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-dark">
+          <span className="font-serif text-xl font-semibold tracking-wide text-brand-dark sm:text-2xl">
             Legacy Homeware
           </span>
         </Link>
+
         <nav aria-label="Main navigation">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-10">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-[11px] font-medium tracking-[0.2em] text-brand-muted uppercase hover:text-brand-dark transition-colors"
+                  className="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors"
                 >
                   {link.label}
                 </Link>

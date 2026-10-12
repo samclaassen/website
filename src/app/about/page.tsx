@@ -58,7 +58,7 @@ export default function AboutPage() {
       <section className="px-8 lg:px-10 xl:px-16 pt-12 pb-24">
         <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-16">
           <div className="lg:col-span-7">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               Our Mission
             </p>
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
               beautiful again
             </h1>
 
-            <p className="mt-10 text-[15px] leading-[1.9] text-brand-muted max-w-xl">
+            <p className="mt-10 text-base leading-[1.9] text-brand-muted max-w-xl">
               Everything about modern homes is mass-manufactured and looks the
               same. Every house uses the same plastic outlet and light switch
               covers that yellow over time. At best you can get a cheap stamped
@@ -89,7 +89,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               Walk into any home built in the last fifty years and you&apos;ll
               find the same hardware everywhere — plastic switch plates, stamped
               outlet covers, hollow doorknobs. These are the details you touch
@@ -104,7 +104,7 @@ export default function AboutPage() {
               of the house, and built to outlast the structure itself.
             </p>
 
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               That quality didn&apos;t disappear because people stopped wanting
               it. It disappeared because mass production made it cheaper to
               ignore.
@@ -123,7 +123,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               Legacy Homeware brings decorative hardware back to the quality it
               had when craftspeople made it by hand. Every piece is designed with
               attention to historical accuracy and cast in solid metal — real
@@ -131,7 +131,7 @@ export default function AboutPage() {
               for generations.
             </p>
 
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               We offer seven collections, each rooted in a real architectural
               era — from the geometric restraint of Arts &amp; Crafts to the
               flowing curves of Art Nouveau. Whether you&apos;re restoring a
@@ -170,7 +170,7 @@ export default function AboutPage() {
           </div>
 
           <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               Each design begins with deep research into historical hardware
               traditions — the patterns, proportions, and techniques that defined
               the best decorative metalwork of each era. These designs are then
@@ -179,7 +179,7 @@ export default function AboutPage() {
               production can&apos;t match.
             </p>
 
-            <p className="text-[15px] leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-brand-muted">
               The result is hardware that&apos;s unique to your home — something
               with real character, real weight, and a story behind every detail.
             </p>
@@ -190,7 +190,7 @@ export default function AboutPage() {
       {/* FAQ */}
       <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-16">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-16">
             Frequently Asked Questions
           </p>
 
@@ -203,7 +203,7 @@ export default function AboutPage() {
                 <h3 className="lg:col-span-4 font-serif text-xl font-semibold text-brand-dark">
                   {faq.question}
                 </h3>
-                <p className="lg:col-span-7 lg:col-start-6 text-[15px] leading-[1.8] text-brand-muted">
+                <p className="lg:col-span-7 lg:col-start-6 text-base leading-[1.8] text-brand-muted">
                   {faq.answer}
                 </p>
               </div>
@@ -218,13 +218,13 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl font-semibold text-brand-dark sm:text-4xl">
             Explore the archive
           </h2>
-          <p className="mt-4 text-[15px] text-brand-muted">
+          <p className="mt-4 text-base text-brand-muted">
             Browse decorative hardware across seven architectural eras.
           </p>
           <div className="mt-10">
             <Link
               href="/collections"
-              className="text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
             >
               View all eras
             </Link>

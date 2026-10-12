@@ -34,7 +34,7 @@ export default function CollectionsPage() {
       {/* Page title — editorial spread */}
       <section className="px-8 lg:px-10 xl:px-16 pt-12 pb-20">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
             {COLLECTIONS.length} eras · {COLLECTIONS.reduce((n, c) => n + c.pieces.length, 0)} pieces
           </p>
           <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-[1.05] text-brand-dark max-w-3xl">
@@ -64,16 +64,16 @@ export default function CollectionsPage() {
             />
           </div>
           <div className="lg:col-span-4 flex flex-col justify-center px-8 lg:px-12 py-16">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               {hero.period}
             </p>
             <h2 className="mt-4 font-serif text-4xl font-semibold text-brand-dark lg:text-5xl group-hover:text-brand-muted transition-colors">
               {hero.era}
             </h2>
-            <p className="mt-6 text-[15px] leading-[1.8] text-brand-muted max-w-sm">
+            <p className="mt-6 text-base leading-[1.8] text-brand-muted max-w-sm">
               {hero.description}
             </p>
-            <p className="mt-6 text-[11px] font-medium tracking-[0.2em] uppercase text-brand-dark">
+            <p className="mt-6 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark">
               {hero.pieces.length} pieces →
             </p>
           </div>
@@ -103,13 +103,13 @@ export default function CollectionsPage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 px-8 pb-10">
-                <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/70">
+                <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/70">
                   {col.period}
                 </p>
                 <h3 className="mt-2 font-serif text-3xl font-semibold text-white group-hover:text-white/80 transition-colors lg:text-4xl">
                   {col.era}
                 </h3>
-                <p className="mt-3 text-[13px] text-white/70">
+                <p className="mt-3 text-sm text-white/70">
                   {col.pieces.length} pieces
                 </p>
               </div>

@@ -78,7 +78,7 @@ export default async function CollectionPage({
 
         <div className="relative z-10 px-8 lg:px-10 xl:px-16 pb-16 lg:pb-24 w-full">
           <div className="mx-auto max-w-[1400px]">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-white/60">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/60">
               {collection.period}
             </p>
             <h1 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-semibold leading-[1.05] text-white">
@@ -92,13 +92,13 @@ export default async function CollectionPage({
       <section className="px-8 lg:px-10 xl:px-16 py-20 border-b border-brand-dark/10">
         <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">
-            <p className="text-[15px] leading-[1.9] text-brand-dark">
+            <p className="text-base leading-[1.9] text-brand-dark">
               {collection.description}
             </p>
           </div>
 
           <div className="lg:col-span-3 lg:col-start-8">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-4">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4">
               Materials
             </p>
             {collection.materials.map((m) => (
@@ -109,14 +109,14 @@ export default async function CollectionPage({
           </div>
 
           <div className="lg:col-span-2">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-4">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4">
               Period
             </p>
             <p className="text-[14px] text-brand-dark">
               {collection.period}
             </p>
 
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-4 mt-8">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4 mt-8">
               Pieces
             </p>
             <p className="text-[14px] text-brand-dark">
@@ -129,7 +129,7 @@ export default async function CollectionPage({
       {/* Pieces — editorial alternating layouts */}
       <section className="px-8 lg:px-10 xl:px-16 py-24">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted mb-20">
+          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-20">
             The collection
           </p>
 
@@ -166,7 +166,7 @@ export default async function CollectionPage({
                         : "lg:order-1 lg:pr-8"
                     }`}
                   >
-                    <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+                    <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
                       {piece.type} · {piece.year}
                     </p>
 
@@ -174,12 +174,12 @@ export default async function CollectionPage({
                       {piece.name}
                     </h2>
 
-                    <p className="mt-6 text-[15px] leading-[1.8] text-brand-muted">
+                    <p className="mt-6 text-base leading-[1.8] text-brand-muted">
                       {piece.description}
                     </p>
 
                     <div className="mt-8 flex items-center gap-6">
-                      <span className="text-[13px] text-brand-dark">
+                      <span className="text-sm text-brand-dark">
                         {piece.material}
                       </span>
                     </div>
@@ -198,13 +198,13 @@ export default async function CollectionPage({
           className="group grid grid-cols-1 lg:grid-cols-2 min-h-[50vh]"
         >
           <div className="flex flex-col justify-center px-8 lg:px-16 py-16">
-            <p className="text-[11px] font-medium tracking-[0.3em] uppercase text-brand-muted">
+            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
               Next era
             </p>
             <h3 className="mt-4 font-serif text-4xl font-semibold text-brand-dark group-hover:text-brand-muted transition-colors lg:text-5xl">
               {nextCol.era}
             </h3>
-            <p className="mt-4 text-[15px] text-brand-muted">
+            <p className="mt-4 text-base text-brand-muted">
               {nextCol.period}
             </p>
           </div>
