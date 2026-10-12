@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacy Homeware — Design Directions</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Tab navigation */
+.tab-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #111; display: flex; align-items: center;
+  padding: 0 24px; height: 56px; gap: 4px;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid #333;
+}
+.tab-bar .label {
+  color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em;
+  margin-right: 16px; font-weight: 500;
+}
+.tab-btn {
+  background: none; border: 1px solid #333; color: #999; cursor: pointer;
+  padding: 8px 20px; font-size: 13px; font-family: 'Inter', sans-serif;
+  font-weight: 500; border-radius: 6px; transition: all 0.2s;
+}
+.tab-btn:hover { color: #fff; border-color: #555; }
+.tab-btn.active { background: #fff; color: #111; border-color: #fff; }
+
+.concept { display: none; padding-top: 56px; }
+.concept.active { display: block; }
+
+/* ========================================
+   CONCEPT A: DARK & CINEMATIC
+   Reference: Buster+Punch, Tom Ford, RH
+   ======================================== */
+.concept-a { background: #0a0a0a; color: #f5f5f0; }
+.concept-a .ca-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px 48px; position: relative; z-index: 10;
+}
+.concept-a .ca-logo {
+  font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600;
+  letter-spacing: 0.02em; color: #f5f5f0;
+}
+.concept-a .ca-nav-links { display: flex; gap: 36px; }
+.concept-a .ca-nav-links a {
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #888;
+  text-decoration: none; transition: color 0.3s;
+}
+.concept-a .ca-nav-links a:hover { color: #f5f5f0; }
+
+.concept-a .ca-hero {
+  position: relative; height: 90vh; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.concept-a .ca-hero-img {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1a1510 0%, #0d0b08 40%, #111 100%);
+}
+/* Simulated dramatic hardware image */
+.concept-a .ca-hero-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 40% 50%, rgba(139,115,85,0.15) 0%, transparent 60%);
+}
+.concept-a .ca-hero-content {
+  position: relative; z-index: 2; padding: 0 80px 100px;
+  max-width: 700px;
+}
+.concept-a .ca-hero h1 {
+  font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 400;
+  line-height: 1.05; letter-spacing: -0.02em; color: #f5f5f0;
+  margin-bottom: 32px;
+}
+.concept-a .ca-hero p {
+  font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8;
+  color: #888; max-width: 440px; margin-bottom: 48px;
+}
+.concept-a .ca-cta {
+  display: inline-block; padding: 16px 48px;
+  border: 1px solid #8B7355; color: #8B7355;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+  transition: all 0.3s;
+}
+.concept-a .ca-cta:hover { background: #8B7355; color: #0a0a0a; }
+
+.concept-a .ca-eras {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: #222; margin-top: 1px;
+}
+.concept-a .ca-era-card {
+  position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer;
+  background: #111;
+}
+.concept-a .ca-era-card .ca-era-bg {
+  position: absolute; inset: 0; opacity: 0.5; transition: opacity 0.5s;
+}
+.concept-a .ca-era-card:hover .ca-era-bg { opacity: 0.8; }
+.concept-a .ca-era-card .ca-era-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 40px 32px; z-index: 2;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+.concept-a .ca-era-card h3 {
+  font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400;
+  color: #f5f5f0; margin-bottom: 8px;
+}
+.concept-a .ca-era-card span {
+  font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: #8B7355;
+}
+
+.concept-a .ca-statement {
+  padding: 160px 80px; max-width: 800px; margin: 0 auto; text-align: center;
+}
+.concept-a .ca-statement blockquote {
+  font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 400;
+  line-height: 1.4; color: #f5f5f0; font-style: italic;
+}
+.concept-a .ca-statement cite {
+  display: block; margin-top: 32px; font-family: 'Inter', sans-serif;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #666; font-style: normal;
+}
+
+/* ========================================
+   CONCEPT B: CLEAN GALLERY
+   Reference: Aesop, Apple, Cereal
+   ======================================== */
+.concept-b { background: #fafafa; color: #1a1a1a; }
+.concept-b .cb-nav {
+  display: flex; justify-content: center; align-items: center;
+  padding: 32px 48px; position: relative;
+}
+.concept-b .cb-logo {
+  font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500;
+  letter-spacing: 0.35em; text-transform: uppercase; color: #1a1a1a;
+}
+.concept-b .cb-nav-links {
+  position: absolute; right: 48px; display: flex; gap: 32px;
+}
+.concept-b .cb-nav-links a {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 400;
+  color: #999; text-decoration: none; transition: color 0.3s;
+}
+.concept-b .cb-nav-links a:hover { color: #1a1a1a; }
+
+.concept-b .cb-hero {
+  padding: 80px 48px 48px; text-align: center;
+}
+.concept-b .cb-hero h1 {
+  font-family: 'DM Sans', sans-serif; font-size: 52px; font-weight: 300;
+  letter-spacing: -0.02em; line-height: 1.15; color: #1a1a1a;
+  max-width: 700px; margin: 0 auto 24px;
+}
+.concept-b .cb-hero p {
+  font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 300;
+  color: #888; max-width: 420px; margin: 0 auto; line-height: 1.7;
+}
+
+.concept-b .cb-image-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
+  padding: 48px 48px 4px;
+}
+.concept-b .cb-image-full {
+  padding: 0 48px 4px;
+}
+.concept-b .cb-img {
+  width: 100%; aspect-ratio: 16/10; object-fit: cover; display: block;
+  background: #e8e5df;
+}
+.concept-b .cb-img-tall { aspect-ratio: 3/4; }
+.concept-b .cb-img-wide { aspect-ratio: 21/9; }
+
+.concept-b .cb-collection-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+  padding: 4px 48px;
+}
+.concept-b .cb-col-item {
+  text-align: center; cursor: pointer;
+}
+.concept-b .cb-col-img {
+  width: 100%; aspect-ratio: 1; background: #e8e5df; display: block;
+  margin-bottom: 20px; transition: opacity 0.3s;
+}
+.concept-b .cb-col-item:hover .cb-col-img { opacity: 0.85; }
+.concept-b .cb-col-item h3 {
+  font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 400;
+  color: #1a1a1a; margin-bottom: 4px;
+}
+.concept-b .cb-col-item span {
+  font-family: 'DM Sans', sans-serif; font-size: 12px; color: #aaa;
+}
+
+.concept-b .cb-cta-section {
+  padding: 120px 48px; text-align: center;
+}
+.concept-b .cb-cta-section p {
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: #999;
+  margin-bottom: 20px;
+}
+.concept-b .cb-cta-link {
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  color: #1a1a1a; text-decoration: none;
+  border-bottom: 1px solid #1a1a1a; padding-bottom: 4px;
+}
+
+/* Simulated images for B */
+.cb-sim-1 { background: linear-gradient(135deg, #d4cfc7 0%, #c2bbb0 100%); }
+.cb-sim-2 { background: linear-gradient(135deg, #bfb8ad 0%, #a89f94 100%); }
+.cb-sim-3 { background: linear-gradient(135deg, #c8c2b8 0%, #b5ad9f 100%); }
+.cb-sim-4 { background: linear-gradient(135deg, #d1ccc4 0%, #c4bdb3 100%); }
+.cb-sim-5 { background: linear-gradient(135deg, #b8b1a5 0%, #a49c90 100%); }
+.cb-sim-6 { background: linear-gradient(135deg, #c5bfb5 0%, #b3ab9e 100%); }
+
+/* ========================================
+   CONCEPT C: BOLD EDITORIAL
+   Reference: Bloomberg, Monocle, New York Times Style
+   ======================================== */
+.concept-c { background: #FFFFF5; color: #1a1a1a; }
+.concept-c .cc-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 48px;
+  border-bottom: 3px solid #1a1a1a;
+}
+.concept-c .cc-logo {
+  font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900;
+  color: #1a1a1a; letter-spacing: -0.02em;
+}
+.concept-c .cc-nav-links { display: flex; gap: 28px; align-items: center; }
+.concept-c .cc-nav-links a {
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
+  color: #1a1a1a; text-decoration: none; text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.concept-c .cc-nav-sub {
+  border-bottom: 1px solid #ddd; padding: 12px 48px;
+  display: flex; gap: 24px;
+}
+.concept-c .cc-nav-sub a {
+  font-family: 'Inter', sans-serif; font-size: 12px; color: #888;
+  text-decoration: none;
+}
+
+.concept-c .cc-hero {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 0;
+  border-bottom: 1px solid #ddd;
+}
+.concept-c .cc-hero-main {
+  padding: 60px 48px 60px; border-right: 1px solid #ddd;
+}
+.concept-c .cc-hero-tag {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: #8B7355; margin-bottom: 16px;
+}
+.concept-c .cc-hero-main h1 {
+  font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700;
+  line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.concept-c .cc-hero-main p {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  line-height: 1.6; color: #555; max-width: 500px; margin-bottom: 32px;
+}
+.concept-c .cc-hero-img {
+  width: 100%; aspect-ratio: 4/3; display: block;
+  background: linear-gradient(135deg, #2a2318 0%, #1a1510 100%);
+}
+.concept-c .cc-hero-sidebar {
+  padding: 60px 36px;
+}
+.concept-c .cc-sidebar-section { margin-bottom: 40px; }
+.concept-c .cc-sidebar-section h4 {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: #8B7355; margin-bottom: 16px;
+  padding-bottom: 8px; border-bottom: 1px solid #ddd;
+}
+.concept-c .cc-sidebar-item {
+  padding: 12px 0; border-bottom: 1px solid #eee; cursor: pointer;
+  transition: background 0.2s;
+}
+.concept-c .cc-sidebar-item:hover { background: #f5f3eb; margin: 0 -12px; padding: 12px; }
+.concept-c .cc-sidebar-item h5 {
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;
+  margin-bottom: 4px;
+}
+.concept-c .cc-sidebar-item span {
+  font-family: 'Inter', sans-serif; font-size: 12px; color: #999;
+}
+
+.concept-c .cc-era-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 3px solid #1a1a1a;
+}
+.concept-c .cc-era-cell {
+  padding: 40px 32px; border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd; cursor: pointer;
+  transition: background 0.2s;
+}
+.concept-c .cc-era-cell:nth-child(3n) { border-right: none; }
+.concept-c .cc-era-cell:hover { background: #f5f3eb; }
+.concept-c .cc-era-cell .cc-era-img {
+  width: 100%; aspect-ratio: 3/2; margin-bottom: 20px;
+  background: #e8e5df;
+}
+.concept-c .cc-era-cell h3 {
+  font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700;
+  margin-bottom: 6px;
+}
+.concept-c .cc-era-cell .cc-era-period {
+  font-family: 'Inter', sans-serif; font-size: 12px; color: #888;
+  margin-bottom: 12px;
+}
+.concept-c .cc-era-cell p {
+  font-family: 'Cormorant Garamond', serif; font-size: 17px;
+  line-height: 1.5; color: #555;
+}
+
+/* ========================================
+   CONCEPT D: ARCHITECTURAL MINIMAL
+   Reference: RH, Boffi, high-end interiors
+   ======================================== */
+.concept-d { background: #f2f0ec; color: #2a2a2a; }
+.concept-d .cd-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 36px 60px;
+}
+.concept-d .cd-logo {
+  font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: 0.4em; text-transform: uppercase; color: #2a2a2a;
+}
+.concept-d .cd-nav-links { display: flex; gap: 40px; }
+.concept-d .cd-nav-links a {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 400;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #999;
+  text-decoration: none; transition: color 0.3s;
+}
+.concept-d .cd-nav-links a:hover { color: #2a2a2a; }
+
+.concept-d .cd-hero {
+  padding: 40px 60px 0;
+}
+.concept-d .cd-hero-image {
+  width: 100%; aspect-ratio: 21/9;
+  background: linear-gradient(135deg, #1a1510 0%, #2a2318 40%, #111 100%);
+  position: relative; overflow: hidden;
+}
+.concept-d .cd-hero-overlay {
+  position: absolute; bottom: 60px; left: 60px; max-width: 500px;
+}
+.concept-d .cd-hero-overlay h1 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 300;
+  line-height: 1.15; color: #f5f5f0; letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.concept-d .cd-hero-overlay p {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 300;
+  color: rgba(245,245,240,0.6); line-height: 1.7;
+}
+
+.concept-d .cd-intro {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 80px 60px; gap: 120px;
+}
+.concept-d .cd-intro h2 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: 0.3em; text-transform: uppercase; color: #999;
+  white-space: nowrap;
+}
+.concept-d .cd-intro p {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400;
+  line-height: 1.5; color: #2a2a2a; max-width: 600px;
+}
+
+.concept-d .cd-eras {
+  padding: 0 60px 80px;
+}
+.concept-d .cd-era-row {
+  display: grid; grid-template-columns: 200px 1fr 200px;
+  align-items: center; gap: 40px;
+  padding: 32px 0; border-top: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer; transition: background 0.2s;
+}
+.concept-d .cd-era-row:hover { background: rgba(0,0,0,0.02); margin: 0 -20px; padding: 32px 20px; }
+.concept-d .cd-era-row .cd-era-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500;
+  color: #2a2a2a;
+}
+.concept-d .cd-era-row .cd-era-desc {
+  font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 300;
+  color: #888; line-height: 1.6;
+}
+.concept-d .cd-era-row .cd-era-meta {
+  text-align: right;
+}
+.concept-d .cd-era-row .cd-era-period {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: #999;
+  display: block;
+}
+.concept-d .cd-era-row .cd-era-count {
+  font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: #bbb;
+  display: block; margin-top: 4px;
+}
+.concept-d .cd-era-row .cd-era-arrow {
+  font-family: 'Space Grotesk', sans-serif; font-size: 18px; color: #ccc;
+  transition: color 0.3s; display: block; margin-top: 8px;
+}
+.concept-d .cd-era-row:hover .cd-era-arrow { color: #2a2a2a; }
+
+.concept-d .cd-footer-statement {
+  padding: 120px 60px; text-align: center;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.concept-d .cd-footer-statement p {
+  font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400;
+  line-height: 1.4; color: #2a2a2a; max-width: 600px; margin: 0 auto;
+  font-style: italic;
+}
+
+/* Image placeholders with labels */
+.img-placeholder {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.3);
+}
+.img-placeholder-dark {
+  color: rgba(0,0,0,0.15);
+}
+
+/* Concept description overlays */
+.concept-desc {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9998;
+  background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+  padding: 20px 32px; display: flex; align-items: center; gap: 32px;
+  font-family: 'Inter', sans-serif;
+  transform: translateY(100%); transition: transform 0.3s;
+}
+.concept.active .concept-desc { transform: translateY(0); }
+.concept-desc .desc-tag {
+  background: #333; color: #aaa; padding: 4px 12px; border-radius: 4px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; white-space: nowrap;
+}
+.concept-desc .desc-title {
+  color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 2px;
+}
+.concept-desc .desc-text {
+  color: #888; font-size: 13px; line-height: 1.5;
+}
+.concept-desc .desc-refs {
+  color: #666; font-size: 11px; margin-left: auto; white-space: nowrap;
+}
+</style>
+</head>
+<body>
+
+<div class="tab-bar">
+  <span class="label">Choose a direction</span>
+  <button class="tab-btn active" onclick="show('a')">A · Dark & Cinematic</button>
+  <button class="tab-btn" onclick="show('b')">B · Clean Gallery</button>
+  <button class="tab-btn" onclick="show('c')">C · Bold Editorial</button>
+  <button class="tab-btn" onclick="show('d')">D · Architectural</button>
+</div>
+
+<!-- ============ CONCEPT A ============ -->
+<div class="concept concept-a active" id="concept-a">
+  <nav class="ca-nav">
+    <div class="ca-logo">Legacy Homeware</div>
+    <div class="ca-nav-links">
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <section class="ca-hero">
+    <div class="ca-hero-img"></div>
+    <div class="ca-hero-content">
+      <h1>Hardware worth inheriting</h1>
+      <p>Solid metal switch plates, doorknobs, and fixtures cast in the traditions of seven architectural eras. Built to outlast the home.</p>
+      <a href="#" class="ca-cta">Explore the collection</a>
+    </div>
+  </section>
+
+  <section class="ca-eras">
+    <div class="ca-era-card">
+      <div class="ca-era-bg" style="background: linear-gradient(135deg, #3a2f20 0%, #1a1510 100%);"></div>
+      <div class="ca-era-info">
+        <span>1880–1920</span>
+        <h3>Arts & Crafts</h3>
+      </div>
+    </div>
+    <div class="ca-era-card">
+      <div class="ca-era-bg" style="background: linear-gradient(135deg, #2a1a1a 0%, #1a0f0f 100%);"></div>
+      <div class="ca-era-info">
+        <span>1837–1901</span>
+        <h3>Victorian</h3>
+      </div>
+    </div>
+    <div class="ca-era-card">
+      <div class="ca-era-bg" style="background: linear-gradient(135deg, #1a1a2a 0%, #0f0f1a 100%);"></div>
+      <div class="ca-era-info">
+        <span>1920–1940</span>
+        <h3>Art Deco</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="ca-statement">
+    <blockquote>"Every switch plate, every doorknob, every hinge is a design decision. Most homes get it wrong."</blockquote>
+    <cite>Legacy Homeware</cite>
+  </section>
+
+  <div class="concept-desc">
+    <span class="desc-tag">Concept A</span>
+    <div>
+      <div class="desc-title">Dark & Cinematic</div>
+      <div class="desc-text">Moody, immersive, luxury feel. Dark backgrounds make the brass/bronze hardware glow. Tall portrait cards for eras.</div>
+    </div>
+    <div class="desc-refs">Like: Buster+Punch · RH · Tom Ford</div>
+  </div>
+</div>
+
+<!-- ============ CONCEPT B ============ -->
+<div class="concept concept-b" id="concept-b">
+  <nav class="cb-nav">
+    <div class="cb-logo">Legacy Homeware</div>
+    <div class="cb-nav-links">
+      <a href="#">Eras</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+  <section class="cb-hero">
+    <h1>The quiet details that define a home</h1>
+    <p>A curated collection of ornamental hardware across seven architectural eras.</p>
+  </section>
+
+  <section class="cb-image-grid">
+    <div class="cb-img cb-sim-1 img-placeholder">Arts & Crafts Collection</div>
+    <div class="cb-img cb-sim-2 img-placeholder">Victorian Collection</div>
+  </section>
+  <section class="cb-image-full">
+    <div class="cb-img cb-img-wide cb-sim-3 img-placeholder">Detail Shot — Brass Hardware on Dark Wood</div>
+  </section>
+
+  <section class="cb-collection-strip">
+    <div class="cb-col-item">
+      <div class="cb-col-img cb-sim-1"></div>
+      <h3>Arts & Crafts</h3>
+      <span>1880–1920</span>
+    </div>
+    <div class="cb-col-item">
+      <div class="cb-col-img cb-sim-4"></div>
+      <h3>Victorian</h3>
+      <span>1837–1901</span>
+    </div>
+    <div class="cb-col-item">
+      <div class="cb-col-img cb-sim-5"></div>
+      <h3>Art Deco</h3>
+      <span>1920–1940</span>
+    </div>
+    <div class="cb-col-item">
+      <div class="cb-col-img cb-sim-6"></div>
+      <h3>Colonial</h3>
+      <span>1600–1800</span>
+    </div>
+  </section>
+
+  <section class="cb-cta-section">
+    <p>Seven eras. Twenty-eight pieces. Centuries of craft.</p>
+    <a href="#" class="cb-cta-link">View all eras</a>
+  </section>
+
+  <div class="concept-desc">
+    <span class="desc-tag">Concept B</span>
+    <div>
+      <div class="desc-title">Clean Gallery</div>
+      <div class="desc-text">Minimal, image-forward, lots of white space. Photography does all the talking. Sans-serif, light weight, Apple-like restraint.</div>
+    </div>
+    <div class="desc-refs">Like: Aesop · Apple · Cereal Magazine</div>
+  </div>
+</div>
+
+<!-- ============ CONCEPT C ============ -->
+<div class="concept concept-c" id="concept-c">
+  <nav class="cc-nav">
+    <div class="cc-logo">Legacy Homeware</div>
+    <div class="cc-nav-links">
+      <a href="#">Eras</a>
+      <a href="#">Pieces</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+  <div class="cc-nav-sub">
+    <a href="#">Arts & Crafts</a>
+    <a href="#">Victorian</a>
+    <a href="#">Art Deco</a>
+    <a href="#">Colonial</a>
+    <a href="#">Art Nouveau</a>
+    <a href="#">Farmhouse</a>
+    <a href="#">French Country</a>
+  </div>
+
+  <section class="cc-hero">
+    <div class="cc-hero-main">
+      <div class="cc-hero-tag">Featured Era</div>
+      <h1>The lost art of decorative hardware</h1>
+      <p>Before mass production, every doorknob, switch plate, and hinge was a design statement — cast in solid metal, shaped by the architectural language of its era.</p>
+      <div class="cc-hero-img img-placeholder" style="color: rgba(255,255,255,0.2);">Hero — Mixed era hardware on dark stone</div>
+    </div>
+    <div class="cc-hero-sidebar">
+      <div class="cc-sidebar-section">
+        <h4>By Era</h4>
+        <div class="cc-sidebar-item">
+          <h5>Arts & Crafts</h5>
+          <span>1880–1920 · 4 pieces</span>
+        </div>
+        <div class="cc-sidebar-item">
+          <h5>Victorian</h5>
+          <span>1837–1901 · 4 pieces</span>
+        </div>
+        <div class="cc-sidebar-item">
+          <h5>Art Deco</h5>
+          <span>1920–1940 · 4 pieces</span>
+        </div>
+        <div class="cc-sidebar-item">
+          <h5>Colonial</h5>
+          <span>1600–1800 · 4 pieces</span>
+        </div>
+      </div>
+      <div class="cc-sidebar-section">
+        <h4>Quick Facts</h4>
+        <div class="cc-sidebar-item">
+          <h5>7 Architectural Eras</h5>
+          <span>Spanning four centuries</span>
+        </div>
+        <div class="cc-sidebar-item">
+          <h5>28 Curated Pieces</h5>
+          <span>Switch plates, knobs, hinges & more</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cc-era-grid">
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #3a2f20, #1a1510);"></div>
+      <h3>Arts & Crafts</h3>
+      <div class="cc-era-period">1880–1920</div>
+      <p>Handcrafted oak-leaf motifs in hammered bronze and wrought iron.</p>
+    </div>
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #2a1a1a, #1a0f0f);"></div>
+      <h3>Victorian</h3>
+      <div class="cc-era-period">1837–1901</div>
+      <p>Ornate scrollwork and acanthus details in polished brass.</p>
+    </div>
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #1a1a2a, #0f0f1a);"></div>
+      <h3>Art Deco</h3>
+      <div class="cc-era-period">1920–1940</div>
+      <p>Geometric sunburst patterns in chrome and nickel.</p>
+    </div>
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #2a2015, #1a150d);"></div>
+      <h3>Colonial</h3>
+      <div class="cc-era-period">1600–1800</div>
+      <p>Simple forged iron and aged brass with functional elegance.</p>
+    </div>
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #1a2a1a, #0f1a0f);"></div>
+      <h3>Art Nouveau</h3>
+      <div class="cc-era-period">1890–1910</div>
+      <p>Flowing organic forms inspired by natural growth and movement.</p>
+    </div>
+    <div class="cc-era-cell">
+      <div class="cc-era-img" style="background: linear-gradient(135deg, #2a2520, #1a1815);"></div>
+      <h3>Farmhouse</h3>
+      <div class="cc-era-period">1700–1900</div>
+      <p>Rustic hand-forged iron with raw, utilitarian character.</p>
+    </div>
+  </section>
+
+  <div class="concept-desc">
+    <span class="desc-tag">Concept C</span>
+    <div>
+      <div class="desc-title">Bold Editorial</div>
+      <div class="desc-text">Newspaper/magazine structure with strong hierarchy, bold serif headlines, sidebar navigation, and a content-dense grid. Information-rich.</div>
+    </div>
+    <div class="desc-refs">Like: Bloomberg · NYT Style · Monocle</div>
+  </div>
+</div>
+
+<!-- ============ CONCEPT D ============ -->
+<div class="concept concept-d" id="concept-d">
+  <nav class="cd-nav">
+    <div class="cd-logo">Legacy Homeware</div>
+    <div class="cd-nav-links">
+      <a href="#">Collections</a>
+      <a href="#">About</a>
+    </div>
+  </nav>
+
+  <section class="cd-hero">
+    <div class="cd-hero-image">
+      <div class="cd-hero-overlay">
+        <h1>Hardware designed to outlast the home</h1>
+        <p>Seven architectural eras. Twenty-eight curated pieces. Solid metal, historically grounded.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cd-intro">
+    <h2>About</h2>
+    <p>A visual study of the ornamental hardware that defined great architecture — from Arts & Crafts to Art Nouveau. Every piece cast in solid bronze, brass, or iron.</p>
+  </section>
+
+  <section class="cd-eras">
+    <div class="cd-era-row">
+      <div class="cd-era-name">Arts & Crafts</div>
+      <div class="cd-era-desc">Handcrafted oak-leaf motifs and geometric patterns in hammered bronze and wrought iron. The movement that rejected industrial mass production.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1880–1920</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">Victorian</div>
+      <div class="cd-era-desc">Ornate scrollwork and acanthus-leaf details in polished brass and bronze. Maximum decoration, maximum craftsmanship.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1837–1901</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">Art Deco</div>
+      <div class="cd-era-desc">Geometric sunburst patterns and stepped forms in chrome, nickel, and polished brass. The machine age made elegant.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1920–1940</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">Colonial</div>
+      <div class="cd-era-desc">Simple forged iron and aged brass hardware with functional elegance. The foundation of American architectural metalwork.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1600–1800</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">Art Nouveau</div>
+      <div class="cd-era-desc">Flowing organic forms inspired by natural growth and movement. Whiplash curves cast in patinated bronze and copper.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1890–1910</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">Farmhouse</div>
+      <div class="cd-era-desc">Rustic hand-forged iron with raw, utilitarian character. Hardware built for working homes and lasting generations.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1700–1900</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+    <div class="cd-era-row">
+      <div class="cd-era-name">French Country</div>
+      <div class="cd-era-desc">Soft curves and weathered finishes in antique brass and pewter. Provincial elegance with Old World warmth.</div>
+      <div class="cd-era-meta">
+        <span class="cd-era-period">1600–1800</span>
+        <span class="cd-era-count">4 pieces</span>
+        <span class="cd-era-arrow">→</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cd-footer-statement">
+    <p><em>Every light switch, every doorknob, every hinge is a design choice most homes get wrong.</em></p>
+  </section>
+
+  <div class="concept-desc">
+    <span class="desc-tag">Concept D</span>
+    <div>
+      <div class="desc-title">Architectural Minimal</div>
+      <div class="desc-text">Warm neutral background, geometric sans-serif, clean table-style era listing. Refined, structured, restrained — lets the content breathe.</div>
+    </div>
+    <div class="desc-refs">Like: RH · Boffi · Aesop (warm)</div>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.concept').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('concept-' + id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
