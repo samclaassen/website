@@ -1,12 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-dark: #111111;
-  --color-brand-gold: #8B7355;
-  --color-brand-cream: #FAFAF8;
-  --color-brand-warm: #F2F0EC;
-  --color-brand-muted: #777777;
-  --color-brand-light: #BBBBBB;
+  /* Aesop-inspired warm palette */
+  --color-cream: #F6F3ED;
+  --color-cream-dark: #EDE8DF;
+  --color-stone: #2B2B2B;
+  --color-stone-light: #3D3D3D;
+  --color-bark: #8B6914;
+  --color-muted: #767676;
+  --color-light: #A3A3A3;
+  --color-border: #D4CFC5;
+
   --font-serif: "Cormorant Garamond", serif;
 }
 
@@ -14,23 +18,57 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :focus-visible {
-  outline: 2px solid var(--color-brand-dark);
+  outline: 2px solid var(--color-stone);
   outline-offset: 2px;
 }
 
-/* Hide scrollbar */
+/* Aesop-style CTA buttons */
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  border: 1px solid currentColor;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: var(--color-stone);
+  color: var(--color-cream);
+  border-color: var(--color-stone);
+}
+
+.cta-button-light {
+  color: #fff;
+  border-color: rgba(255,255,255,0.5);
+}
+
+.cta-button-light:hover {
+  background: #fff;
+  color: var(--color-stone);
+  border-color: #fff;
+}
+
+/* Pull quote */
+.pull-quote {
+  font-style: italic;
+  border-left: 2px solid var(--color-stone);
+  padding-left: 1.5rem;
+}
+
+/* Scrollbar hide for carousels */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-/* Editorial pull quote */
-.pull-quote {
-  font-style: italic;
-  border-left: 2px solid var(--color-brand-dark);
-  padding-left: 1.5rem;
 }

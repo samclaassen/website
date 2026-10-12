@@ -13,8 +13,7 @@ export const metadata = generatePageMetadata({
 });
 
 export default function CollectionsPage() {
-  const hero = COLLECTIONS[0];
-  const rest = COLLECTIONS.slice(1);
+  const totalPieces = COLLECTIONS.reduce((n, c) => n + c.pieces.length, 0);
 
   return (
     <>
@@ -31,88 +30,44 @@ export default function CollectionsPage() {
         ]}
       />
 
-      {/* Page title — editorial spread */}
-      <section className="px-8 lg:px-10 xl:px-16 pt-12 pb-20">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-            {COLLECTIONS.length} eras · {COLLECTIONS.reduce((n, c) => n + c.pieces.length, 0)} pieces
-          </p>
-          <h1 className="mt-6 font-serif text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-[1.05] text-brand-dark max-w-3xl">
-            Seven centuries
-            <br />
-            of ornamental
-            <br />
-            hardware
-          </h1>
-        </div>
+      {/* Page header */}
+      <section className="px-6 lg:px-10 pt-8 pb-16">
+        <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-xl mb-4">
+          Seven eras of ornamental hardware
+        </h1>
+        <p className="text-base text-muted max-w-lg">
+          {COLLECTIONS.length} architectural eras. {totalPieces} curated pieces.
+          Centuries of craft tradition documented in solid metal.
+        </p>
       </section>
 
-      {/* Hero era — full bleed */}
-      <section>
-        <Link
-          href={`/collections/${hero.slug}`}
-          className="group grid grid-cols-1 lg:grid-cols-12 min-h-[70vh] border-t border-brand-dark/10"
-        >
-          <div className="lg:col-span-8 relative min-h-[50vh]">
-            <Image
-              src={hero.image}
-              alt={`${hero.era} decorative hardware`}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-              sizes="(max-width: 1024px) 100vw, 67vw"
-              priority
-            />
-          </div>
-          <div className="lg:col-span-4 flex flex-col justify-center px-8 lg:px-12 py-16">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-              {hero.period}
-            </p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-brand-dark lg:text-5xl group-hover:text-brand-muted transition-colors">
-              {hero.era}
-            </h2>
-            <p className="mt-6 text-base leading-[1.8] text-brand-muted max-w-sm">
-              {hero.description}
-            </p>
-            <p className="mt-6 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark">
-              {hero.pieces.length} pieces →
-            </p>
-          </div>
-        </Link>
-      </section>
-
-      {/* Two-up grid — staggered */}
-      <section className="border-t border-brand-dark/10">
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          {rest.map((col, i) => (
+      {/* Era grid — Aesop-style cards */}
+      <section className="px-6 lg:px-10 pb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {COLLECTIONS.map((col) => (
             <Link
               key={col.slug}
               href={`/collections/${col.slug}`}
-              className={`group relative border-b border-brand-dark/10 ${
-                i % 2 === 0 ? "md:border-r" : ""
-              }`}
+              className="group"
             >
-              <div className="relative aspect-[4/3]">
+              <div className="relative aspect-[4/3] overflow-hidden mb-5">
                 <Image
                   src={col.image}
                   alt={`${col.era} decorative hardware`}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-8 pb-10">
-                <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/70">
-                  {col.period}
-                </p>
-                <h3 className="mt-2 font-serif text-3xl font-semibold text-white group-hover:text-white/80 transition-colors lg:text-4xl">
-                  {col.era}
-                </h3>
-                <p className="mt-3 text-sm text-white/70">
-                  {col.pieces.length} pieces
-                </p>
-              </div>
+              <h2 className="font-serif text-xl font-semibold text-stone mb-1 group-hover:text-muted transition-colors">
+                {col.era}
+              </h2>
+              <p className="text-[13px] text-muted mb-2">
+                {col.period}
+              </p>
+              <p className="text-sm text-muted leading-relaxed line-clamp-2">
+                {col.description}
+              </p>
             </Link>
           ))}
         </div>

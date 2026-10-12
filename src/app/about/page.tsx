@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "About",
   description:
-    "Legacy Homeware creates handcrafted decorative hardware — switch plates, outlet covers, doorknobs, and fixtures cast in solid metal. Our mission: make homes beautiful again.",
+    "Legacy Homeware creates handcrafted decorative hardware — switch plates, outlet covers, doorknobs, and fixtures cast in solid metal.",
   path: "/about",
   keywords: [
     "about legacy homeware",
@@ -55,56 +55,46 @@ export default function AboutPage() {
       />
 
       {/* Hero statement */}
-      <section className="px-8 lg:px-10 xl:px-16 pt-12 pb-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-7">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-              Our Mission
-            </p>
+      <section className="px-6 lg:px-10 pt-8 pb-20">
+        <div className="mx-auto max-w-[1400px]">
+          <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-6">
+            Our story
+          </p>
 
-            <h1 className="mt-8 font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] text-brand-dark">
-              Make homes
-              <br />
-              beautiful again
-            </h1>
+          <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-2xl mb-8">
+            Make homes beautiful again
+          </h1>
 
-            <p className="mt-10 text-base leading-[1.9] text-brand-muted max-w-xl">
-              Everything about modern homes is mass-manufactured and looks the
-              same. Every house uses the same plastic outlet and light switch
-              covers that yellow over time. At best you can get a cheap stamped
-              metal plate that&apos;s still identical to every other house on the
-              street. We&apos;re changing that.
-            </p>
-          </div>
+          <p className="text-base leading-[1.9] text-muted max-w-xl">
+            Everything about modern homes is mass-manufactured and looks the
+            same. Every house uses the same plastic outlet and light switch
+            covers that yellow over time. We&apos;re changing that.
+          </p>
         </div>
       </section>
 
-      {/* The Problem — editorial pull quote style */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4">
-            <h2 className="font-serif text-3xl font-semibold text-brand-dark">
-              The Problem
+      {/* The Problem — dark section like Aesop storytelling */}
+      <section className="bg-stone text-white px-6 lg:px-10 py-24">
+        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <p className="text-[13px] tracking-[0.15em] uppercase text-white/50 mb-6">
+              The problem
+            </p>
+            <h2 className="font-serif text-3xl font-semibold text-white leading-snug">
+              A century ago, the hardware in a home was a point of pride
             </h2>
           </div>
 
-          <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-base leading-[1.9] text-brand-muted">
+          <div className="space-y-6">
+            <p className="text-base leading-[1.9] text-white/60">
               Walk into any home built in the last fifty years and you&apos;ll
               find the same hardware everywhere — plastic switch plates, stamped
               outlet covers, hollow doorknobs. These are the details you touch
               dozens of times a day, and they&apos;re the cheapest components in
-              the entire house. They yellow, crack, and cheapen the look of
-              everything around them.
+              the entire house.
             </p>
 
-            <p className="pull-quote font-serif text-xl leading-[1.6] text-brand-dark">
-              A century ago, the hardware in a home was a point of pride — cast
-              in solid brass or iron, designed to match the architectural style
-              of the house, and built to outlast the structure itself.
-            </p>
-
-            <p className="text-base leading-[1.9] text-brand-muted">
+            <p className="text-base leading-[1.9] text-white/60">
               That quality didn&apos;t disappear because people stopped wanting
               it. It disappeared because mass production made it cheaper to
               ignore.
@@ -114,30 +104,24 @@ export default function AboutPage() {
       </section>
 
       {/* What We Do */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4">
-            <h2 className="font-serif text-3xl font-semibold text-brand-dark">
-              What We Do
+      <section className="bg-cream px-6 lg:px-10 py-24">
+        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div>
+            <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-6">
+              What we do
+            </p>
+            <h2 className="font-serif text-3xl font-semibold text-stone leading-snug">
+              Hardware cast in solid metal, rooted in real architectural eras
             </h2>
           </div>
 
-          <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-base leading-[1.9] text-brand-muted">
+          <div className="space-y-6">
+            <p className="text-base leading-[1.9] text-muted">
               Legacy Homeware brings decorative hardware back to the quality it
               had when craftspeople made it by hand. Every piece is designed with
               attention to historical accuracy and cast in solid metal — real
               bronze, brass, and iron that develops a natural patina and lasts
               for generations.
-            </p>
-
-            <p className="text-base leading-[1.9] text-brand-muted">
-              We offer seven collections, each rooted in a real architectural
-              era — from the geometric restraint of Arts &amp; Crafts to the
-              flowing curves of Art Nouveau. Whether you&apos;re restoring a
-              Victorian, renovating a Craftsman bungalow, or building something
-              new that deserves better than builder-grade, there&apos;s a Legacy
-              collection designed for your home.
             </p>
 
             <div className="pt-4 space-y-3">
@@ -146,11 +130,10 @@ export default function AboutPage() {
                 "Doorknobs, handles, and lever sets",
                 "Decorative hinges and door accessories",
                 "Cabinet knobs, pulls, and handles",
-                "Complete home hardware packages in matched styles",
               ].map((item) => (
                 <p
                   key={item}
-                  className="text-[14px] text-brand-dark pl-4 border-l border-brand-dark/20"
+                  className="text-sm text-stone pl-4 border-l-2 border-border"
                 >
                   {item}
                 </p>
@@ -160,37 +143,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-4">
-            <h2 className="font-serif text-3xl font-semibold text-brand-dark">
-              How It Works
-            </h2>
-          </div>
-
-          <div className="lg:col-span-7 lg:col-start-6 space-y-6">
-            <p className="text-base leading-[1.9] text-brand-muted">
-              Each design begins with deep research into historical hardware
-              traditions — the patterns, proportions, and techniques that defined
-              the best decorative metalwork of each era. These designs are then
-              refined and sent to a foundry to be cast in solid metal, producing
-              hardware with the weight, detail, and durability that mass
-              production can&apos;t match.
-            </p>
-
-            <p className="text-base leading-[1.9] text-brand-muted">
-              The result is hardware that&apos;s unique to your home — something
-              with real character, real weight, and a story behind every detail.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
+      {/* FAQ — Aesop style clean grid */}
+      <section className="bg-cream-dark px-6 lg:px-10 py-24">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-16">
+          <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-16">
             Frequently Asked Questions
           </p>
 
@@ -198,12 +154,12 @@ export default function AboutPage() {
             {faqs.map((faq) => (
               <div
                 key={faq.question}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 border-b border-brand-dark/10 first:pt-0 last:border-0"
+                className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-10 border-b border-border last:border-0"
               >
-                <h3 className="lg:col-span-4 font-serif text-xl font-semibold text-brand-dark">
+                <h3 className="font-serif text-xl font-semibold text-stone">
                   {faq.question}
                 </h3>
-                <p className="lg:col-span-7 lg:col-start-6 text-base leading-[1.8] text-brand-muted">
+                <p className="text-base leading-[1.8] text-muted">
                   {faq.answer}
                 </p>
               </div>
@@ -213,22 +169,21 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 py-32">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-serif text-3xl font-semibold text-brand-dark sm:text-4xl">
+      <section className="bg-cream px-6 lg:px-10 py-24">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="font-serif text-3xl font-semibold text-stone mb-4">
             Explore the archive
           </h2>
-          <p className="mt-4 text-base text-brand-muted">
+          <p className="text-base text-muted mb-10">
             Browse decorative hardware across seven architectural eras.
           </p>
-          <div className="mt-10">
-            <Link
-              href="/collections"
-              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
-            >
-              View all eras
-            </Link>
-          </div>
+          <Link
+            href="/collections"
+            className="cta-button text-stone mx-auto"
+          >
+            View all eras
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
     </>

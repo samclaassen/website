@@ -12,9 +12,9 @@ export const metadata = generatePageMetadata({
 });
 
 export default function HomePage() {
-  const featured = COLLECTIONS[0]; // Arts & Crafts
-  const secondary = COLLECTIONS[1]; // Victorian
-  const remaining = COLLECTIONS.slice(2);
+  const featured = COLLECTIONS[0];
+  const secondary = COLLECTIONS.slice(1, 4);
+  const remaining = COLLECTIONS.slice(4);
 
   return (
     <>
@@ -26,222 +26,219 @@ export default function HomePage() {
         })}
       />
 
-      {/* Hero — asymmetric split */}
-      <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
-        {/* Left: image, full-bleed */}
-        <div className="relative min-h-[60vh] lg:min-h-screen">
-          <Image
-            src="/images/hero-hardware.png"
-            alt="Decorative hardware — switch plates, doorknobs, and hinges cast in solid metal"
-            fill
-            className="object-cover"
-            priority
-            quality={90}
-          />
-        </div>
+      {/* Hero — full bleed dark, Aesop-style centered text */}
+      <section className="relative min-h-[85vh] flex items-center justify-center">
+        <Image
+          src="/images/hero-hardware.png"
+          alt="Decorative hardware — switch plates, doorknobs, and hinges cast in solid metal"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-black/40" />
 
-        {/* Right: editorial intro */}
-        <div className="flex flex-col justify-center px-8 py-20 lg:px-16 xl:px-24">
-          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-            Est. 2026
+        <div className="relative z-10 text-center px-6 max-w-2xl">
+          <p className="text-[13px] tracking-[0.2em] uppercase text-white/60 mb-6">
+            The Visual Archive
           </p>
 
-          <h1 className="mt-8 font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-semibold leading-[1.05] text-brand-dark">
-            The craft
-            <br />
-            your home
-            <br />
-            is missing
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] text-white mb-6">
+            Hardware worth inheriting
           </h1>
 
-          <p className="mt-8 text-base leading-[1.8] text-brand-muted max-w-md">
-            A visual study of ornamental hardware across seven architectural
-            eras. The switch plates, doorknobs, and hinges that were once
-            handmade, historically grounded, and built to outlast the home.
+          <p className="text-base leading-[1.8] text-white/70 mb-10 max-w-lg mx-auto">
+            A visual study of ornamental home hardware across seven architectural
+            eras. Solid metal, historically grounded, built to outlast the home.
           </p>
 
-          <div className="mt-12 flex items-center gap-6">
-            <Link
-              href="/collections"
-              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
-            >
-              Explore all eras
-            </Link>
-          </div>
-
-          <div className="mt-20 pt-8 border-t border-brand-dark/10">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-              Seven eras · 28 pieces · Centuries of craft
-            </p>
-          </div>
+          <Link
+            href="/collections"
+            className="cta-button cta-button-light mx-auto"
+          >
+            Explore the collection
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </section>
 
-      {/* Featured era — full editorial spread */}
-      <section className="border-t border-brand-dark/10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
-          {/* Text — narrow left column */}
-          <div className="lg:col-span-4 xl:col-span-3 flex flex-col justify-center px-8 py-16 lg:px-10 xl:px-16 lg:border-r border-brand-dark/10">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
+      {/* Section label + featured era — split layout like Aesop */}
+      <section className="bg-cream">
+        <div className="px-6 lg:px-10 pt-20 pb-4">
+          <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium">
+            Featured Era
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh]">
+          {/* Text side */}
+          <div className="flex flex-col justify-center px-6 lg:px-10 xl:px-20 py-16">
+            <p className="text-[13px] text-muted mb-4">
               {featured.period}
             </p>
 
-            <h2 className="mt-6 font-serif text-4xl font-semibold text-brand-dark lg:text-5xl">
+            <h2 className="font-serif text-4xl font-semibold text-stone lg:text-5xl mb-6">
               {featured.era}
             </h2>
 
-            <p className="mt-6 text-base leading-[1.8] text-brand-muted">
+            <p className="text-base leading-[1.8] text-muted max-w-md mb-8">
               {featured.description}
             </p>
 
-            <div className="mt-8">
-              {featured.materials.map((m) => (
-                <p key={m} className="text-sm text-brand-dark/60 leading-relaxed">
-                  {m}
-                </p>
-              ))}
-            </div>
-
             <Link
               href={`/collections/${featured.slug}`}
-              className="mt-10 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="cta-button text-stone self-start"
             >
-              View {featured.pieces.length} pieces
+              Explore era
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
 
-          {/* Image — wide right */}
+          {/* Image side */}
           <Link
             href={`/collections/${featured.slug}`}
-            className="lg:col-span-8 xl:col-span-9 relative min-h-[50vh] group"
+            className="relative min-h-[400px] group"
           >
             <Image
               src={featured.image}
               alt={`${featured.era} decorative hardware`}
               fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-              sizes="(max-width: 1024px) 100vw, 67vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </Link>
         </div>
       </section>
 
-      {/* Second era — reversed layout */}
-      <section className="border-t border-brand-dark/10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[80vh]">
-          {/* Image — wide left */}
-          <Link
-            href={`/collections/${secondary.slug}`}
-            className="lg:col-span-8 xl:col-span-9 lg:order-1 relative min-h-[50vh] group"
-          >
-            <Image
-              src={secondary.image}
-              alt={`${secondary.era} decorative hardware`}
-              fill
-              className="object-cover transition-transform duration-1000 group-hover:scale-[1.02]"
-              sizes="(max-width: 1024px) 100vw, 67vw"
-            />
-          </Link>
-
-          {/* Text — narrow right */}
-          <div className="lg:col-span-4 xl:col-span-3 lg:order-2 flex flex-col justify-center px-8 py-16 lg:px-10 xl:px-16 lg:border-l border-brand-dark/10">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-              {secondary.period}
-            </p>
-
-            <h2 className="mt-6 font-serif text-4xl font-semibold text-brand-dark lg:text-5xl">
-              {secondary.era}
-            </h2>
-
-            <p className="mt-6 text-base leading-[1.8] text-brand-muted">
-              {secondary.description}
-            </p>
-
-            <div className="mt-8">
-              {secondary.materials.map((m) => (
-                <p key={m} className="text-sm text-brand-dark/60 leading-relaxed">
-                  {m}
-                </p>
-              ))}
-            </div>
-
-            <Link
-              href={`/collections/${secondary.slug}`}
-              className="mt-10 text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 self-start hover:text-brand-muted hover:border-brand-muted transition-colors"
-            >
-              View {secondary.pieces.length} pieces
-            </Link>
-          </div>
+      {/* Browse by era — Aesop-style horizontal cards */}
+      <section className="bg-cream border-t border-border">
+        <div className="px-6 lg:px-10 pt-20 pb-10">
+          <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">
+            Browse by era
+          </h2>
         </div>
-      </section>
 
-      {/* Remaining eras — clean editorial list */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 xl:px-16 py-24">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-16">
-            Continue exploring
-          </p>
-
-          <div className="space-y-0">
-            {remaining.map((col) => (
+        <div className="px-6 lg:px-10 pb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {secondary.map((col) => (
               <Link
                 key={col.slug}
                 href={`/collections/${col.slug}`}
-                className="group grid grid-cols-1 lg:grid-cols-12 gap-6 py-10 border-b border-brand-dark/10 first:pt-0 last:border-0"
+                className="group"
               >
-                {/* Image thumb */}
-                <div className="lg:col-span-3 relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden mb-5">
                   <Image
                     src={col.image}
                     alt={col.era}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 1024px) 100vw, 25vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
-
-                {/* Info */}
-                <div className="lg:col-span-6 flex flex-col justify-center">
-                  <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
-                    {col.period}
-                  </p>
-                  <h3 className="mt-2 font-serif text-3xl font-semibold text-brand-dark group-hover:text-brand-muted transition-colors">
-                    {col.era}
-                  </h3>
-                  <p className="mt-3 text-base leading-[1.8] text-brand-muted max-w-lg">
-                    {col.description}
-                  </p>
-                </div>
-
-                {/* Meta */}
-                <div className="lg:col-span-3 flex flex-col justify-center lg:items-end lg:text-right">
-                  <p className="text-sm text-brand-muted">
-                    {col.pieces.length} pieces
-                  </p>
-                  <p className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    View era →
-                  </p>
-                </div>
+                <h3 className="font-serif text-xl font-semibold text-stone mb-1 group-hover:text-muted transition-colors">
+                  {col.era}
+                </h3>
+                <p className="text-[13px] text-muted">
+                  {col.period} · {col.pieces.length} pieces
+                </p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Closing statement — editorial */}
-      <section className="border-t border-brand-dark/10 px-8 lg:px-10 py-32">
-        <div className="mx-auto max-w-2xl">
-          <p className="pull-quote font-serif text-2xl leading-[1.6] text-brand-dark sm:text-3xl">
-            Every light switch, every doorknob, every hinge is a design
-            choice. We&apos;re building this archive because the craft traditions
-            that produced beautiful hardware shouldn&apos;t be forgotten.
-          </p>
-          <div className="mt-10">
+      {/* Dark editorial section — Aesop storytelling style */}
+      <section className="bg-stone text-white">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh]">
+          {/* Image */}
+          <div className="relative min-h-[400px]">
+            <Image
+              src="/images/collection-meridian.png"
+              alt="Art Deco hardware in chrome and nickel"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+
+          {/* Text */}
+          <div className="flex flex-col justify-center px-6 lg:px-16 xl:px-24 py-20">
+            <p className="text-[13px] tracking-[0.15em] uppercase text-white/50 mb-6">
+              Craftsmanship
+            </p>
+
+            <h2 className="font-serif text-3xl font-semibold text-white lg:text-4xl mb-6 leading-snug">
+              Every switch plate, every doorknob, every hinge is a design choice
+            </h2>
+
+            <p className="text-base leading-[1.8] text-white/60 max-w-md mb-10">
+              Before mass production, the hardware in a home was a point of pride
+              — cast in solid brass or iron, designed to match the architectural
+              style of the house, and built to outlast the structure itself.
+            </p>
+
             <Link
               href="/about"
-              className="text-sm font-medium tracking-[0.15em] uppercase text-brand-dark border-b border-brand-dark pb-1 hover:text-brand-muted hover:border-brand-muted transition-colors"
+              className="cta-button cta-button-light self-start"
             >
-              Read our story
+              Our story
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* More eras */}
+      <section className="bg-cream border-t border-border">
+        <div className="px-6 lg:px-10 pt-20 pb-10">
+          <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">
+            More eras to explore
+          </h2>
+        </div>
+
+        <div className="px-6 lg:px-10 pb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {remaining.map((col) => (
+              <Link
+                key={col.slug}
+                href={`/collections/${col.slug}`}
+                className="group"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden mb-5">
+                  <Image
+                    src={col.image}
+                    alt={col.era}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <h3 className="font-serif text-lg font-semibold text-stone mb-1 group-hover:text-muted transition-colors">
+                  {col.era}
+                </h3>
+                <p className="text-[13px] text-muted">
+                  {col.period} · {col.pieces.length} pieces
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Quote — Aesop style centered on cream */}
+      <section className="bg-cream-dark py-24 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <blockquote className="font-serif text-2xl leading-[1.5] text-stone sm:text-3xl italic">
+            &ldquo;The hardware in your home is the design decision you make
+            dozens of times a day — and the one most people get wrong.&rdquo;
+          </blockquote>
+          <div className="mt-8">
+            <Link
+              href="/collections"
+              className="cta-button text-stone mx-auto"
+            >
+              View all eras
+              <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>

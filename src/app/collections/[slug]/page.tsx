@@ -4,7 +4,6 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import {
   getCollection,
   getAllCollectionSlugs,
-  type Collection,
 } from "@/lib/collections";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -64,8 +63,8 @@ export default async function CollectionPage({
         ]}
       />
 
-      {/* Hero — full bleed image with overlay text */}
-      <section className="relative min-h-[75vh] flex items-end">
+      {/* Hero — full bleed with overlay, like Aesop hero */}
+      <section className="relative min-h-[65vh] flex items-end">
         <Image
           src={collection.image}
           alt={`${collection.era} decorative hardware collection`}
@@ -76,64 +75,55 @@ export default async function CollectionPage({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
-        <div className="relative z-10 px-8 lg:px-10 xl:px-16 pb-16 lg:pb-24 w-full">
-          <div className="mx-auto max-w-[1400px]">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/60">
-              {collection.period}
-            </p>
-            <h1 className="mt-4 font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-semibold leading-[1.05] text-white">
-              {collection.era}
-            </h1>
-          </div>
+        <div className="relative z-10 px-6 lg:px-10 pb-16 w-full max-w-[1400px] mx-auto">
+          <p className="text-[13px] tracking-[0.15em] uppercase text-white/60 mb-3">
+            {collection.period}
+          </p>
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.05] text-white">
+            {collection.era}
+          </h1>
         </div>
       </section>
 
-      {/* Era description — wide editorial intro */}
-      <section className="px-8 lg:px-10 xl:px-16 py-20 border-b border-brand-dark/10">
+      {/* Era details — split layout */}
+      <section className="bg-cream px-6 lg:px-10 py-16">
         <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <p className="text-base leading-[1.9] text-brand-dark">
+          <div className="lg:col-span-6">
+            <p className="text-base leading-[1.9] text-stone">
               {collection.description}
             </p>
           </div>
 
           <div className="lg:col-span-3 lg:col-start-8">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4">
+            <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-4">
               Materials
             </p>
             {collection.materials.map((m) => (
-              <p key={m} className="text-[14px] text-brand-dark leading-relaxed">
+              <p key={m} className="text-sm text-stone leading-relaxed">
                 {m}
               </p>
             ))}
           </div>
 
           <div className="lg:col-span-2">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4">
-              Period
-            </p>
-            <p className="text-[14px] text-brand-dark">
-              {collection.period}
-            </p>
-
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-4 mt-8">
+            <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-4">
               Pieces
             </p>
-            <p className="text-[14px] text-brand-dark">
+            <p className="text-sm text-stone">
               {collection.pieces.length} curated
             </p>
           </div>
         </div>
       </section>
 
-      {/* Pieces — editorial alternating layouts */}
-      <section className="px-8 lg:px-10 xl:px-16 py-24">
+      {/* Pieces — alternating layout */}
+      <section className="bg-cream border-t border-border px-6 lg:px-10 py-20">
         <div className="mx-auto max-w-[1400px]">
-          <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted mb-20">
+          <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-16">
             The collection
           </p>
 
-          <div className="space-y-32">
+          <div className="space-y-24">
             {collection.pieces.map((piece, i) => {
               const isEven = i % 2 === 0;
               const pieceImage = piece.image ?? collection.image;
@@ -141,11 +131,11 @@ export default async function CollectionPage({
               return (
                 <article
                   key={piece.id}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
                 >
                   {/* Image */}
                   <div
-                    className={`lg:col-span-7 relative aspect-[4/3] overflow-hidden ${
+                    className={`relative aspect-[4/3] overflow-hidden ${
                       isEven ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
@@ -154,35 +144,31 @@ export default async function CollectionPage({
                       alt={`${piece.name} — ${piece.type} in ${piece.material}`}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 58vw"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
 
                   {/* Text */}
                   <div
-                    className={`lg:col-span-5 ${
-                      isEven
-                        ? "lg:order-2 lg:pl-8"
-                        : "lg:order-1 lg:pr-8"
+                    className={`${
+                      isEven ? "lg:order-2" : "lg:order-1"
                     }`}
                   >
-                    <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
+                    <p className="text-[13px] text-muted mb-3">
                       {piece.type} · {piece.year}
                     </p>
 
-                    <h2 className="mt-4 font-serif text-3xl font-semibold text-brand-dark lg:text-4xl">
+                    <h2 className="font-serif text-3xl font-semibold text-stone mb-5">
                       {piece.name}
                     </h2>
 
-                    <p className="mt-6 text-base leading-[1.8] text-brand-muted">
+                    <p className="text-base leading-[1.8] text-muted mb-6">
                       {piece.description}
                     </p>
 
-                    <div className="mt-8 flex items-center gap-6">
-                      <span className="text-sm text-brand-dark">
-                        {piece.material}
-                      </span>
-                    </div>
+                    <p className="text-sm text-stone">
+                      {piece.material}
+                    </p>
                   </div>
                 </article>
               );
@@ -191,24 +177,31 @@ export default async function CollectionPage({
         </div>
       </section>
 
-      {/* Next era — editorial transition */}
-      <section className="border-t border-brand-dark/10">
+      {/* Next era — Aesop-style transition */}
+      <section className="bg-stone">
         <Link
           href={`/collections/${nextCol.slug}`}
-          className="group grid grid-cols-1 lg:grid-cols-2 min-h-[50vh]"
+          className="group grid grid-cols-1 lg:grid-cols-2 min-h-[45vh]"
         >
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-16">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-brand-muted">
+          <div className="flex flex-col justify-center px-6 lg:px-16 py-16">
+            <p className="text-[13px] tracking-[0.15em] uppercase text-white/50 mb-4">
               Next era
             </p>
-            <h3 className="mt-4 font-serif text-4xl font-semibold text-brand-dark group-hover:text-brand-muted transition-colors lg:text-5xl">
+            <h3 className="font-serif text-3xl font-semibold text-white group-hover:text-white/80 transition-colors lg:text-4xl mb-3">
               {nextCol.era}
             </h3>
-            <p className="mt-4 text-base text-brand-muted">
-              {nextCol.period}
+            <p className="text-sm text-white/50">
+              {nextCol.period} · {nextCol.pieces.length} pieces
             </p>
+
+            <div className="mt-8">
+              <span className="cta-button cta-button-light">
+                Explore era
+                <span aria-hidden="true">→</span>
+              </span>
+            </div>
           </div>
-          <div className="relative min-h-[40vh]">
+          <div className="relative min-h-[300px]">
             <Image
               src={nextCol.image}
               alt={nextCol.era}

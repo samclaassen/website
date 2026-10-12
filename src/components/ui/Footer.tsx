@@ -4,18 +4,18 @@ import { COLLECTIONS } from "@/lib/collections";
 
 export function Footer() {
   return (
-    <footer className="border-t border-brand-dark/10 bg-brand-dark text-white">
-      <div className="mx-auto max-w-[1400px] px-8 lg:px-10 xl:px-16">
+    <footer className="bg-stone text-white">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
         {/* Main footer */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 py-20">
           {/* Brand */}
           <div className="md:col-span-5">
             <Link href="/" className="group">
-              <span className="text-xs font-medium tracking-[0.25em] uppercase text-white">
+              <span className="font-serif text-2xl font-semibold text-white">
                 {SITE_NAME}
               </span>
             </Link>
-            <p className="mt-6 text-base leading-[1.8] text-white/50 max-w-sm">
+            <p className="mt-6 text-[14px] leading-[1.8] text-white/50 max-w-sm">
               A visual study of ornamental home hardware across seven
               architectural eras. Documenting the craft traditions that built
               beautiful homes.
@@ -24,7 +24,7 @@ export function Footer() {
 
           {/* Eras */}
           <div className="md:col-span-4">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/40 mb-6">
+            <p className="text-[13px] tracking-[0.15em] uppercase text-white/40 mb-6">
               Eras
             </p>
             <ul className="space-y-3">
@@ -43,8 +43,8 @@ export function Footer() {
 
           {/* Navigation */}
           <div className="md:col-span-3">
-            <p className="text-xs font-medium tracking-[0.25em] uppercase text-white/40 mb-6">
-              Navigate
+            <p className="text-[13px] tracking-[0.15em] uppercase text-white/40 mb-6">
+              About
             </p>
             <ul className="space-y-3">
               <li>
@@ -60,7 +60,7 @@ export function Footer() {
                   href="/about"
                   className="text-[14px] text-white/60 hover:text-white transition-colors"
                 >
-                  About
+                  Our story
                 </Link>
               </li>
             </ul>
@@ -70,10 +70,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <p className="text-[12px] text-white/30">
-            © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
+            © {new Date().getFullYear()} {SITE_NAME}
           </p>
           <p className="text-[12px] text-white/30">
-            Handmade hardware, historically grounded.
+            Solid metal. Historically grounded.
           </p>
         </div>
       </div>
