@@ -36,7 +36,7 @@ export default function HomePage() {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-cream/50" />
+        <div className="absolute inset-0 bg-cream/60" />
 
         <div className="relative z-10 text-center px-6 max-w-2xl">
           <p className="text-[13px] tracking-[0.2em] uppercase text-bark mb-6">
@@ -47,7 +47,7 @@ export default function HomePage() {
             Hardware worth inheriting
           </h1>
 
-          <p className="text-base leading-[1.8] text-muted mb-10 max-w-lg mx-auto">
+          <p className="text-base leading-[1.8] text-stone-light mb-10 max-w-lg mx-auto">
             A visual study of ornamental lighting and home hardware across seven
             architectural eras. Solid metal, historically grounded, built to outlast the home.
           </p>
