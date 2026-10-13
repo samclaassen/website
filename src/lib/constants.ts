@@ -1,32 +1,12 @@
 export const SITE_NAME = "Legacy Homeware";
-export const SITE_TAGLINE = "The Visual Archive of Decorative Lighting & Hardware";
-export const SITE_DESCRIPTION =
-  "A curated visual study of ornamental lighting and home hardware design across seven architectural eras — from Arts & Crafts to Art Nouveau. Explore the craftsmanship that shaped the homes we live in.";
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
+export const SITE_TAGLINE = "A considered index of lighting, hardware & decorative objects";
+export const SITE_DESCRIPTION = "Explore real lighting, hardware and decorative objects through a source-led visual index. Open-access museum photographs, named makers and carefully selected dealer links.";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
 
-export const SOCIAL = {
-  twitter: "",
-  instagram: "",
-  pinterest: "",
-} as const;
+export const SOCIAL = { twitter: "", instagram: "", pinterest: "" } as const;
 
 export const NAV_LINKS = [
-  { label: "Eras", href: "/collections" },
+  { label: "Index", href: "/#archive" },
+  { label: "Eras & styles", href: "/collections" },
   { label: "About", href: "/about" },
 ] as const;
-
-export const HARDWARE_TYPES = [
-  "Switch Plate",
-  "Outlet Cover",
-  "Door Knob",
-  "Hinge",
-  "Cabinet Pull",
-  "Door Knocker",
-  "Chandelier",
-  "Wall Sconce",
-  "Pendant Light",
-  "Flush Mount",
-] as const;
-
-export type HardwareType = (typeof HARDWARE_TYPES)[number];

@@ -15,6 +15,18 @@ const nextConfig: NextConfig = {
     // ],
   },
 
+  async redirects() {
+    return [
+      { source: "/collections/hearthstone", destination: "/collections/arts-and-crafts", permanent: true },
+      { source: "/collections/ashworth", destination: "/collections/victorian", permanent: true },
+      { source: "/collections/meridian", destination: "/collections/art-deco", permanent: true },
+      { source: "/collections/solstice", destination: "/collections/art-nouveau", permanent: true },
+      { source: "/collections/heritage", destination: "/collections", permanent: true },
+      { source: "/collections/ironforge", destination: "/collections/vernacular", permanent: true },
+      { source: "/collections/provence", destination: "/collections", permanent: true },
+    ];
+  },
+
   // Security headers for better SEO and security scores
   async headers() {
     return [
