@@ -17,13 +17,13 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
+  variable: "--font-cormorant",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — The Visual Archive of Decorative Hardware`,
+    default: `${SITE_NAME} — A Considered Index`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -59,7 +59,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-cream text-stone antialiased">
         <JsonLd data={organizationJsonLd()} />
         <Header />
-        <main className="flex-1 pt-[72px]">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
