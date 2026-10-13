@@ -15,7 +15,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       aria-label="Breadcrumb"
       className="px-6 lg:px-10 pt-6 pb-2"
     >
-      <ol className="flex flex-wrap items-center gap-2 text-[12px] text-muted">
+      <ol className="flex items-center gap-2 text-[12px] text-muted">
         {items.map((item, index) => (
           <li key={item.label} className="flex items-center gap-2">
             {index > 0 && (
