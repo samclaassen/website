@@ -70,7 +70,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1910",
         description:
           "Geometric oak leaf border with clean rectilinear framing. The restrained nature motifs are characteristic of the Mission style — ornament that serves structure, never the reverse.",
-        image: null,
+        image: "/images/piece-hearthstone-mission-oak.png",
         eraSlug: "hearthstone",
       },
       {
@@ -81,7 +81,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1905",
         description:
           "A flowing ginkgo leaf pattern wraps the knob face, inspired by the Japanese design influence that pervaded the Arts & Crafts movement. Substantial weight, satin-smooth action.",
-        image: null,
+        image: "/images/piece-hearthstone-ginkgo.png",
         eraSlug: "hearthstone",
       },
       {
@@ -92,7 +92,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1915",
         description:
           "A four-sided lantern pendant with art glass panels in amber and moss tones, suspended from a hand-forged chain. The clean rectilinear silhouette channels Frank Lloyd Wright's Prairie School — geometric, grounded, and warm enough to gather around.",
-        image: null,
+        image: "/images/piece-hearthstone-mission-pendant.png",
         eraSlug: "hearthstone",
       },
       {
@@ -103,7 +103,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1912",
         description:
           "A simple Tudor rose centered within a squared frame. The honest material weight and hand-finished patina speak to the Arts & Crafts ideal of beauty through craft integrity.",
-        image: null,
+        image: "/images/piece-hearthstone-craftsman-rose.png",
         eraSlug: "hearthstone",
       },
     ],
@@ -152,7 +152,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1875",
         description:
           "Flowing acanthus leaf scrollwork framing a beaded-edge toggle opening. Based on patterns from the Russell & Erwin catalogue, the gold standard of Victorian hardware.",
-        image: null,
+        image: "/images/piece-ashworth-acanthus-scroll.png",
         eraSlug: "ashworth",
       },
       {
@@ -163,7 +163,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1880",
         description:
           "Detailed rosette face with beaded concentric rings, inspired by Charles Eastlake's influential design principles. The geometric precision within ornamental richness defines the late Victorian aesthetic.",
-        image: null,
+        image: "/images/piece-ashworth-eastlake.png",
         eraSlug: "ashworth",
       },
       {
@@ -174,7 +174,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1870",
         description:
           "An ornate single-arm sconce dripping with hand-cut crystal pendants and crowned by an acanthus leaf backplate. The polished brass catches candlelight — or its electric successor — and scatters it through dozens of crystal facets, filling a Victorian parlor with the kind of shimmering warmth that defined an era of domestic opulence.",
-        image: null,
+        image: "/images/piece-ashworth-crystal-sconce.png",
         eraSlug: "ashworth",
       },
       {
@@ -185,7 +185,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1885",
         description:
           "Draped floral garland motif with ribbon swags. The depth of casting creates genuine shadow play — hardware that changes character with the light throughout the day.",
-        image: null,
+        image: "/images/piece-ashworth-floral-garland.png",
         eraSlug: "ashworth",
       },
     ],
@@ -233,7 +233,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1928",
         description:
           "Radiating sunburst rays fanning from the base — the signature motif of the Deco movement. Inspired by the entrance details of the Chrysler Building.",
-        image: null,
+        image: "/images/piece-meridian-sunburst.png",
         eraSlug: "meridian",
       },
       {
@@ -244,7 +244,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1930",
         description:
           "Stepped geometric chevron pattern descending from the crown. The precision of each facet catches light differently, creating a jewel-like quality in brushed nickel.",
-        image: null,
+        image: "/images/piece-meridian-chevron.png",
         eraSlug: "meridian",
       },
       {
@@ -255,7 +255,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1925",
         description:
           "Three concentric tiers of stepped brass descend from a geometric canopy, each tier catching light at a different angle. The frosted glass diffuser within casts a warm, even glow — the same stepped-pyramid geometry that crowned the Chrysler Building, scaled to crown your dining table.",
-        image: null,
+        image: "/images/piece-meridian-ziggurat-pendant.png",
         eraSlug: "meridian",
       },
       {
@@ -266,7 +266,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1932",
         description:
           "Symmetrical ray pattern emanating from a central point. The mathematical precision of the spacing creates a hypnotic visual rhythm characteristic of late Deco.",
-        image: null,
+        image: "/images/piece-meridian-empire-ray.png",
         eraSlug: "meridian",
       },
     ],
@@ -315,7 +315,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1790",
         description:
           "Rope-twist border encircling a gently domed face. Drawn from Federal-period pattern books, this is the quintessential American decorative hardware form.",
-        image: null,
+        image: "/images/piece-heritage-federal-rope.png",
         eraSlug: "heritage",
       },
       {
@@ -326,7 +326,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1780",
         description:
           "A classical rosette with twelve symmetrical petals, inspired by the restored hardware of Colonial Williamsburg. Understated refinement that transcends any single era.",
-        image: null,
+        image: "/images/piece-heritage-williamsburg.png",
         eraSlug: "heritage",
       },
       {
@@ -337,7 +337,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1790",
         description:
           "A half-lantern sconce with seeded glass panes set in a gently tapered brass frame, topped by a classical eagle finial. Drawn from the same Federal-period pattern books as our switch plates, this sconce lights a hallway or entry with the understated authority of early American craftsmanship — never showy, always certain of itself.",
-        image: null,
+        image: "/images/piece-heritage-lantern-sconce.png",
         eraSlug: "heritage",
       },
       {
@@ -348,7 +348,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1800",
         description:
           "Simple beaded edge on a slightly raised face. The restraint is the point — every millimeter of this piece speaks to the Colonial conviction that quality needs no embellishment.",
-        image: null,
+        image: "/images/piece-heritage-liberty.png",
         eraSlug: "heritage",
       },
     ],
@@ -396,7 +396,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1900",
         description:
           "A single iris flower unfurling across the plate face, its petals flowing into the border. The organic asymmetry is pure Art Nouveau — nature captured mid-movement in bronze.",
-        image: null,
+        image: "/images/piece-solstice-iris-bloom.png",
         eraSlug: "solstice",
       },
       {
@@ -407,7 +407,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1898",
         description:
           "Sinuous whiplash curves spiral from center to edge in the style of Victor Horta. No straight lines, no sharp corners — just the continuous flow of organic form.",
-        image: null,
+        image: "/images/piece-solstice-whiplash.png",
         eraSlug: "solstice",
       },
       {
@@ -418,7 +418,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1905",
         description:
           "A single uplight arm emerges from a backplate sculpted as an unfurling fern frond, its shade formed by overlapping dragonfly wings in translucent art glass. The patinated bronze deepens over decades, and the warm light filtering through the iridescent wings transforms a hallway into something Tiffany himself would have approved of.",
-        image: null,
+        image: "/images/piece-solstice-dragonfly-sconce.png",
         eraSlug: "solstice",
       },
       {
@@ -429,7 +429,7 @@ export const COLLECTIONS: Collection[] = [
         year: "c. 1902",
         description:
           "Overlapping lily pad forms create the frame, with subtle water ripple texture in the background. Inspired by Tiffany's botanical studies and the Japonisme movement.",
-        image: null,
+        image: "/images/piece-solstice-lily-pad.png",
         eraSlug: "solstice",
       },
     ],
@@ -478,7 +478,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Heritage tradition",
         description:
           "Visible hammer marks across the face tell the story of the forge. No two pieces are identical — each carries the organic irregularity of hand-forged metalwork.",
-        image: null,
+        image: "/images/piece-ironforge-forge-strike.png",
         eraSlug: "ironforge",
       },
       {
@@ -489,7 +489,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Heritage tradition",
         description:
           "Heavy, square-shouldered proportions with a hand-forged texture. The weight alone tells you this is real — solid metal shaped by fire and hammer, not a die-cast imitation.",
-        image: null,
+        image: "/images/piece-ironforge-anvil.png",
         eraSlug: "ironforge",
       },
       {
@@ -500,7 +500,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Heritage tradition",
         description:
           "A hand-forged iron ring suspended by four hammered chains, holding six candle-style lights with visible forge marks along every surface. The ring alone weighs twelve pounds — real iron shaped by fire and anvil, not a hollow stamping. Hanging over a farmhouse table, it anchors a room the way a hearth once did.",
-        image: null,
+        image: "/images/piece-ironforge-ring-chandelier.png",
         eraSlug: "ironforge",
       },
       {
@@ -511,7 +511,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Heritage tradition",
         description:
           "Exposed dome-head rivets at each corner anchor a hammered face. Industrial heritage meets domestic warmth — the honest beauty of visible construction.",
-        image: null,
+        image: "/images/piece-ironforge-rivet-cap.png",
         eraSlug: "ironforge",
       },
     ],
@@ -560,7 +560,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Provincial tradition",
         description:
           "A delicate scallop shell motif crowns the plate, with gentle scrollwork flowing down each side. The pewter finish softens the ornament — decorative without demanding attention.",
-        image: null,
+        image: "/images/piece-provence-coquille.png",
         eraSlug: "provence",
       },
       {
@@ -571,7 +571,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Provincial tradition",
         description:
           "Flowing C-scroll and S-scroll curves interlace across the knob face. Inspired by the ironwork of provincial French manors — less formal than Parisian Rococo, warmer and more inviting.",
-        image: null,
+        image: "/images/piece-provence-versailles.png",
         eraSlug: "provence",
       },
       {
@@ -582,7 +582,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Provincial tradition",
         description:
           "Five gracefully curved arms draped with strands of hand-cut crystal beads, rising from a turned centre column finished in aged silver. Less formal than a Parisian ballroom fixture, more refined than a farmhouse pendant — the exact balance that defines French provincial taste. Over a kitchen island or dining table, it turns every meal into something worth lingering over.",
-        image: null,
+        image: "/images/piece-provence-crystal-chandelier.png",
         eraSlug: "provence",
       },
       {
@@ -593,7 +593,7 @@ export const COLLECTIONS: Collection[] = [
         year: "Provincial tradition",
         description:
           "A subtle fleur de lis centered below the outlet, with gently rounded edges and a soft matte finish. French provincial restraint — the ornament serves the room, not itself.",
-        image: null,
+        image: "/images/piece-provence-fleur.png",
         eraSlug: "provence",
       },
     ],
