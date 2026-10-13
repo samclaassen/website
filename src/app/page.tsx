@@ -30,31 +30,31 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center">
         <Image
           src="/images/hero-hardware.png"
-          alt="Grand foyer with ornate brass chandelier and decorative hardware — luxury historic home interior"
+          alt="Sunlit luxury home entryway with brass chandelier and decorative hardware"
           fill
           className="object-cover"
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-cream/50" />
 
         <div className="relative z-10 text-center px-6 max-w-2xl">
-          <p className="text-[13px] tracking-[0.2em] uppercase text-white/60 mb-6">
+          <p className="text-[13px] tracking-[0.2em] uppercase text-bark mb-6">
             The Visual Archive
           </p>
 
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] text-white mb-6 text-shadow-hero">
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] text-stone mb-6">
             Hardware worth inheriting
           </h1>
 
-          <p className="text-base leading-[1.8] text-white/70 mb-10 max-w-lg mx-auto">
+          <p className="text-base leading-[1.8] text-muted mb-10 max-w-lg mx-auto">
             A visual study of ornamental lighting and home hardware across seven
             architectural eras. Solid metal, historically grounded, built to outlast the home.
           </p>
 
           <Link
             href="/collections"
-            className="cta-button cta-button-light mx-auto"
+            className="cta-button text-stone mx-auto"
           >
             Explore the collection
             <span aria-hidden="true">→</span>
