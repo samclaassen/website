@@ -53,7 +53,7 @@ export default function CollectionsPage() {
               <div className="relative aspect-[4/3] overflow-hidden mb-5">
                 <Image
                   src={col.image}
-                  alt={`${col.era} decorative hardware`}
+                  alt={`${col.era} era interior`}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

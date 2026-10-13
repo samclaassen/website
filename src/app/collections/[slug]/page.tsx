@@ -67,7 +67,7 @@ export default async function CollectionPage({
       <section className="relative min-h-[65vh] flex items-end">
         <Image
           src={collection.image}
-          alt={`${collection.era} decorative hardware collection`}
+          alt={`${collection.era} interior featuring decorative lighting and hardware`}
           fill
           className="object-cover"
           priority
@@ -141,7 +141,7 @@ export default async function CollectionPage({
                   >
                     <Image
                       src={pieceImage}
-                      alt={`${piece.name} — ${piece.type} in ${piece.material}`}
+                      alt={piece.image ? `${piece.name} — ${piece.type} in ${piece.material}` : `${collection.era} interior featuring ${piece.name}`}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -204,7 +204,7 @@ export default async function CollectionPage({
           <div className="relative min-h-[300px]">
             <Image
               src={nextCol.image}
-              alt={nextCol.era}
+              alt={`${nextCol.era} era interior with decorative lighting and hardware`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 50vw"

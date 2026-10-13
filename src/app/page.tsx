@@ -30,7 +30,7 @@ export default function HomePage() {
       <section className="relative min-h-[85vh] flex items-center justify-center">
         <Image
           src="/images/hero-hardware.png"
-          alt="Decorative hardware — switch plates, doorknobs, and hinges cast in solid metal"
+          alt="Grand foyer with ornate brass chandelier and decorative hardware — luxury historic home interior"
           fill
           className="object-cover"
           priority
@@ -101,7 +101,7 @@ export default function HomePage() {
           >
             <Image
               src={featured.image}
-              alt={`${featured.era} decorative hardware`}
+              alt={`${featured.era} interior featuring decorative lighting and hardware`}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -129,7 +129,7 @@ export default function HomePage() {
                 <div className="relative aspect-[4/3] overflow-hidden mb-5">
                   <Image
                     src={col.image}
-                    alt={col.era}
+                    alt={`${col.era} era interior with decorative lighting and hardware`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -154,7 +154,7 @@ export default function HomePage() {
           <div className="relative min-h-[400px]">
             <Image
               src="/images/collection-meridian.png"
-              alt="Art Deco hardware in chrome and nickel"
+              alt="Art Deco apartment interior with geometric brass lighting and hardware"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -207,7 +207,7 @@ export default function HomePage() {
                 <div className="relative aspect-[4/3] overflow-hidden mb-5">
                   <Image
                     src={col.image}
-                    alt={col.era}
+                    alt={`${col.era} era interior with decorative lighting and hardware`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
