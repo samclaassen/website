@@ -6,7 +6,7 @@ import Link from "next/link";
 export const metadata = generatePageMetadata({
   title: "About",
   description:
-    "Legacy Homeware creates handcrafted decorative lighting and hardware — light fixtures, switch plates, outlet covers, doorknobs, and fixtures cast in solid metal.",
+    "Legacy Homeware is a searchable archive of architectural details and a maker of custom woodwork, based in Colorado, alongside a collection of decorative lighting and hardware.",
   path: "/about",
   keywords: [
     "about legacy homeware",
@@ -18,6 +18,11 @@ export const metadata = generatePageMetadata({
 
 export default function AboutPage() {
   const faqs = [
+    {
+      question: "What is the Legacy Homeware archive?",
+      answer:
+        "The archive is a searchable collection of real architectural details, such as cabinetry, built-ins, mantels, paneling, doors and trim, drawn from museums, archives and period catalogs across twelve styles. Every orderable example can be made to fit your home, with published price ranges. Custom cabinetry, built-ins and mudrooms are installed in Colorado; doors, fronts, paneling, mantels, hood covers and trim ship anywhere in the US.",
+    },
     {
       question: "What does Legacy Homeware make?",
       answer:
