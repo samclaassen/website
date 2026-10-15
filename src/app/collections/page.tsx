@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = generatePageMetadata({
-  title: "Eras — Legacy Homeware",
+  title: "Hardware by Era",
   description:
     "Seven architectural eras of decorative hardware design. From Arts & Crafts to Art Nouveau — explore the craft traditions that shaped ornamental home hardware.",
   path: "/collections",
