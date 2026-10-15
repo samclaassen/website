@@ -19,7 +19,7 @@ export function generatePageMetadata({
   title,
   description,
   path = "",
-  ogImage = "/og-default.png",
+  ogImage = "/og-default.jpg",
   noIndex = false,
   keywords = [],
 }: PageSeoOptions): Metadata {
@@ -30,7 +30,7 @@ export function generatePageMetadata({
     title: fullTitle,
     description,
     keywords,
-    ...(noIndex && { robots: { index: false, follow: false } }),
+    ...(noIndex && { robots: { index: false, follow: true } }),
     alternates: {
       canonical: url,
     },
@@ -122,5 +122,80 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: `${SITE_URL}${item.href}`,
     })),
+  };
+}
+
+/**
+ * WebSite JSON-LD with a SearchAction pointing at the details search page.
+ */
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${SITE_URL}/search?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+/**
+ * ItemList JSON-LD for hub pages (style, element, combo pages).
+ */
+export function itemListJsonLd(name: string, items: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      url: `${SITE_URL}${item.path}`,
+    })),
+  };
+}
+
+/**
+ * JSON-LD for a single architectural detail entry: an Article about the
+ * example, with the image's license and credit recorded as an ImageObject.
+ */
+export function entryJsonLd(entry: {
+  slug: string;
+  title: string;
+  summary: string;
+  styleName: string;
+  elementName: string;
+  imageUrl: string;
+  credit: string;
+  license: string;
+  licenseUrl?: string;
+  sourceUrl: string;
+  dateDisplay?: string;
+}) {
+  const url = `${SITE_URL}/details/${entry.slug}`;
+  const image: Record<string, unknown> = {
+    "@type": "ImageObject",
+    contentUrl: entry.imageUrl.startsWith("http") ? entry.imageUrl : `${SITE_URL}${entry.imageUrl}`,
+    creditText: entry.credit,
+    acquireLicensePage: entry.sourceUrl,
+  };
+  if (entry.licenseUrl) image.license = entry.licenseUrl;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: entry.title,
+    description: entry.summary,
+    url,
+    mainEntityOfPage: url,
+    image,
+    about: [entry.styleName, entry.elementName],
+    isBasedOn: entry.sourceUrl,
+    dateModified: "2026-10-15",
+    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
   };
 }

@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Architectural details archive (October 2026)
+
+- `src/data/entries.json` — 200 entries (style, element, tier, text, image credit/license, source). Images for 161 entries are self-hosted in `public/images/details/`; the rest load from the Art Institute of Chicago and Library of Congress.
+- `src/data/taxonomy.json`, `src/data/hubs.ts` — styles, elements and hub-page copy. `src/lib/pricing.ts` — published price ranges.
+- Routes: `/search`, `/styles`, `/styles/[style]`, `/styles/[style]/[element]` (built at 3+ entries, indexed at 8+), `/elements`, `/elements/[element]`, `/details/[slug]`, `/custom`, `/request`, `/colorado`, `/colorado/custom-cabinet-cost`.
+- The request form posts to `/api/request`, which forwards to `FORM_WEBHOOK_URL` or emails via Resend (see `.env.example`). Until one is configured, the form explains that online requests are not switched on yet and never shows a false success message.

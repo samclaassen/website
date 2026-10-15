@@ -1,7 +1,7 @@
 export const SITE_NAME = "Legacy Homeware";
-export const SITE_TAGLINE = "The Visual Archive of Decorative Lighting & Hardware";
+export const SITE_TAGLINE = "Architectural details, made for your home";
 export const SITE_DESCRIPTION =
-  "A curated visual study of ornamental lighting and home hardware design across seven architectural eras — from Arts & Crafts to Art Nouveau. Explore the craftsmanship that shaped the homes we live in.";
+  "A searchable archive of architectural details across twelve styles, from Shaker cupboards to Art Deco doors, with custom cabinetry, built-ins, mantels, paneling and more made to order and installed in Colorado.";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
 
@@ -12,7 +12,15 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Eras", href: "/collections" },
+  { label: "Styles", href: "/styles" },
+  { label: "Elements", href: "/elements" },
+  { label: "Search", href: "/search" },
+  { label: "Custom", href: "/custom" },
+] as const;
+
+export const SECONDARY_NAV = [
+  { label: "Colorado", href: "/colorado" },
+  { label: "Hardware", href: "/collections" },
   { label: "About", href: "/about" },
 ] as const;
 
