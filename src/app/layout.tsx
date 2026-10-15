@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
@@ -62,6 +63,15 @@ export default function RootLayout({
         <Header />
         <main className="flex-1 pt-[72px]">{children}</main>
         <Footer />
+        {/* PromptWatch visitor analytics: counts visits that arrive from ChatGPT, Claude, Perplexity and other AI tools. */}
+        <Script id="promptwatch-analytics" strategy="afterInteractive">
+          {`(function() {
+  var script = document.createElement('script');
+  script.setAttribute('data-project-id', '64765d40-4975-41a3-a599-f9a60f7c97ef');
+  script.src = 'https://ingest.promptwatch.com/js/client.min.js';
+  document.head.appendChild(script);
+})();`}
+        </Script>
       </body>
     </html>
   );
