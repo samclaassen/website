@@ -2,6 +2,7 @@ import { generatePageMetadata, webPageJsonLd } from "@/lib/seo";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { COLLECTIONS } from "@/lib/collections";
+import { STYLE_PRODUCTS } from "@/data/styleProducts";
 import { ELEMENTS, ENTRIES, STYLES, coverEntry, entriesForElement, entriesForStyle, getEntry } from "@/lib/details";
 import { fromPrice, pricingFor } from "@/lib/pricing";
 import { STYLE_HUBS } from "@/data/hubs";
@@ -41,9 +42,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-cream/70" />
 
         <div className="relative z-10 text-center px-6 max-w-3xl w-full">
-          <p className="text-[13px] tracking-[0.2em] uppercase text-bark mb-6">Architectural details, made for your home</p>
           <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] text-stone mb-6">
-            A home worth passing down
+            Make a home worth passing down
           </h1>
           <p className="text-base leading-[1.8] text-stone-light mb-10 max-w-xl mx-auto">
             Search {ENTRIES.length} real examples of cabinetry, built-ins, mantels, paneling and doors across twelve styles, then
@@ -85,22 +85,44 @@ export default function HomePage() {
         <div className="px-6 lg:px-10 pb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10">
             {STYLES.map((s) => {
-              const cover = coverEntry(entriesForStyle(s.slug));
+              const product = STYLE_PRODUCTS[s.slug];
+              const cover = product ? null : coverEntry(entriesForStyle(s.slug));
               return (
-                <Link key={s.slug} href={`/styles/${s.slug}`} className="group">
-                  <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-4">
-                    {cover && (
-                      <EntryImage
-                        image={cover.image}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                      />
-                    )}
-                  </div>
-                  <h3 className="font-serif text-xl font-semibold text-stone mb-1 group-hover:text-muted transition-colors">{s.name}</h3>
-                  <p className="text-[13px] text-muted">{s.era}</p>
-                </Link>
+                <div key={s.slug} className="group">
+                  <Link href={`/styles/${s.slug}`} className="block">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-4">
+                      {product ? (
+                        <Image
+                          src={product.image}
+                          alt={`${product.product}, ${s.name} style`}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-contain p-6 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        cover && (
+                          <EntryImage
+                            image={cover.image}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )
+                      )}
+                    </div>
+                    <h3 className="font-serif text-xl font-semibold text-stone mb-1 group-hover:text-muted transition-colors">{s.name}</h3>
+                    <p className="text-[13px] text-muted">{s.era}</p>
+                  </Link>
+                  {product && (
+                    <p className="text-[12px] text-light mt-2">
+                      Shown:{" "}
+                      <a href={product.url} target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-border underline-offset-2 hover:text-muted">
+                        {product.product}
+                      </a>
+                      {" "}· {product.seller}
+                    </p>
+                  )}
+                </div>
               );
             })}
           </div>
