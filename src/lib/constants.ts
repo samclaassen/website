@@ -3,7 +3,7 @@ export const SITE_TAGLINE = "Architectural details, made for your home";
 export const SITE_DESCRIPTION =
   "A searchable archive of architectural details across twelve styles, from Shaker cupboards to Art Deco doors, with custom cabinetry, built-ins, mantels, paneling and more made to order and installed in Colorado.";
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://legacyhomeware.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.legacyhomeware.com";
 
 export const SOCIAL = {
   twitter: "",
