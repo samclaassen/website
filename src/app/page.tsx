@@ -3,7 +3,7 @@ import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { COLLECTIONS } from "@/lib/collections";
 import { STYLE_PRODUCTS } from "@/data/styleProducts";
-import { ELEMENTS, ENTRIES, STYLES, coverEntry, entriesForElement, entriesForStyle, getEntry } from "@/lib/details";
+import { ELEMENTS, ENTRIES, STYLES, coverEntry, entriesForElement, entriesForStyle, getEntry, hasComboPage } from "@/lib/details";
 import { fromPrice, pricingFor } from "@/lib/pricing";
 import { STYLE_HUBS } from "@/data/hubs";
 import { EntryImage } from "@/components/details/EntryImage";
@@ -79,6 +79,9 @@ export default function HomePage() {
           <div>
             <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-3">Explore by style</p>
             <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">Twelve styles, told through their details</h2>
+            <p className="text-base leading-[1.8] text-muted max-w-2xl mt-4">
+              Doors, cabinetry, paneling, mantels, range hoods and built-ins in each style, made to order for your home.
+            </p>
           </div>
           <Link href="/styles" className="cta-button text-stone">All styles <span aria-hidden="true">→</span></Link>
         </div>
@@ -94,7 +97,7 @@ export default function HomePage() {
                       {product ? (
                         <Image
                           src={product.image}
-                          alt={`${product.product}, ${s.name} style`}
+                          alt={`${product.product}: ${product.category.toLowerCase()} in the ${s.name} style`}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           className="object-contain p-6 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
@@ -114,12 +117,18 @@ export default function HomePage() {
                     <p className="text-[13px] text-muted">{s.era}</p>
                   </Link>
                   {product && (
-                    <p className="text-[12px] text-light mt-2">
-                      Shown:{" "}
+                    <p className="text-[12px] text-light mt-2 leading-[1.6]">
+                      <Link
+                        href={hasComboPage(s.slug, product.element) ? `/styles/${s.slug}/${product.element}` : `/elements/${product.element}`}
+                        className="uppercase tracking-[0.1em] text-bark hover:text-stone"
+                      >
+                        {product.category}
+                      </Link>
+                      {" · Shown: "}
                       <a href={product.url} target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-border underline-offset-2 hover:text-muted">
                         {product.product}
                       </a>
-                      {" "}· {product.seller}
+                      {" "}({product.seller})
                     </p>
                   )}
                 </div>
