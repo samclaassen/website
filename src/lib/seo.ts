@@ -27,7 +27,7 @@ export function generatePageMetadata({
   const fullTitle = path === "" || path === "/" ? title : `${title} | ${SITE_NAME}`;
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description,
     keywords,
     ...(noIndex && { robots: { index: false, follow: true } }),
