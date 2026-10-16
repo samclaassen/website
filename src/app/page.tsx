@@ -29,7 +29,7 @@ const ALPINE_FEATURE = {
   details: [
     "carved-gothic-door-in-the-niederdorf-stube",
     "painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
-    "bench-with-chip-carved-back-luneburg-heath",
+    "arched-plank-door-in-the-pifing-stube",
   ],
 };
 
