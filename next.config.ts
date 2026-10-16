@@ -15,17 +15,6 @@ const nextConfig: NextConfig = {
     // ],
   },
 
-  // Permanent redirects for URLs replaced by the design-library structure.
-  async redirects() {
-    return [
-      { source: "/details/:slug", destination: "/library/:slug", permanent: true },
-      { source: "/search", destination: "/library", permanent: true },
-      { source: "/styles/alpine-tyrolean", destination: "/styles/alpine-chalet", permanent: true },
-      { source: "/styles/alpine-tyrolean/:element", destination: "/styles/alpine-chalet/:element", permanent: true },
-      { source: "/colorado/custom-cabinet-cost", destination: "/journal/custom-cabinet-cost-colorado", permanent: true },
-    ];
-  },
-
   // Security headers for better SEO and security scores
   async headers() {
     return [

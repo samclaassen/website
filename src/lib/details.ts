@@ -131,23 +131,3 @@ export const TIER_LABEL: Record<Tier, string> = {
 export function isOrderable(element: string) {
   return getElement(element)?.custom_status === "orderable";
 }
-
-/** How an entry's evidence should be described: documented object, period illustration or model. */
-export function provenanceLabel(e: Entry) {
-  if (isCatalogPlate(e)) return "Period catalog illustration";
-  if (/Index of American Design/i.test(e.title) || /Index of American Design/i.test(e.source.name)) return "Index of American Design rendering";
-  if (e.dateLabel === "Model made") return "Museum miniature room (scale model)";
-  if (e.dateLabel === "Photograph") return "Photograph of a documented interior or object";
-  return "Documented historical object";
-}
-
-export function allTags(kind: "materials" | "motifs") {
-  const counts = new Map<string, number>();
-  for (const e of ENTRIES) for (const t of e[kind]) counts.set(t, (counts.get(t) ?? 0) + 1);
-  return [...counts.entries()].sort((a, b) => b[1] - a[1]).map(([slug, count]) => ({ slug, name: humanize(slug), count }));
-}
-
-/** Pick entries for a gallery, preferring locally hosted, non-catalog photographs. */
-export function photoEntries(list: Entry[]) {
-  return [...list].sort((a, b) => Number(isCatalogPlate(a)) - Number(isCatalogPlate(b)) || Number(b.image.local) - Number(a.image.local));
-}

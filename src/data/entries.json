@@ -912,8 +912,8 @@
 "bronze"
 ],
 "summary": "A decorated interior doorknob and rosette in the Molly Brown House Museum in Denver, typical of the cast, patterned hardware used in high-style houses of the 1880s.",
-"description": "Late-Victorian houses used decorative cast hardware throughout, with matching knobs, rosettes and escutcheons on each door. Details like this set the scale for everything around them: a richly patterned knob looks right against a substantial casing and a paneled door. Hardware is included in the library because it is the first thing to plan when a period door or cabinet is designed. New doors and cabinet fronts can be machined to accept salvaged or reproduction hardware.",
-"makeItToday": "Reference only. New doors and fronts can be prepared for salvaged or reproduction hardware of this type.",
+"description": "Late-Victorian houses used decorative cast hardware throughout, with matching knobs, rosettes and escutcheons on each door. Details like this set the scale for everything around them: a richly patterned knob looks right against a substantial casing and a paneled door. Metal hardware is not part of our custom woodwork range, but this entry is in the reference library because hardware is the first thing to plan when a period door or cabinet is made. We can machine doors and cabinet fronts to accept salvaged or reproduction hardware.",
+"makeItToday": "Reference only. We can prepare doors and fronts for salvaged or reproduction hardware of this type.",
 "dateDisplay": "2019",
 "dateLabel": "Photograph",
 "maker": "Jonathan Mauer",
@@ -1227,7 +1227,7 @@
 "pine"
 ],
 "summary": "A 1:12-scale Thorne Room of a Pennsylvania farmhouse kitchen of 1752, with a large cooking hearth, plank walls, an open dresser and simple painted cupboards.",
-"description": "Colonial kitchens were working rooms built around a large hearth, with storage on open shelves and in simple board cupboards. This miniature shows the essentials: a wide fireplace with a plain beam mantel, an open dresser for pewter and pottery, and walls of vertical boards. It is the origin of much of what people now call farmhouse style. The details are plain and sturdy, which makes them easy to adapt to simple cabinetry today.",
+"description": "Colonial kitchens were working rooms built around a large hearth, with storage on open shelves and in simple board cupboards. This miniature shows the essentials: a wide fireplace with a plain beam mantel, an open dresser for pewter and pottery, and walls of vertical boards. It is the origin of much of what people now call farmhouse style. The details are plain and sturdy, which makes them well suited to Essential-tier cabinetry today.",
 "makeItToday": "Open-shelf dresser and board-and-batten cupboards in pine or paint-grade poplar; Essential tier.",
 "dateDisplay": "c. 1940",
 "dateLabel": "Model made",
@@ -2218,7 +2218,7 @@
 "iron"
 ],
 "summary": "A Georgian doorway from Chalkley Hall near Philadelphia, about 1776, with a stone surround framing a paneled wood door.",
-"description": "Chalkley Hall was a country house in Frankford, outside Philadelphia. Its doorway, now at the Metropolitan Museum, pairs a granite frame with a paneled wood door in the formal Georgian manner, balanced and strongly framed. It is included as a reference for proportion and panel layout. The same panel arrangement also works for an interior door or a matching paneled entry wall.",
+"description": "Chalkley Hall was a country house in Frankford, outside Philadelphia. Its doorway, now at the Metropolitan Museum, pairs a granite frame with a paneled wood door in the formal Georgian manner, balanced and strongly framed. We include it as a reference for proportion and panel layout. Exterior doors are outside our current custom range, but the same panel arrangement can be used for an interior door or a matching paneled entry wall.",
 "makeItToday": "Reference only for exterior doors. The panel layout can be adapted to an interior door or wall paneling.",
 "dateDisplay": "ca. 1776",
 "dateLabel": "Date",
@@ -2402,7 +2402,7 @@
 "oak"
 ],
 "summary": "Part of a carved and gilded oak overmantel by Grinling Gibbons, the master English woodcarver of the late 1600s, with naturalistic flowers, fruit and foliage.",
-"description": "Grinling Gibbons carved garlands of fruit, flowers, leaves and game so realistically that they look alive. This large section, more than 16 feet tall in total, would have framed a painting or mirror above a fireplace. Gibbons-style garlands remain a benchmark for carved ornament on English and Colonial Revival mantels. A modern CNC can rough out a garland in hardwood before hand finishing brings back the crispness.",
+"description": "Grinling Gibbons carved garlands of fruit, flowers, leaves and game so realistically that they look alive. This large section, more than 16 feet tall in total, would have framed a painting or mirror above a fireplace. While most of our work is far simpler, Gibbons-style garlands remain a benchmark for carved ornament on English and Colonial Revival mantels. A modern CNC can rough out a garland in hardwood before hand finishing brings back the crispness.",
 "makeItToday": "Heirloom only: 3D CNC roughing in limewood or basswood with hand finishing, as a garland or drop for a mantel.",
 "dateDisplay": "ca. 1675",
 "dateLabel": "Date",
@@ -2746,7 +2746,7 @@
 {
 "slug": "the-flims-room-switzerland",
 "title": "The Flims Room, Switzerland (c. 1682–84)",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "heirloom",
 "motifs": [
@@ -2794,7 +2794,7 @@
 {
 "slug": "16th-century-stube-from-the-courthouse-in-niederdorf-tiroler-volkskunstmuseum",
 "title": "16th-Century Stube from the Courthouse in Niederdorf, Tiroler Volkskunstmuseum",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -2838,7 +2838,7 @@
 {
 "slug": "stube-bench-from-the-johannser-hof-near-villanders-tiroler-volkskunstmuseum",
 "title": "Stube Bench from the Johannser-Hof near Villanders (c. 1500), Tiroler Volkskunstmuseum",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -2883,7 +2883,7 @@
 {
 "slug": "renaissance-stube-from-thierburg-castle-tiroler-volkskunstmuseum",
 "title": "Renaissance Stube from Thierburg Castle, Tiroler Volkskunstmuseum",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "heirloom",
 "motifs": [
@@ -2928,7 +2928,7 @@
 {
 "slug": "farmhouse-stube-hof-falkner-schnaitter-tyrol",
 "title": "Farmhouse Stube, Hof Falkner-Schnaitter, Tyrol",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "built-ins-bookcases",
 "tier": "signature",
 "motifs": [
@@ -2973,7 +2973,7 @@
 {
 "slug": "farmhouse-stube-hof-horl-wetscher-tyrol",
 "title": "Farmhouse Stube, Hof Hörl-Wetscher, Tyrol",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "built-ins-bookcases",
 "tier": "signature",
 "motifs": [
@@ -3018,7 +3018,7 @@
 {
 "slug": "traditional-tyrolean-stube-at-the-bruckenwirt-inn",
 "title": "Traditional Tyrolean Stube at the Brückenwirt Inn",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -3073,7 +3073,7 @@
 "painted-pine"
 ],
 "summary": "An 1890 photograph of the old kitchen in the Telfair house in Savannah, Georgia, with a large cooking fireplace, a china hutch filled with plates and a spinning wheel.",
-"description": "This photograph, now in the Library of Congress, records a working kitchen of the 19th century: a wide hearth with hanging pots and utensils, a tall open hutch lined with plates, and simple wooden furniture on a stone floor. The arrangement is the same one found in English farmhouses and cottages, which is why it is grouped with them here. A plate hutch beside a hearth-like range alcove remains the core of a country kitchen.",
+"description": "This photograph, now in the Library of Congress, records a working kitchen of the 19th century: a wide hearth with hanging pots and utensils, a tall open hutch lined with plates, and simple wooden furniture on a stone floor. The arrangement is the same one found in English farmhouses and cottages, which is why we place it here. A plate hutch beside a hearth-like range alcove remains the core of a country kitchen.",
 "makeItToday": "Open plate hutch and a range alcove surround with a beam shelf; Essential tier.",
 "dateDisplay": "1890",
 "dateLabel": "Photograph",
@@ -3252,7 +3252,7 @@
 "oak"
 ],
 "summary": "Carved wooden decoration on the main door of the Museum of Cultural History in Oslo, an Art Nouveau building by Henrik Bull completed in 1902.",
-"description": "The museum building on Frederiks gate in Oslo was begun by Karl August Henriksen and completed by Henrik Bull in 1902. Its main door is carved with flowing, organic decoration that blends Art Nouveau curves with Norwegian woodcarving traditions. It is included as a reference for carved panel design. The carved motifs adapt readily to interior doors and panels.",
+"description": "The museum building on Frederiks gate in Oslo was begun by Karl August Henriksen and completed by Henrik Bull in 1902. Its main door is carved with flowing, organic decoration that blends Art Nouveau curves with Norwegian woodcarving traditions. We include it as a reference for carved panel design. Exterior doors are outside our current custom range, but the carved motifs can be adapted to interior doors and panels.",
 "makeItToday": "Reference only for exterior doors; motifs can be adapted to interior doors or carved panels.",
 "dateDisplay": "2017",
 "dateLabel": "Photograph",
@@ -3519,7 +3519,7 @@
 "lodgepole-pine"
 ],
 "summary": "A wide view of the Old Faithful Inn's lobby structure, showing its branching lodgepole-pine brackets, log posts and balcony railings rising to the roof.",
-"description": "The most memorable details of the Old Faithful Inn are its gnarled, branching brackets and railings, made from naturally twisted lodgepole pine. They turn structure into ornament. Selecting and shaping branching timber is specialist work, but the same spirit can be captured in carved or assembled brackets for a mantel, range hood or stair. Mountain interiors often use one such element as a focal point.",
+"description": "The most memorable details of the Old Faithful Inn are its gnarled, branching brackets and railings, made from naturally twisted lodgepole pine. They turn structure into ornament. Selecting and shaping branching timber is specialist work, but the same spirit can be captured in carved or assembled brackets for a mantel, range hood or stair. Heirloom-tier mountain projects often feature one such element as a focal point.",
 "makeItToday": "Feature brackets or railings from selected branching stock or carved forms; Heirloom tier.",
 "dateDisplay": "",
 "dateLabel": "Date",
@@ -5712,7 +5712,7 @@
 "bronze"
 ],
 "summary": "A metal door fitting on the Hôtel Solvay in Brussels, designed by Victor Horta, with a flowing Art Nouveau form framing a bell or speaking grille.",
-"description": "Horta designed even small fittings for his houses, and this metal detail shows how the whiplash curve carried into hardware. Details like this help set the character of the doors and cabinets around them. Matching the sweep of a pull or escutcheon in the carved profile of a door rail is a simple way to make new woodwork feel coherent.",
+"description": "Horta designed even small fittings for his houses, and this metal detail shows how the whiplash curve carried into hardware. Metal hardware is not part of our custom woodwork range, but details like this help set the character of doors and cabinets. Matching the sweep of a pull or escutcheon in the carved profile of a door rail is a simple way to make a custom piece feel coherent.",
 "makeItToday": "Reference only. Doors and cabinet fronts can be designed around period-style hardware.",
 "dateDisplay": "2007",
 "dateLabel": "Photograph",
@@ -5928,7 +5928,7 @@
 {
 "slug": "tyrolean-farmhouse-stube-of-1830",
 "title": "Tyrolean Farmhouse Stube of 1830",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -5973,7 +5973,7 @@
 {
 "slug": "14th-century-stube-from-the-pifing-farm-south-tyrolean-folklore-museum-dietenhei",
 "title": "14th-Century Stube from the Pifing Farm, South Tyrolean Folklore Museum, Dietenheim",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -6017,7 +6017,7 @@
 {
 "slug": "rhaetian-stube-from-the-tschaggen-farm-south-tyrolean-folklore-museum-dietenheim",
 "title": "Rhaetian Stube from the Tschaggen Farm, South Tyrolean Folklore Museum, Dietenheim",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -6062,7 +6062,7 @@
 {
 "slug": "painted-farmhouse-stube-appenzell-folk-museum-stein",
 "title": "Painted Farmhouse Stube, Appenzell Folk Museum, Stein",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "built-ins-bookcases",
 "tier": "heirloom",
 "motifs": [
@@ -6106,7 +6106,7 @@
 {
 "slug": "bench-with-chip-carved-back-luneburg-heath",
 "title": "Bench with Chip-Carved Back, Lüneburg Heath",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "mudroom-entry",
 "tier": "signature",
 "motifs": [
@@ -6150,7 +6150,7 @@
 {
 "slug": "wrought-iron-wall-bracket",
 "title": "Wrought-Iron Wall Bracket (17th century)",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "metal-hardware",
 "tier": "signature",
 "motifs": [
@@ -6160,7 +6160,7 @@
 "iron"
 ],
 "summary": "A 17th-century wrought-iron wall bracket with scrolls and a hook, about 12 inches tall, of the type used to hang lanterns or signs.",
-"description": "Scrolled iron brackets were a common part of Alpine and Central European houses, used for lanterns, signs and pots. This one shows the classic scroll vocabulary in a compact form. Brackets like this often accompany Alpine woodwork, and their scrolls can be echoed in carved wood brackets for shelves, range hoods and mantels.",
+"description": "Scrolled iron brackets were a common part of Alpine and Central European houses, used for lanterns, signs and pots. This one shows the classic scroll vocabulary in a compact form. Metal hardware is not part of our custom woodwork range, but brackets like this often accompany Alpine woodwork, and their scrolls can be echoed in carved wood brackets for shelves, range hoods and mantels.",
 "makeItToday": "Reference only. Scroll profiles can be adapted into wood brackets.",
 "dateDisplay": "17th century",
 "dateLabel": "Date",
@@ -6194,7 +6194,7 @@
 {
 "slug": "carved-walnut-chest-with-arcaded-front",
 "title": "Carved Walnut Chest with Arcaded Front (17th century)",
-"style": "alpine-chalet",
+"style": "alpine-tyrolean",
 "element": "cabinet-doors-fronts",
 "tier": "signature",
 "motifs": [
@@ -8961,480 +8961,6 @@
 "guest-room-in-the-old-faithful-inn-yellowstone",
 "dining-room-of-the-old-faithful-inn-yellowstone",
 "log-framed-reception-desk-old-faithful-inn"
-]
-},
-{
-"slug": "carved-gothic-door-in-the-niederdorf-stube",
-"title": "Carved Gothic Door in the Niederdorf Stube",
-"style": "alpine-chalet",
-"element": "interior-doors",
-"tier": "signature",
-"motifs": [
-"gothic-tracery",
-"carved-panel",
-"board-paneling"
-],
-"materials": [
-"pine"
-],
-"summary": "A board door in a 16th-century Tyrolean Stube, its face carved with a tall ogee-arched frame and tracery rosettes.",
-"description": "This door opens from the paneled Stube of the courthouse (Gerichtshaus) in Niederdorf, a room now installed in the Tiroler Volkskunstmuseum in Innsbruck. Rather than being built up from frames and panels, the door is a flat boarded leaf, and its ornament is cut into the surface: an ogee arch outlined in relief rises almost the full height of the door, with three tracery rosettes carved into its head. The Gothic vocabulary, still in use in Alpine woodwork in the 1500s, gives a plain plank door the presence of a church portal while leaving it flush with the wall paneling around it. Detail cropped from a photograph of the full room.",
-"makeItToday": "",
-"dateDisplay": "2017",
-"dateLabel": "Photograph",
-"maker": "Pakeha",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/carved-gothic-door-in-the-niederdorf-stube.jpg",
-"local": true,
-"width": 453,
-"height": 860,
-"alt": "A pine board door in a Tyrolean Stube carved with a tall ogee-arched Gothic frame and three rosettes in the arch",
-"credit": "Pakeha / Wikimedia Commons (detail)",
-"license": "CC BY-SA 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Stube_aus_dem_Gerichtshaus_in_Niederdorf.jpg",
-"originalTitle": "Stube aus dem Gerichtshaus in Niederdorf.jpg"
-},
-"related": [
-"16th-century-stube-from-the-courthouse-in-niederdorf-tiroler-volkskunstmuseum",
-"arched-plank-door-in-the-pifing-stube",
-"paneled-door-with-iron-fittings-thierburg-stube"
-]
-},
-{
-"slug": "paneled-door-with-iron-fittings-thierburg-stube",
-"title": "Paneled Door with Scrolled Iron Hinges, Thierburg Stube",
-"style": "alpine-chalet",
-"element": "interior-doors",
-"tier": "signature",
-"motifs": [
-"flat-panel",
-"pilaster",
-"board-paneling"
-],
-"materials": [
-"pine",
-"wrought-iron"
-],
-"summary": "A two-panel door set into the Renaissance Stube from Thierburg Castle, hung on iron strap hinges with scrolled ends.",
-"description": "One of the doors in the Renaissance Stube from Thierburg Castle in Tyrol, now displayed in the Tiroler Volkskunstmuseum in Innsbruck. The door is framed with two panels and sits flush within the room's unpainted wall paneling, beside a carved pilaster. Its iron strap hinges end in scrolls that spread across the face of the door, so the hardware becomes part of the decoration rather than something to hide. The same pale, unpainted wood runs across walls, doors and ceiling, which is what gives the room its unified character. Detail cropped from a photograph of the full room.",
-"makeItToday": "",
-"dateDisplay": "2016",
-"dateLabel": "Photograph",
-"maker": "Hermann Hammer",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/paneled-door-with-iron-fittings-thierburg-stube.jpg",
-"local": true,
-"width": 327,
-"height": 666,
-"alt": "A pale two-panel wooden door in a paneled Tyrolean room, with scrolled black iron strap hinges and a carved pilaster beside it",
-"credit": "Hermann Hammer / Wikimedia Commons (detail)",
-"license": "CC BY-SA 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Stube_der_Thierburg.jpg",
-"originalTitle": "Stube der Thierburg.jpg"
-},
-"related": [
-"renaissance-stube-from-thierburg-castle-tiroler-volkskunstmuseum",
-"carved-gothic-door-in-the-niederdorf-stube",
-"wrought-iron-wall-bracket"
-]
-},
-{
-"slug": "arched-plank-door-in-the-pifing-stube",
-"title": "Arched Plank Door in the 14th-Century Pifing Stube",
-"style": "alpine-chalet",
-"element": "interior-doors",
-"tier": "essential",
-"motifs": [
-"board-paneling",
-"arched-opening"
-],
-"materials": [
-"larch"
-],
-"summary": "A heavy plank door with a round-headed frame and iron fittings, in one of the oldest farmhouse Stuben preserved in South Tyrol.",
-"description": "This door belongs to the Stube from the Pifing farm, a room recorded as dating from the 14th century and now rebuilt at the South Tyrolean Folklore Museum in Dietenheim. It is made of thick vertical boards held together on the back, with a round-headed frame applied to the face and iron fittings nailed through. Centuries of smoke and handling have darkened the wood. Doors like this were built by the same carpenters who lined the room, which is why the door reads as part of the wall rather than as a separate piece of joinery. Detail cropped from a photograph of the full room.",
-"makeItToday": "",
-"dateDisplay": "2007",
-"dateLabel": "Photograph",
-"maker": "Wolfgang Sauber",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/arched-plank-door-in-the-pifing-stube.jpg",
-"local": true,
-"width": 499,
-"height": 1024,
-"alt": "A dark, weathered plank door with an applied round-headed frame and iron studs in a log-walled Alpine room",
-"credit": "Wolfgang Sauber / Wikimedia Commons (detail)",
-"license": "CC BY-SA 3.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Dietenheim_-_Museum_Bauernstube_1350_01.jpg",
-"originalTitle": "Dietenheim - Museum Bauernstube 1350 01.jpg"
-},
-"related": [
-"14th-century-stube-from-the-pifing-farm-south-tyrolean-folklore-museum-dietenhei",
-"carved-gothic-door-in-the-niederdorf-stube",
-"ledged-and-braced-plank-door-val-di-peio"
-]
-},
-{
-"slug": "painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
-"title": "Painted Star-Pattern Door, Gasthof Tiroler Weinhaus, Achenkirch",
-"style": "alpine-chalet",
-"element": "exterior-doors",
-"tier": "essential",
-"motifs": [
-"sunburst",
-"painted-panel"
-],
-"materials": [
-"painted-wood"
-],
-"summary": "An inn door in Achenkirch, Tyrol, painted with an eight-pointed star of radiating green and white bands under an arched fanlight.",
-"description": "The entrance to the Gasthof Tiroler Weinhaus in Achenkirch is a boarded door whose whole face is given over to a painted pattern: an eight-pointed star at the center, surrounded by bands of green and white that radiate out to the frame. Above it, a segmental fanlight with glazing bars lights the entry. Painted geometric doors of this kind appear on a number of inns, barns and houses in Tyrol; the design is laid out in paint on plain boards rather than built from panels, which makes it an economical way to give a simple door a strong presence.",
-"makeItToday": "",
-"dateDisplay": "2015",
-"dateLabel": "Photograph",
-"maker": "Haeferl",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/painted-star-door-gasthof-tiroler-weinhaus-achenkirch.jpg",
-"local": true,
-"width": 1067,
-"height": 1600,
-"alt": "A door painted with a green and white eight-pointed star pattern radiating to the frame, under an arched fanlight",
-"credit": "Haeferl / Wikimedia Commons",
-"license": "CC BY-SA 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Achenkirch_-_Gasthof_Tiroler_Weinhaus_-_T%C3%BCr.jpg",
-"originalTitle": "Achenkirch - Gasthof Tiroler Weinhaus - Tür.jpg"
-},
-"related": [
-"chevron-painted-door-itter-castle",
-"painted-wooden-door-dated-1907-innsbruck",
-"painted-farmhouse-stube-appenzell-folk-museum-stein"
-]
-},
-{
-"slug": "painted-wooden-door-dated-1907-innsbruck",
-"title": "Painted Wooden Door Dated 1907, Innsbruck",
-"style": "alpine-chalet",
-"element": "exterior-doors",
-"tier": "signature",
-"motifs": [
-"glazed-upper",
-"painted-panel",
-"floral-carving"
-],
-"materials": [
-"painted-wood",
-"wrought-iron"
-],
-"summary": "A green-painted house door on Innsbruck's Höhenstraße, dated 1907, with a wrought-iron grille, painted edelweiss and pointed oval panels.",
-"description": "This house door on the Höhenstraße in Innsbruck carries its date, 1907, painted across the lock rail. The upper half is glazed behind a scrolled wrought-iron grille set with initials and a painted spray of edelweiss, the Alpine flower that became a popular emblem of the region; the lower half has two pointed oval panels, each centered on a rosette. The chalked inscription at the top, a house blessing with the year and the letters C+M+B, is written over doorways each January at Epiphany in Catholic parts of the Alps. The door shows how the Alpine vocabulary of painted wood and decorative iron continued into the twentieth century.",
-"makeItToday": "",
-"dateDisplay": "1907",
-"dateLabel": "Date",
-"maker": "",
-"medium": "Painted wood with wrought-iron grille",
-"dimensions": "",
-"image": {
-"src": "/images/details/painted-wooden-door-dated-1907-innsbruck.jpg",
-"local": true,
-"width": 847,
-"height": 1500,
-"alt": "A green-painted wooden door with a scrolled iron grille over the glazing, painted edelweiss, the date 1907 and two pointed oval lower panels",
-"credit": "Naturpuur / Wikimedia Commons",
-"license": "CC BY 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Holzt%C3%BCre_anno_1907,_Innsbruck.jpg",
-"originalTitle": "Holztüre anno 1907, Innsbruck.jpg"
-},
-"related": [
-"painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
-"paneled-entrance-doors-agramgasse-12-hall-in-tirol",
-"wrought-iron-wall-bracket"
-]
-},
-{
-"slug": "paneled-entrance-doors-agramgasse-12-hall-in-tirol",
-"title": "Painted Paneled Entrance Doors, Agramgasse 12, Hall in Tirol",
-"style": "alpine-chalet",
-"element": "exterior-doors",
-"tier": "signature",
-"motifs": [
-"arched-opening",
-"painted-panel",
-"floral-carving",
-"arched-glazing"
-],
-"materials": [
-"painted-wood"
-],
-"summary": "Arched double doors on a listed house in the old town of Hall in Tirol, with painted frames and panels carved with stylized flowers.",
-"description": "The entrance to Agramgasse 12, a protected monument in the old town of Hall in Tirol, fills a round-arched stone opening with a pair of paneled doors. Each leaf has a glazed arched top light and two panels below, and the panels carry relief flowers in the same pale gray-violet paint, outlined against green and ochre frames. Painting the joinery in several soft colors, rather than leaving it as natural wood, is a long-standing practice in Tyrolean towns, where the doorway was the main decorative feature of an otherwise plain plastered facade.",
-"makeItToday": "",
-"dateDisplay": "2011",
-"dateLabel": "Photograph",
-"maker": "Hermann Hammer",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/paneled-entrance-doors-agramgasse-12-hall-in-tirol.jpg",
-"local": true,
-"width": 1071,
-"height": 1600,
-"alt": "Arched double doors painted green and ochre, with glazed top lights and pale panels carved with stylized flowers, in a stone archway",
-"credit": "Hermann Hammer / Wikimedia Commons",
-"license": "CC BY-SA 3.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Hall_in_Tirol,_Agramgasse_12,_Eingangstor.jpg",
-"originalTitle": "Hall in Tirol, Agramgasse 12, Eingangstor.jpg"
-},
-"related": [
-"painted-wooden-door-dated-1907-innsbruck",
-"painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
-"painted-farmhouse-stube-appenzell-folk-museum-stein"
-]
-},
-{
-"slug": "chevron-painted-door-itter-castle",
-"title": "Chevron-Painted Door, Itter Castle",
-"style": "alpine-chalet",
-"element": "exterior-doors",
-"tier": "essential",
-"motifs": [
-"painted-panel",
-"strapwork"
-],
-"materials": [
-"painted-wood",
-"wrought-iron"
-],
-"summary": "A pointed-arch door at Itter Castle in Tyrol, its boards painted in bold red and white chevrons and hung on long iron strap hinges.",
-"description": "This exterior door at Schloss Itter, a castle in Tyrol, fills a pointed stone arch with a boarded leaf painted in broad red and white chevrons. Long iron strap hinges with decorative ends run across the stripes, and a small grilled opening is set into the boards. Painted chevrons and stripes appear on a number of castle, barn and gate doors in Tyrol; the paint makes the door legible from a distance and protects the boards, while the construction underneath stays as simple as a plank door.",
-"makeItToday": "",
-"dateDisplay": "1979",
-"dateLabel": "Photograph",
-"maker": "Steve Morgan",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/chevron-painted-door-itter-castle.jpg",
-"local": true,
-"width": 1076,
-"height": 1600,
-"alt": "A pointed-arch wooden door painted with red and white chevrons and crossed by long black iron strap hinges",
-"credit": "Steve Morgan / Wikimedia Commons",
-"license": "CC BY-SA 3.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Exterior_door_of_Itter_Castle.jpg",
-"originalTitle": "Exterior door of Itter Castle.jpg"
-},
-"related": [
-"painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
-"paneled-door-with-iron-fittings-thierburg-stube",
-"ledged-and-braced-plank-door-val-di-peio"
-]
-},
-{
-"slug": "ledged-and-braced-plank-door-val-di-peio",
-"title": "Ledged and Braced Plank Door, Val di Peio",
-"style": "alpine-chalet",
-"element": "exterior-doors",
-"tier": "essential",
-"motifs": [
-"board-and-batten"
-],
-"materials": [],
-"summary": "A plain mountain door of vertical boards stiffened by ledges and diagonal braces, with a wooden sliding bolt, near Cogolo di Peio in Trentino.",
-"description": "Photographed on a mountain building above Cogolo di Peio in the Stelvio National Park, this door shows the most basic Alpine construction: vertical boards held by horizontal ledges, with diagonal braces between them to stop the door from sagging on its hinges. A wooden sliding bolt runs across the middle, and black iron strap hinges carry the weight. The same ledged-and-braced construction underlies many of the painted doors of the region; here it is left as bare timber.",
-"makeItToday": "",
-"dateDisplay": "2016",
-"dateLabel": "Photograph",
-"maker": "Agnes Monkelbaan",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/ledged-and-braced-plank-door-val-di-peio.jpg",
-"local": true,
-"width": 973,
-"height": 1600,
-"alt": "A golden wooden plank door with horizontal ledges, diagonal braces, a wooden sliding bolt and black iron strap hinges",
-"credit": "Agnes Monkelbaan / Wikimedia Commons",
-"license": "CC BY-SA 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Bergtocht_van_Cogolo_di_Peio_naar_M.ga_Levi_in_het_Nationaal_park_Stelvio_(Itali%C3%AB)_13.jpg",
-"originalTitle": "Bergtocht van Cogolo di Peio naar M.ga Levi in het Nationaal park Stelvio (Italië) 13.jpg"
-},
-"related": [
-"arched-plank-door-in-the-pifing-stube",
-"chevron-painted-door-itter-castle",
-"painted-star-door-gasthof-tiroler-weinhaus-achenkirch"
-]
-},
-{
-"slug": "painted-door-at-red-house-bexleyheath",
-"title": "Painted Ledged Door with Stained Glass, Red House",
-"style": "arts-and-crafts",
-"element": "interior-doors",
-"tier": "signature",
-"motifs": [
-"board-and-batten",
-"painted-panel",
-"arched-opening"
-],
-"materials": [
-"painted-wood",
-"glass",
-"wrought-iron"
-],
-"summary": "A boarded door at Red House, William Morris's home by Philip Webb, painted with zigzag bands and set with four small stained-glass lights.",
-"description": "Red House in Bexleyheath was designed by Philip Webb for William Morris and completed in 1860, and it is often described as a starting point for the Arts & Crafts house. This door shows why. It is a plain boarded door under a pointed timber frame, hung on iron strap hinges with a simple box lock, but its surface is painted in dark green with vertical zigzag and chevron bands, and four small stained-glass panels are set into the boards at eye level. Nothing is disguised: the boards, hinges and lock remain visible, and decoration is added by hand rather than by applied molding.",
-"makeItToday": "",
-"dateDisplay": "2010",
-"dateLabel": "Photograph",
-"maker": "Tony Hisgett",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/painted-door-at-red-house-bexleyheath.jpg",
-"local": true,
-"width": 1228,
-"height": 1600,
-"alt": "A dark green boarded door under a pointed wooden frame, painted with zigzag bands, with four small stained-glass panels and iron strap hinges",
-"credit": "Tony Hisgett / Wikimedia Commons",
-"license": "CC BY 2.0",
-"licenseUrl": "https://creativecommons.org/licenses/by/2.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Red_House_home_of_William_Morris_(6).jpg",
-"originalTitle": "Red House home of William Morris (6).jpg"
-},
-"related": [
-"drawing-room-at-red-house-bexleyheath",
-"hallway-and-staircase-at-red-house-bexleyheath",
-"inglenook-fireplace-wightwick-manor"
-]
-},
-{
-"slug": "hallway-and-staircase-at-red-house-bexleyheath",
-"title": "Hall and Oak Staircase, Red House",
-"style": "arts-and-crafts",
-"element": "trim-moulding",
-"tier": "signature",
-"motifs": [
-"newel-post",
-"baluster",
-"built-in-cupboard"
-],
-"materials": [
-"oak",
-"painted-wood"
-],
-"summary": "The hall at Red House, with a plain oak staircase whose newel posts rise into tall pointed caps, beside a large painted cupboard.",
-"description": "The entrance hall of Red House, designed by Philip Webb for William Morris and completed in 1860, is organized around an open staircase of plain, solid oak. Its square newel posts continue upward into tall pyramidal caps, a Gothic echo carried out with the simplest joinery, and the closed string and boarded spandrel under the stair are left without carving. Leaded windows light the stair from above, and a tall painted cupboard stands against the opposite wall. The hall shows the early Arts & Crafts preference for honest structure and good proportion over applied ornament.",
-"makeItToday": "",
-"dateDisplay": "2014",
-"dateLabel": "Photograph",
-"maker": "Ethan Doyle White",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/hallway-and-staircase-at-red-house-bexleyheath.jpg",
-"local": true,
-"width": 1280,
-"height": 766,
-"alt": "A hall with a dark oak staircase with tall pointed newel posts, leaded windows above and a large painted cupboard at the right",
-"credit": "Ethan Doyle White / Wikimedia Commons",
-"license": "CC BY-SA 3.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Hallway_at_Red_House.jpg",
-"originalTitle": "Hallway at Red House.jpg"
-},
-"related": [
-"drawing-room-at-red-house-bexleyheath",
-"painted-door-at-red-house-bexleyheath",
-"spiral-stair-in-the-trustees-office-shaker-village-of-pleasant-hill"
-]
-},
-{
-"slug": "inglenook-fireplace-wightwick-manor",
-"title": "Inglenook with Copper Hood, Wightwick Manor",
-"style": "arts-and-crafts",
-"element": "fireplace-mantels",
-"tier": "heirloom",
-"motifs": [
-"inglenook",
-"copper-hood",
-"built-in-seating"
-],
-"materials": [
-"oak",
-"copper"
-],
-"summary": "An arched inglenook at Wightwick Manor with oak-paneled benches on each side, herringbone-laid tiles and a beaten copper hood over the grate.",
-"description": "Wightwick Manor near Wolverhampton was built between 1887 and 1893 to designs by Edward Ould for Theodore Mander, and is furnished in the spirit of William Morris and the Arts & Crafts movement. This inglenook turns the fireplace into a small room: a broad arch frames an alcove lined with oak paneling, with built-in benches facing each other across the hearth. The back wall is laid with glazed tiles in a herringbone pattern, and a beaten copper hood gathers the smoke above an open grate with brass andirons. Inglenooks like this were one of the defining features of Arts & Crafts houses on both sides of the Atlantic.",
-"makeItToday": "",
-"dateDisplay": "2016",
-"dateLabel": "Photograph",
-"maker": "Mike Peel",
-"medium": "",
-"dimensions": "",
-"image": {
-"src": "/images/details/inglenook-fireplace-wightwick-manor.jpg",
-"local": true,
-"width": 1280,
-"height": 853,
-"alt": "An arched inglenook with oak-paneled built-in benches on either side, green herringbone tiles and a copper hood above a fire grate",
-"credit": "Mike Peel (www.mikepeel.net) / Wikimedia Commons",
-"license": "CC BY-SA 4.0",
-"licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
-},
-"source": {
-"name": "Wikimedia Commons",
-"pageUrl": "https://commons.wikimedia.org/wiki/File:Wightwick_Manor_2016_019.jpg",
-"originalTitle": "Wightwick Manor 2016 019.jpg"
-},
-"related": [
-"drawing-room-at-red-house-bexleyheath",
-"painted-door-at-red-house-bexleyheath",
-"stickley-tiled-chimneypiece-with-copper-hood"
 ]
 }
 ]
