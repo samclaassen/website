@@ -60,7 +60,7 @@ export function RequestForm({ styles, elements, defaults, contactEmail }: Props)
       <div className="border border-border bg-cream-dark/60 p-10">
         <p className="font-serif text-3xl font-semibold text-stone mb-3">Thank you, your request was received</p>
         <p className="text-muted leading-[1.8]">
-          Thank you. We will contact you by email when commissions open. Nothing has been ordered.
+          We will reply by email, usually within two business days, with questions or a first idea of design and price.
         </p>
       </div>
     );
@@ -165,9 +165,9 @@ export function RequestForm({ styles, elements, defaults, contactEmail }: Props)
           <p className="text-[14px] text-red-700">Something went wrong and your request was not sent. Please try again.</p>
         )}
         <button type="submit" disabled={status === "sending"} className="cta-button text-stone self-start disabled:opacity-50">
-          {status === "sending" ? "Sending…" : "Register interest"} <span aria-hidden="true">→</span>
+          {status === "sending" ? "Sending…" : "Send request"} <span aria-hidden="true">→</span>
         </button>
-        <p className="text-[12px] text-muted">We only use your details to contact you about future commissions.</p>
+        <p className="text-[12px] text-muted">We only use your details to reply about your project.</p>
       </div>
     </form>
   );

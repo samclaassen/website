@@ -6,9 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const metadata = generatePageMetadata({
-  title: "Lighting & Hardware Concepts by Era",
+  title: "Hardware by Era",
   description:
-    "Concept illustrations of period lighting and hardware across seven eras, from Arts & Crafts to Art Nouveau, exploring how metalwork completes a room. Design studies, not products for sale.",
+    "Seven architectural eras of decorative hardware design. From Arts & Crafts to Art Nouveau — explore the craft traditions that shaped ornamental home hardware.",
   path: "/collections",
 });
 
@@ -20,24 +20,24 @@ export default function CollectionsPage() {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Home", href: "/" },
-          { name: "Hardware & lighting concepts", href: "/collections" },
+          { name: "Eras", href: "/collections" },
         ])}
       />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Hardware & lighting concepts" },
+          { label: "Eras" },
         ]}
       />
 
       {/* Page header */}
       <section className="px-6 lg:px-10 pt-8 pb-16">
         <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-xl mb-4">
-          Lighting &amp; hardware concepts by era
+          Seven eras of ornamental hardware & lighting
         </h1>
-        <p className="text-base text-muted max-w-xl">
-          {COLLECTIONS.length} eras, {totalPieces} concept pieces. These are design studies exploring how period metalwork completes a room,
-          shown as illustrations. They are not photographs of historical objects and not products for sale.
+        <p className="text-base text-muted max-w-lg">
+          {COLLECTIONS.length} architectural eras. {totalPieces} curated pieces.
+          Centuries of craft tradition documented in solid metal.
         </p>
       </section>
 

@@ -1,7 +1,7 @@
 export const SITE_NAME = "Legacy Homeware";
-export const SITE_TAGLINE = "The Architectural Design Library";
+export const SITE_TAGLINE = "Architectural details, made for your home";
 export const SITE_DESCRIPTION =
-  "A visual reference library of architectural styles and the doors, cabinetry, paneling, mantels and woodwork that define them, from Alpine Stuben to Arts & Crafts built-ins.";
+  "A searchable archive of architectural details across twelve styles, from Shaker cupboards to Art Deco doors, with custom cabinetry, built-ins, mantels, paneling and more made to order and installed in Colorado.";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.legacyhomeware.com";
 
@@ -12,10 +12,15 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Explore Styles", href: "/styles" },
-  { label: "Architectural Elements", href: "/elements" },
-  { label: "Design Library", href: "/library" },
-  { label: "Journal", href: "/journal" },
+  { label: "Styles", href: "/styles" },
+  { label: "Elements", href: "/elements" },
+  { label: "Search", href: "/search" },
+  { label: "Custom", href: "/custom" },
+] as const;
+
+export const SECONDARY_NAV = [
+  { label: "Colorado", href: "/colorado" },
+  { label: "Hardware", href: "/collections" },
   { label: "About", href: "/about" },
 ] as const;
 

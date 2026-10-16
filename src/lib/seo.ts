@@ -136,7 +136,7 @@ export function websiteJsonLd() {
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/library?q={search_term_string}`,
+      target: `${SITE_URL}/search?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
@@ -177,7 +177,7 @@ export function entryJsonLd(entry: {
   sourceUrl: string;
   dateDisplay?: string;
 }) {
-  const url = `${SITE_URL}/library/${entry.slug}`;
+  const url = `${SITE_URL}/details/${entry.slug}`;
   const image: Record<string, unknown> = {
     "@type": "ImageObject",
     contentUrl: entry.imageUrl.startsWith("http") ? entry.imageUrl : `${SITE_URL}${entry.imageUrl}`,
@@ -196,30 +196,6 @@ export function entryJsonLd(entry: {
     about: [entry.styleName, entry.elementName],
     isBasedOn: entry.sourceUrl,
     dateModified: "2026-10-15",
-    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-  };
-}
-
-export function articleJsonLd(a: {
-  slug: string;
-  title: string;
-  description: string;
-  imageUrl?: string;
-  published: string;
-  reviewed: string;
-}) {
-  const url = `${SITE_URL}/journal/${a.slug}`;
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: a.title,
-    description: a.description,
-    url,
-    mainEntityOfPage: url,
-    datePublished: a.published,
-    dateModified: a.reviewed,
-    ...(a.imageUrl ? { image: a.imageUrl.startsWith("http") ? a.imageUrl : `${SITE_URL}${a.imageUrl}` } : {}),
-    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
     publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
   };
 }

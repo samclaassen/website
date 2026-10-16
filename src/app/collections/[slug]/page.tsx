@@ -28,7 +28,7 @@ export async function generateMetadata({
   if (!collection) return {};
 
   return generatePageMetadata({
-    title: `${collection.era} Lighting & Hardware Concepts`,
+    title: `${collection.era} Hardware — Legacy Homeware`,
     description: collection.description,
     path: `/collections/${slug}`,
   });
@@ -58,7 +58,7 @@ export default async function CollectionPage({
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Hardware & lighting concepts", href: "/collections" },
+          { label: "Eras", href: "/collections" },
           { label: collection.era },
         ]}
       />
@@ -79,20 +79,11 @@ export default async function CollectionPage({
           <p className="text-[13px] tracking-[0.15em] uppercase text-white/60 mb-3">
             {collection.period}
           </p>
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-normal leading-[1.05] text-white">
-            {collection.era} lighting &amp; hardware
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.05] text-white">
+            {collection.era}
           </h1>
         </div>
       </section>
-
-      <div className="px-5 sm:px-8 lg:px-12 pt-8">
-        <p className="mx-auto max-w-[1440px] border border-border bg-surface px-5 py-4 text-[14px] leading-[1.65] text-muted">
-          <span className="eyebrow mr-2">Concept illustrations</span>
-          The images and pieces on this page are design studies exploring {collection.era} metalwork. They are not photographs of historical
-          objects and not products for sale. For documented examples, see the{" "}
-          <Link href="/library?element=metal-hardware" className="underline hover:text-stone">hardware in the Design Library</Link>.
-        </p>
-      </div>
 
       {/* Era details — split layout */}
       <section className="bg-cream px-6 lg:px-10 py-16">
