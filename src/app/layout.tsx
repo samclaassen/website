@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Inter, Cormorant_Garamond } from "next/font/google";
+import { Newsreader, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
 import { Header } from "@/components/ui/Header";
@@ -8,23 +8,23 @@ import { Footer } from "@/components/ui/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-const inter = Inter({
+const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
 });
 
-const cormorant = Cormorant_Garamond({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-serif",
+  variable: "--font-dm-sans",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Architectural Details, Made for Your Home`,
+    default: `${SITE_NAME} — The Architectural Design Library`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -56,12 +56,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
-      <body className="min-h-screen flex flex-col bg-cream text-stone antialiased">
+    <html lang="en" className={`${newsreader.variable} ${dmSans.variable}`}>
+      <body className="min-h-screen flex flex-col bg-cream text-stone antialiased font-sans">
         <JsonLd data={organizationJsonLd()} />
         <JsonLd data={websiteJsonLd()} />
         <Header />
-        <main className="flex-1 pt-[72px]">{children}</main>
+        <main className="flex-1 pt-[68px]">{children}</main>
         <Footer />
         {/* PromptWatch visitor analytics: counts visits that arrive from ChatGPT, Claude, Perplexity and other AI tools. */}
         <Script id="promptwatch-analytics" strategy="afterInteractive">

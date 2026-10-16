@@ -5,8 +5,8 @@ import { RequestForm } from "@/components/request/RequestForm";
 import { ELEMENTS, STYLES, getEntry } from "@/lib/details";
 
 export const metadata = generatePageMetadata({
-  title: "Request a Custom Piece",
-  description: "Tell us about your project and we will reply with design questions and a first idea of price.",
+  title: "Register Interest in Future Commissions",
+  description: "Tell us about a project you would like to commission when Legacy Homeware begins offering custom woodwork.",
   path: "/request",
   noIndex: true,
 });
@@ -24,19 +24,19 @@ export default async function RequestPage({
 
   return (
     <>
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Custom work", href: "/custom" }, { label: "Request" }]} />
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Future commissions", href: "/custom" }, { label: "Register interest" }]} />
       <section className="px-6 lg:px-10 pt-8 pb-24">
         <div className="mx-auto max-w-[1400px] grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-4">Custom work</p>
-            <h1 className="font-serif text-[clamp(2.3rem,4vw,3.4rem)] font-semibold leading-[1.1] text-stone mb-6">
-              Request a custom piece
+            <p className="eyebrow mb-4">Future commissions</p>
+            <h1 className="font-serif text-[clamp(2.3rem,4vw,3.4rem)] font-normal leading-[1.1] text-stone mb-6">
+              Register interest
             </h1>
             <p className="text-base leading-[1.85] text-muted mb-6">
-              Tell us what you would like made and where. We reply by email with questions, and then a design and quote within
-              our published price ranges.
+              Commissions are not open yet. Tell us what you would like made and where, and we will contact you when custom work
+              begins. Nothing is ordered or quoted through this form.
             </p>
-            <Link href="/custom" className="text-[14px] underline text-muted hover:text-stone">See prices, tiers and terms</Link>
+            <Link href="/custom" className="text-[14px] underline text-muted hover:text-stone">About future commissions</Link>
           </div>
           <div className="lg:col-span-8">
             <RequestForm

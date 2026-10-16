@@ -912,8 +912,8 @@
 "bronze"
 ],
 "summary": "A decorated interior doorknob and rosette in the Molly Brown House Museum in Denver, typical of the cast, patterned hardware used in high-style houses of the 1880s.",
-"description": "Late-Victorian houses used decorative cast hardware throughout, with matching knobs, rosettes and escutcheons on each door. Details like this set the scale for everything around them: a richly patterned knob looks right against a substantial casing and a paneled door. Metal hardware is not part of our custom woodwork range, but this entry is in the reference library because hardware is the first thing to plan when a period door or cabinet is made. We can machine doors and cabinet fronts to accept salvaged or reproduction hardware.",
-"makeItToday": "Reference only. We can prepare doors and fronts for salvaged or reproduction hardware of this type.",
+"description": "Late-Victorian houses used decorative cast hardware throughout, with matching knobs, rosettes and escutcheons on each door. Details like this set the scale for everything around them: a richly patterned knob looks right against a substantial casing and a paneled door. Hardware is included in the library because it is the first thing to plan when a period door or cabinet is designed. New doors and cabinet fronts can be machined to accept salvaged or reproduction hardware.",
+"makeItToday": "Reference only. New doors and fronts can be prepared for salvaged or reproduction hardware of this type.",
 "dateDisplay": "2019",
 "dateLabel": "Photograph",
 "maker": "Jonathan Mauer",
@@ -1227,7 +1227,7 @@
 "pine"
 ],
 "summary": "A 1:12-scale Thorne Room of a Pennsylvania farmhouse kitchen of 1752, with a large cooking hearth, plank walls, an open dresser and simple painted cupboards.",
-"description": "Colonial kitchens were working rooms built around a large hearth, with storage on open shelves and in simple board cupboards. This miniature shows the essentials: a wide fireplace with a plain beam mantel, an open dresser for pewter and pottery, and walls of vertical boards. It is the origin of much of what people now call farmhouse style. The details are plain and sturdy, which makes them well suited to Essential-tier cabinetry today.",
+"description": "Colonial kitchens were working rooms built around a large hearth, with storage on open shelves and in simple board cupboards. This miniature shows the essentials: a wide fireplace with a plain beam mantel, an open dresser for pewter and pottery, and walls of vertical boards. It is the origin of much of what people now call farmhouse style. The details are plain and sturdy, which makes them easy to adapt to simple cabinetry today.",
 "makeItToday": "Open-shelf dresser and board-and-batten cupboards in pine or paint-grade poplar; Essential tier.",
 "dateDisplay": "c. 1940",
 "dateLabel": "Model made",
@@ -2218,7 +2218,7 @@
 "iron"
 ],
 "summary": "A Georgian doorway from Chalkley Hall near Philadelphia, about 1776, with a stone surround framing a paneled wood door.",
-"description": "Chalkley Hall was a country house in Frankford, outside Philadelphia. Its doorway, now at the Metropolitan Museum, pairs a granite frame with a paneled wood door in the formal Georgian manner, balanced and strongly framed. We include it as a reference for proportion and panel layout. Exterior doors are outside our current custom range, but the same panel arrangement can be used for an interior door or a matching paneled entry wall.",
+"description": "Chalkley Hall was a country house in Frankford, outside Philadelphia. Its doorway, now at the Metropolitan Museum, pairs a granite frame with a paneled wood door in the formal Georgian manner, balanced and strongly framed. It is included as a reference for proportion and panel layout. The same panel arrangement also works for an interior door or a matching paneled entry wall.",
 "makeItToday": "Reference only for exterior doors. The panel layout can be adapted to an interior door or wall paneling.",
 "dateDisplay": "ca. 1776",
 "dateLabel": "Date",
@@ -2402,7 +2402,7 @@
 "oak"
 ],
 "summary": "Part of a carved and gilded oak overmantel by Grinling Gibbons, the master English woodcarver of the late 1600s, with naturalistic flowers, fruit and foliage.",
-"description": "Grinling Gibbons carved garlands of fruit, flowers, leaves and game so realistically that they look alive. This large section, more than 16 feet tall in total, would have framed a painting or mirror above a fireplace. While most of our work is far simpler, Gibbons-style garlands remain a benchmark for carved ornament on English and Colonial Revival mantels. A modern CNC can rough out a garland in hardwood before hand finishing brings back the crispness.",
+"description": "Grinling Gibbons carved garlands of fruit, flowers, leaves and game so realistically that they look alive. This large section, more than 16 feet tall in total, would have framed a painting or mirror above a fireplace. Gibbons-style garlands remain a benchmark for carved ornament on English and Colonial Revival mantels. A modern CNC can rough out a garland in hardwood before hand finishing brings back the crispness.",
 "makeItToday": "Heirloom only: 3D CNC roughing in limewood or basswood with hand finishing, as a garland or drop for a mantel.",
 "dateDisplay": "ca. 1675",
 "dateLabel": "Date",
@@ -2746,7 +2746,7 @@
 {
 "slug": "the-flims-room-switzerland",
 "title": "The Flims Room, Switzerland (c. 1682–84)",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "heirloom",
 "motifs": [
@@ -2794,7 +2794,7 @@
 {
 "slug": "16th-century-stube-from-the-courthouse-in-niederdorf-tiroler-volkskunstmuseum",
 "title": "16th-Century Stube from the Courthouse in Niederdorf, Tiroler Volkskunstmuseum",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -2838,7 +2838,7 @@
 {
 "slug": "stube-bench-from-the-johannser-hof-near-villanders-tiroler-volkskunstmuseum",
 "title": "Stube Bench from the Johannser-Hof near Villanders (c. 1500), Tiroler Volkskunstmuseum",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -2883,7 +2883,7 @@
 {
 "slug": "renaissance-stube-from-thierburg-castle-tiroler-volkskunstmuseum",
 "title": "Renaissance Stube from Thierburg Castle, Tiroler Volkskunstmuseum",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "heirloom",
 "motifs": [
@@ -2928,7 +2928,7 @@
 {
 "slug": "farmhouse-stube-hof-falkner-schnaitter-tyrol",
 "title": "Farmhouse Stube, Hof Falkner-Schnaitter, Tyrol",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "built-ins-bookcases",
 "tier": "signature",
 "motifs": [
@@ -2973,7 +2973,7 @@
 {
 "slug": "farmhouse-stube-hof-horl-wetscher-tyrol",
 "title": "Farmhouse Stube, Hof Hörl-Wetscher, Tyrol",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "built-ins-bookcases",
 "tier": "signature",
 "motifs": [
@@ -3018,7 +3018,7 @@
 {
 "slug": "traditional-tyrolean-stube-at-the-bruckenwirt-inn",
 "title": "Traditional Tyrolean Stube at the Brückenwirt Inn",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -3073,7 +3073,7 @@
 "painted-pine"
 ],
 "summary": "An 1890 photograph of the old kitchen in the Telfair house in Savannah, Georgia, with a large cooking fireplace, a china hutch filled with plates and a spinning wheel.",
-"description": "This photograph, now in the Library of Congress, records a working kitchen of the 19th century: a wide hearth with hanging pots and utensils, a tall open hutch lined with plates, and simple wooden furniture on a stone floor. The arrangement is the same one found in English farmhouses and cottages, which is why we place it here. A plate hutch beside a hearth-like range alcove remains the core of a country kitchen.",
+"description": "This photograph, now in the Library of Congress, records a working kitchen of the 19th century: a wide hearth with hanging pots and utensils, a tall open hutch lined with plates, and simple wooden furniture on a stone floor. The arrangement is the same one found in English farmhouses and cottages, which is why it is grouped with them here. A plate hutch beside a hearth-like range alcove remains the core of a country kitchen.",
 "makeItToday": "Open plate hutch and a range alcove surround with a beam shelf; Essential tier.",
 "dateDisplay": "1890",
 "dateLabel": "Photograph",
@@ -3252,7 +3252,7 @@
 "oak"
 ],
 "summary": "Carved wooden decoration on the main door of the Museum of Cultural History in Oslo, an Art Nouveau building by Henrik Bull completed in 1902.",
-"description": "The museum building on Frederiks gate in Oslo was begun by Karl August Henriksen and completed by Henrik Bull in 1902. Its main door is carved with flowing, organic decoration that blends Art Nouveau curves with Norwegian woodcarving traditions. We include it as a reference for carved panel design. Exterior doors are outside our current custom range, but the carved motifs can be adapted to interior doors and panels.",
+"description": "The museum building on Frederiks gate in Oslo was begun by Karl August Henriksen and completed by Henrik Bull in 1902. Its main door is carved with flowing, organic decoration that blends Art Nouveau curves with Norwegian woodcarving traditions. It is included as a reference for carved panel design. The carved motifs adapt readily to interior doors and panels.",
 "makeItToday": "Reference only for exterior doors; motifs can be adapted to interior doors or carved panels.",
 "dateDisplay": "2017",
 "dateLabel": "Photograph",
@@ -3519,7 +3519,7 @@
 "lodgepole-pine"
 ],
 "summary": "A wide view of the Old Faithful Inn's lobby structure, showing its branching lodgepole-pine brackets, log posts and balcony railings rising to the roof.",
-"description": "The most memorable details of the Old Faithful Inn are its gnarled, branching brackets and railings, made from naturally twisted lodgepole pine. They turn structure into ornament. Selecting and shaping branching timber is specialist work, but the same spirit can be captured in carved or assembled brackets for a mantel, range hood or stair. Heirloom-tier mountain projects often feature one such element as a focal point.",
+"description": "The most memorable details of the Old Faithful Inn are its gnarled, branching brackets and railings, made from naturally twisted lodgepole pine. They turn structure into ornament. Selecting and shaping branching timber is specialist work, but the same spirit can be captured in carved or assembled brackets for a mantel, range hood or stair. Mountain interiors often use one such element as a focal point.",
 "makeItToday": "Feature brackets or railings from selected branching stock or carved forms; Heirloom tier.",
 "dateDisplay": "",
 "dateLabel": "Date",
@@ -5712,7 +5712,7 @@
 "bronze"
 ],
 "summary": "A metal door fitting on the Hôtel Solvay in Brussels, designed by Victor Horta, with a flowing Art Nouveau form framing a bell or speaking grille.",
-"description": "Horta designed even small fittings for his houses, and this metal detail shows how the whiplash curve carried into hardware. Metal hardware is not part of our custom woodwork range, but details like this help set the character of doors and cabinets. Matching the sweep of a pull or escutcheon in the carved profile of a door rail is a simple way to make a custom piece feel coherent.",
+"description": "Horta designed even small fittings for his houses, and this metal detail shows how the whiplash curve carried into hardware. Details like this help set the character of the doors and cabinets around them. Matching the sweep of a pull or escutcheon in the carved profile of a door rail is a simple way to make new woodwork feel coherent.",
 "makeItToday": "Reference only. Doors and cabinet fronts can be designed around period-style hardware.",
 "dateDisplay": "2007",
 "dateLabel": "Photograph",
@@ -5928,7 +5928,7 @@
 {
 "slug": "tyrolean-farmhouse-stube-of-1830",
 "title": "Tyrolean Farmhouse Stube of 1830",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "signature",
 "motifs": [
@@ -5973,7 +5973,7 @@
 {
 "slug": "14th-century-stube-from-the-pifing-farm-south-tyrolean-folklore-museum-dietenhei",
 "title": "14th-Century Stube from the Pifing Farm, South Tyrolean Folklore Museum, Dietenheim",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -6017,7 +6017,7 @@
 {
 "slug": "rhaetian-stube-from-the-tschaggen-farm-south-tyrolean-folklore-museum-dietenheim",
 "title": "Rhaetian Stube from the Tschaggen Farm, South Tyrolean Folklore Museum, Dietenheim",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "wall-paneling-wainscoting",
 "tier": "essential",
 "motifs": [
@@ -6062,7 +6062,7 @@
 {
 "slug": "painted-farmhouse-stube-appenzell-folk-museum-stein",
 "title": "Painted Farmhouse Stube, Appenzell Folk Museum, Stein",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "built-ins-bookcases",
 "tier": "heirloom",
 "motifs": [
@@ -6106,7 +6106,7 @@
 {
 "slug": "bench-with-chip-carved-back-luneburg-heath",
 "title": "Bench with Chip-Carved Back, Lüneburg Heath",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "mudroom-entry",
 "tier": "signature",
 "motifs": [
@@ -6150,7 +6150,7 @@
 {
 "slug": "wrought-iron-wall-bracket",
 "title": "Wrought-Iron Wall Bracket (17th century)",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "metal-hardware",
 "tier": "signature",
 "motifs": [
@@ -6160,7 +6160,7 @@
 "iron"
 ],
 "summary": "A 17th-century wrought-iron wall bracket with scrolls and a hook, about 12 inches tall, of the type used to hang lanterns or signs.",
-"description": "Scrolled iron brackets were a common part of Alpine and Central European houses, used for lanterns, signs and pots. This one shows the classic scroll vocabulary in a compact form. Metal hardware is not part of our custom woodwork range, but brackets like this often accompany Alpine woodwork, and their scrolls can be echoed in carved wood brackets for shelves, range hoods and mantels.",
+"description": "Scrolled iron brackets were a common part of Alpine and Central European houses, used for lanterns, signs and pots. This one shows the classic scroll vocabulary in a compact form. Brackets like this often accompany Alpine woodwork, and their scrolls can be echoed in carved wood brackets for shelves, range hoods and mantels.",
 "makeItToday": "Reference only. Scroll profiles can be adapted into wood brackets.",
 "dateDisplay": "17th century",
 "dateLabel": "Date",
@@ -6194,7 +6194,7 @@
 {
 "slug": "carved-walnut-chest-with-arcaded-front",
 "title": "Carved Walnut Chest with Arcaded Front (17th century)",
-"style": "alpine-tyrolean",
+"style": "alpine-chalet",
 "element": "cabinet-doors-fronts",
 "tier": "signature",
 "motifs": [
