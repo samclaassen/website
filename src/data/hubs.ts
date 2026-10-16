@@ -10,7 +10,7 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
   "arts-and-crafts": {
     intro: [
       "The Arts & Crafts movement began in Britain in the 1860s as a reaction against cheap, machine-made decoration, and reached America as the Craftsman style of Gustav Stickley, Greene & Greene and thousands of bungalows. Its interiors put the woodwork on display: quarter-sawn oak, visible joinery, built-in seating and storage, and fireplaces designed together with the bookcases beside them.",
-      "For a custom project, Arts & Crafts rewards restraint. Square proportions, flat or simply framed panels and a warm stained finish do most of the work, with ornament limited to a through-tenon, a corbel or a band of leaded glass.",
+      "In a new interior, Arts & Crafts rewards restraint. Square proportions, flat or simply framed panels and a warm stained finish do most of the work, with ornament limited to a through-tenon, a corbel or a band of leaded glass.",
     ],
     identify: [
       "Quarter-sawn oak or chestnut with a warm brown, fumed-looking finish",
@@ -47,7 +47,7 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
       "Built-in buffets, corner china closets and window seats",
       "Colonial Revival mantels with slim columns or pilasters",
     ],
-    colorado: "Denver Squares are found throughout the city's early-20th-century neighborhoods. Original built-ins are often missing, which makes them one of the most common custom restoration projects.",
+    colorado: "Denver Squares are found throughout the city's early-20th-century neighborhoods. Original built-ins are often missing, which makes them one of the most common restoration projects in the city.",
   },
   "tudor-revival": {
     intro: [
@@ -79,7 +79,7 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
   shaker: {
     intro: [
       "The Shakers, a religious community that flourished in the United States from the late 1700s through the 1800s, built furniture and interiors with nothing extra. Their rooms are lined with built-in drawers and cupboards, peg rails run around the walls, and every proportion is carefully judged. The flat recessed-panel cabinet door that now fills American kitchens comes from this tradition.",
-      "Shaker design is ideal for modern custom work: simple joinery, clean frames and generous built-in storage. Its strength is proportion, so drawer heights, rail widths and door sizes matter more than ornament.",
+      "Shaker design translates naturally to modern rooms: simple joinery, clean frames and generous built-in storage. Its strength is proportion, so drawer heights, rail widths and door sizes matter more than ornament.",
     ],
     identify: [
       "Flat recessed-panel doors in square frames",
@@ -92,7 +92,7 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
   "art-deco": {
     intro: [
       "Art Deco, from about 1920 to 1940, combined geometry with luxury: stepped forms borrowed from skyscrapers, sunbursts and chevrons, fluting, exotic veneers, marquetry and lacquer. It appeared in ocean liners, cinemas, office lobbies and the federal buildings of the 1930s, and in a smoother form as Streamline Moderne.",
-      "For custom work, Deco is about surface and silhouette. Veneered or inlaid doors, fluted panels, stepped casings and geometric grilles carry the style, and they are especially effective in bars, powder rooms and entries.",
+      "In woodwork, Deco is about surface and silhouette. Veneered or inlaid doors, fluted panels, stepped casings and geometric grilles carry the style, and they are especially effective in bars, powder rooms and entries.",
     ],
     identify: [
       "Stepped (ziggurat) profiles and setbacks",
@@ -106,7 +106,7 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
   "art-nouveau": {
     intro: [
       "Art Nouveau, from about 1890 to 1910, rejected historical revivals in favor of organic line: the whiplash curve, plant and flower forms, and woodwork that seems to grow. Its centers were Brussels, Paris and Nancy, with architects and makers such as Victor Horta, Hector Guimard, Émile Gallé and Louis Majorelle.",
-      "Art Nouveau is demanding to make well, because curves must flow through rails, panels and glazing bars as one line. Today's CNC carving makes that more achievable, from a carved door panel to a curved glazed partition.",
+      "Art Nouveau is demanding to make well, because curves must flow through rails, panels and glazing bars as one line. Its finest work, from carved door panels to curved glazed partitions, shows how far joinery can be pushed toward sculpture.",
     ],
     identify: [
       "Whiplash curves and flowing, asymmetrical lines",
@@ -116,10 +116,12 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
       "Metalwork shaped like stems and tendrils",
     ],
   },
-  "alpine-tyrolean": {
+  "alpine-chalet": {
     intro: [
-      "Alpine interiors center on the Stube: a low, wood-lined room heated by a tiled stove, with benches built along the walls and a corner table. From medieval farmhouses to Renaissance castles in Tyrol and Switzerland, the Stube was paneled in pine, larch, stone pine or walnut, sometimes plain and sometimes carved, inlaid or painted.",
-      "Its appeal is warmth. Board paneling, a built-in corner bench, chip carving and painted cupboard doors translate directly to mountain homes and to dining nooks anywhere.",
+      "Alpine interiors center on the Stube: a low, wood-lined living room heated by a tiled stove that was usually fired from outside the room, so the space stayed warm and free of smoke. From medieval farmhouses to Renaissance castles in Tyrol and Switzerland, the Stube was paneled in pine, larch, Swiss stone pine or walnut, sometimes left plain and sometimes carved, inlaid or painted.",
+      "The room was organized around fixed furniture. Benches ran along the walls and met in a corner, where the family table stood, and in Catholic regions a crucifix hung above it in the corner known as the Herrgottswinkel. Ceilings were boarded or coffered, doors were heavy plank or paneled constructions, and cupboards were often built into the paneling.",
+      "Decoration followed the means of the household. Farmhouses used chip carving, cut-out motifs and painted flowers on cupboards and beds; wealthier houses and town halls commissioned carved friezes, arched panels and inlay. The documented rooms in this library, many preserved in folk-life museums in Innsbruck, Dietenheim (South Tyrol) and Stein (Appenzell), show that range.",
+      "Its appeal today is warmth. Board paneling, a built-in corner bench, chip-carved details and painted cupboard doors all carry over directly to mountain houses and dining nooks elsewhere. Modern chalet style is a looser idea, often mixing rustic timber with contemporary finishes; the entries here record the historical rooms it draws on.",
     ],
     identify: [
       "Wood-lined rooms with board or arched paneling",
@@ -176,56 +178,56 @@ export const STYLE_HUBS: Record<string, StyleHub> = {
 export const ELEMENT_HUBS: Record<string, string[]> = {
   "kitchen-cabinets": [
     "Kitchen cabinetry sets the character of a house more than any other woodwork. Historic kitchens rarely had continuous upper and lower cabinets; they used dressers, hutches, built-in cases and work counters, which is why period kitchens feel more like furnished rooms.",
-    "Our kitchen cabinets are built to measure and installed in Colorado, with style details drawn from the examples below.",
+    "The examples below range from Shaker and Georgian kitchens to Craftsman pantries and English country dressers, and show how each style handled storage, display and work surfaces.",
   ],
   "cabinet-doors-fronts": [
     "Cabinet doors and drawer fronts carry most of a style's identity, from the Shaker flat panel to Victorian carved panels and mid-century slab fronts. New fronts can also transform existing cabinets.",
-    "We make custom doors and fronts to fit new or existing boxes and ship them finished.",
+    "Look closely at the frame: rail and stile widths, the panel profile and whether the door sits inset or overlays the case all change how a front reads.",
   ],
   "built-ins-bookcases": [
     "Built-ins are the most characteristic feature of older houses: bookcases beside a fireplace, window seats, inglenooks, built-in sideboards and china closets. They make storage part of the architecture.",
-    "We design and install built-ins in Colorado, matched to the style of the house.",
+    "Many of the examples here were designed together with the room around them, which is why their proportions match the windows, fireplace and trim.",
   ],
   "mudroom-entry": [
     "Entries and mudrooms need hardworking storage: benches, hooks, peg rails, lockers and cupboards. Historic houses offer good models, from Shaker peg rails to hall benches and linen closets.",
-    "We build mudroom and entry storage to measure and install it in Colorado.",
+    "Benches, settles and peg rails from Shaker, Alpine and English houses remain the clearest models for storage at a door.",
   ],
   "wall-paneling-wainscoting": [
     "Wall paneling ranges from simple board-and-batten to full-height Georgian rooms, Tudor linenfold and the wood-lined Alpine Stube. It is one of the most effective ways to give a room period character.",
-    "We cut paneling kits to your measurements and can install them in Colorado.",
+    "Height is the first decision: dado-height wainscoting, a tall wainscot topped by a plate rail, or full-height paneling from floor to cornice.",
   ],
   "fireplace-mantels": [
     "The mantel is the focal point of most traditional rooms. Its form changes sharply from style to style: Georgian pilasters and overmantels, Federal reeding, Victorian carving, Craftsman tile and oak, and rustic stone with a timber shelf.",
-    "We make mantels and surrounds to fit your fireplace. Clearances must meet code for the specific firebox.",
+    "Any new mantel must respect the clearances required for its specific firebox, which is one reason historic proportions are often adjusted today.",
   ],
   "range-hoods": [
     "Today's statement range hood has historic precedents in the copper hoods of Victorian kitchens, Craftsman chimneypieces and lodge fireplaces. A hood cover can define a kitchen's style on its own.",
-    "We make hood covers around a ventilation insert sized for your range.",
+    "A modern hood cover conceals a ventilation insert, so its form is free to follow the style of the room.",
   ],
   "interior-doors": [
     "Interior doors reflect a house's period through their panel layout, glazing and casing. Five-panel doors, French doors, linenfold panels and Deco inlay each belong to a different moment.",
-    "We make interior doors to fit existing openings or new construction, finished and machined for hardware.",
+    "Panel layout, glazing and the casing around the opening are the clearest clues to when, and in what style, a door was made.",
   ],
   "trim-moulding": [
     "Trim and moulding, including casings, baseboards, crown, stair parts and staircases, tie a house together. Matching original profiles is often the key to a convincing restoration.",
-    "We can match existing profiles or make period mouldings from historical references.",
+    "Profiles were often run in sets, so casing, base and crown share proportions and shapes within a single house.",
   ],
   "corbels-brackets-ornament": [
     "Corbels, brackets and carved ornament add emphasis where it is needed: under a mantel shelf, at the ends of a hood, at the top of a newel. Historic examples range from Sullivan's terra-cotta to Alpine scrolls.",
-    "We carve brackets and ornament to order in paint-grade or stain-grade wood.",
+    "Ornament is most convincing where it does a visible job: carrying a shelf, ending a beam or framing an opening.",
   ],
   "bathroom-vanities": [
     "Bathroom vanities descend from the wash stands and dressing tables of earlier houses. Furniture-style vanities with legs, shaped backsplashes or built-in dressing areas bring that history into a modern bathroom.",
-    "We make custom vanity cabinets; tops and plumbing are coordinated separately.",
+    "Furniture-style bases with legs, toe kicks and paneled ends are what give historic bathrooms their character.",
   ],
   "radiator-covers": [
     "Radiator covers hide old heaters while adding a decorative grille. Many of the best patterns come from elevator screens, Gothic grilles and Art Deco vents.",
-    "We make radiator covers to measure with grilles designed for airflow.",
+    "A good cover leaves enough open area in the grille and top for warm air to circulate.",
   ],
   "exterior-doors": [
-    "Exterior doors are included here as references. They require weather-resistant construction and specialist hardware, and are not yet part of our custom range.",
+    "Exterior doors are documented here as references for proportion, paneling and carving. They also require weather-resistant construction, thresholds and specialist hardware.",
   ],
   "metal-hardware": [
-    "Metal hardware is included as a reference for designing doors and cabinets around period knobs, pulls and fittings. It is not part of our custom woodwork range; see the hardware archive for our lighting and hardware collections.",
+    "Hardware is documented as a complement to the woodwork: knobs, escutcheons, hinges and brackets were usually chosen together with the doors and cabinets they serve.",
   ],
 };

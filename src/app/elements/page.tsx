@@ -3,64 +3,84 @@ import { generatePageMetadata, breadcrumbJsonLd, itemListJsonLd } from "@/lib/se
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { EntryImage } from "@/components/details/EntryImage";
-import { ELEMENTS, coverEntry, entriesForElement } from "@/lib/details";
-import { fromPrice, pricingFor } from "@/lib/pricing";
+import { ELEMENTS, coverEntry, entriesForElement, getElement, getEntry, isCatalogPlate, photoEntries } from "@/lib/details";
+import { ELEMENT_GROUPS, groupHref } from "@/data/elementGroups";
 
 export const metadata = generatePageMetadata({
-  title: "Architectural Elements: Cabinets, Mantels, Paneling, Doors and More",
+  title: "Architectural Elements: Doors, Cabinetry, Paneling, Fireplaces and Ornament",
   description:
-    "Browse custom cabinetry, built-ins, mantels, range hoods, wall paneling, interior doors, trim and more, with historical examples and published price ranges.",
+    "Browse the architectural library by object: interior doors, cabinetry and built-ins, wall paneling, fireplaces, stairs and trim, ornament and hardware, with documented examples in every style.",
   path: "/elements",
 });
 
 export default function ElementsPage() {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Elements", href: "/elements" }])} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Architectural Elements", href: "/elements" }])} />
       <JsonLd data={itemListJsonLd("Architectural elements", ELEMENTS.map((e) => ({ name: e.name, path: `/elements/${e.slug}` })))} />
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Elements" }]} />
+      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Architectural Elements" }]} />
 
-      <section className="px-6 lg:px-10 pt-8 pb-16">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-4">Explore by element</p>
-          <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-2xl mb-6">
-            The parts of a house we make to order
-          </h1>
-          <p className="text-base leading-[1.8] text-muted max-w-2xl">
-            Cabinetry, built-ins, paneling, mantels, hoods, doors, trim and ornament, each with historical examples across
-            every style and a published price range for a custom version.
+      <section className="px-5 sm:px-8 lg:px-12 pt-6 pb-16">
+        <div className="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-5">Architectural elements</p>
+            <h1 className="font-serif text-[clamp(2.6rem,5vw,4.25rem)] font-normal leading-[1.04] tracking-[-0.015em] text-stone">
+              Every detail has a history
+            </h1>
+          </div>
+          <p className="lg:col-span-5 lg:pt-12 text-[17px] leading-[1.75] text-muted">
+            Browse by the object itself: how doors, cabinetry, paneling, fireplaces, stairs and ornament were designed in each tradition, and how
+            those designs compare across styles.
           </p>
         </div>
       </section>
 
-      <section className="px-6 lg:px-10 pb-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
-          {ELEMENTS.map((el) => {
-            const list = entriesForElement(el.slug);
-            const cover = coverEntry(list);
-            const from = fromPrice(el.slug);
+      <div className="px-5 sm:px-8 lg:px-12 pb-28">
+        <div className="mx-auto max-w-[1440px] space-y-24">
+          {ELEMENT_GROUPS.map((g) => {
+            const cover = getEntry(g.cover);
+            const count = g.elements.reduce((n, el) => n + entriesForElement(el).length, 0);
             return (
-              <Link key={el.slug} href={`/elements/${el.slug}`} className="group">
-                <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-5">
-                  {cover && (
-                    <EntryImage
-                      image={cover.image}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  )}
+              <section key={g.slug} id={g.slug} className="scroll-mt-28 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 border-t border-border pt-12">
+                <Link href={groupHref(g)} className="group lg:col-span-4 block">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-cream-dark mb-5">
+                    {cover && <EntryImage image={cover.image} fill sizes="(max-width: 1024px) 100vw, 33vw" className="img-quiet object-cover" />}
+                  </div>
+                </Link>
+                <div className="lg:col-span-8">
+                  <h2 className="font-serif text-[clamp(2rem,3.4vw,2.9rem)] font-normal leading-[1.08] text-stone mb-3">{g.name}</h2>
+                  <p className="text-[16px] leading-[1.7] text-muted mb-2 max-w-2xl">{g.description}</p>
+                  <p className="text-[13px] text-light mb-8">{count} documented examples</p>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                    {g.elements
+                      .map((el) => ({ el: getElement(el)!, list: entriesForElement(el) }))
+                      .filter((x) => x.el && x.list.length > 0)
+                      .map(({ el, list }) => {
+                        const c = photoEntries(list).find((e) => e.image.local) ?? coverEntry(list);
+                        return (
+                          <Link key={el.slug} href={`/elements/${el.slug}`} className="group block">
+                            <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-3">
+                              {c && (
+                                <EntryImage
+                                  image={c.image}
+                                  fill
+                                  sizes="(max-width: 768px) 50vw, 22vw"
+                                  className={`img-quiet ${isCatalogPlate(c) ? "object-contain p-3" : "object-cover"}`}
+                                />
+                              )}
+                            </div>
+                            <h3 className="font-serif text-[20px] leading-[1.2] text-stone">{el.name}</h3>
+                            <p className="mt-1 text-[12.5px] text-light">{list.length} examples</p>
+                          </Link>
+                        );
+                      })}
+                  </div>
                 </div>
-                <h2 className="font-serif text-2xl font-semibold text-stone group-hover:text-muted transition-colors">{el.name}</h2>
-                <p className="mt-2 text-[13px] text-muted">
-                  {list.length} examples
-                  {from ? ` · custom from ${from} ${pricingFor(el.slug)?.unit.split(",")[0]}` : " · reference only"}
-                </p>
-              </Link>
+              </section>
             );
           })}
         </div>
-      </section>
+      </div>
     </>
   );
 }

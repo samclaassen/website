@@ -3,59 +3,94 @@ import { generatePageMetadata, breadcrumbJsonLd, itemListJsonLd } from "@/lib/se
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { EntryImage } from "@/components/details/EntryImage";
-import { STYLES, entriesForStyle, coverEntry } from "@/lib/details";
+import { STYLES, coverEntry, entriesForStyle, getEntry, isCatalogPlate } from "@/lib/details";
+import { STYLE_META } from "@/data/styleMeta";
 
 export const metadata = generatePageMetadata({
-  title: "Architectural Styles",
+  title: "Architectural Styles: A Visual Directory",
   description:
-    "Explore twelve architectural styles, from Tudor and Georgian to Arts & Crafts, Art Deco, mid-century and mountain modern, through real examples of cabinetry, paneling, mantels, doors and built-ins.",
+    "A visual directory of architectural styles and regional traditions, from Alpine Chalet and English Country to Arts & Crafts, Georgian, Art Nouveau and Art Deco, explored through their woodwork.",
   path: "/styles",
 });
 
 export default function StylesPage() {
+  const cards = STYLES.map((s) => {
+    const meta = STYLE_META[s.slug];
+    const list = entriesForStyle(s.slug);
+    return { s, meta, count: list.length, cover: (meta && getEntry(meta.cover)) || coverEntry(list) };
+  });
+  const flagships = cards.filter((c) => c.meta?.flagship);
+  const rest = cards.filter((c) => !c.meta?.flagship);
+
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Styles", href: "/styles" }])} />
       <JsonLd data={itemListJsonLd("Architectural styles", STYLES.map((s) => ({ name: s.name, path: `/styles/${s.slug}` })))} />
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Styles" }]} />
 
-      <section className="px-6 lg:px-10 pt-8 pb-16">
-        <div className="mx-auto max-w-[1400px]">
-          <p className="text-[13px] tracking-[0.15em] uppercase text-bark mb-4">Explore by style</p>
-          <h1 className="font-serif text-[clamp(2.5rem,5vw,4rem)] font-semibold leading-[1.1] text-stone max-w-2xl mb-6">
-            Twelve architectural styles, told through their details
-          </h1>
-          <p className="text-base leading-[1.8] text-muted max-w-2xl">
-            Each style page explains how to recognize the style and gathers real historical examples of its
-            cabinetry, paneling, mantels, doors and built-ins. Every example can be the starting point for a custom piece.
+      <section className="px-5 sm:px-8 lg:px-12 pt-6 pb-16">
+        <div className="mx-auto max-w-[1440px] grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="lg:col-span-7">
+            <p className="eyebrow mb-5">Explore styles</p>
+            <h1 className="font-serif text-[clamp(2.6rem,5vw,4.25rem)] font-normal leading-[1.04] tracking-[-0.015em] text-stone">
+              Architectural traditions, told through their details
+            </h1>
+          </div>
+          <p className="lg:col-span-5 lg:pt-12 text-[17px] leading-[1.75] text-muted">
+            Some of these are historical periods, some are regional building traditions, and several overlap. Each guide explains how to recognize
+            the style and gathers documented examples of its doors, paneling, cabinetry, fireplaces and ornament.
           </p>
         </div>
       </section>
 
-      <section className="px-6 lg:px-10 pb-24">
-        <div className="mx-auto max-w-[1400px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
-          {STYLES.map((s) => {
-            const list = entriesForStyle(s.slug);
-            const cover = coverEntry(list);
-            return (
-              <Link key={s.slug} href={`/styles/${s.slug}`} className="group">
+      <section className="px-5 sm:px-8 lg:px-12 pb-16">
+        <div className="mx-auto max-w-[1440px]">
+          <p className="text-[12px] tracking-[0.16em] uppercase text-light mb-6">Featured collections</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {flagships.map(({ s, meta, count, cover }) => (
+              <Link key={s.slug} href={`/styles/${s.slug}`} className="group block">
+                <div className="relative aspect-[4/5] overflow-hidden bg-cream-dark mb-5">
+                  {cover && (
+                    <EntryImage
+                      image={cover.image}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className={`img-quiet ${isCatalogPlate(cover) ? "object-contain p-5" : "object-cover"}`}
+                    />
+                  )}
+                </div>
+                <p className="text-[12px] tracking-[0.12em] uppercase text-light mb-2">{meta?.context}</p>
+                <h2 className="font-serif text-[32px] font-normal leading-[1.1] text-stone mb-2">{s.name}</h2>
+                <p className="text-[15px] leading-[1.65] text-muted">{meta?.tagline}</p>
+                <p className="mt-2 text-[13px] text-light">{count} documented details</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 sm:px-8 lg:px-12 pb-28">
+        <div className="mx-auto max-w-[1440px] border-t border-border pt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+            {rest.map(({ s, meta, count, cover }) => (
+              <Link key={s.slug} href={`/styles/${s.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-5">
                   {cover && (
                     <EntryImage
                       image={cover.image}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                      className={`img-quiet ${isCatalogPlate(cover) ? "object-contain p-5" : "object-cover"}`}
                     />
                   )}
                 </div>
-                <p className="text-[12px] text-muted mb-1">{s.era}</p>
-                <h2 className="font-serif text-2xl font-semibold text-stone group-hover:text-muted transition-colors">{s.name}</h2>
-                <p className="mt-2 text-[14px] leading-[1.7] text-muted">{s.summary}</p>
-                <p className="mt-3 text-[12px] tracking-[0.08em] uppercase text-bark">{list.length} examples</p>
+                <p className="text-[12px] tracking-[0.12em] uppercase text-light mb-2">{meta?.context ?? s.era}</p>
+                <h2 className="font-serif text-[26px] font-normal leading-[1.15] text-stone mb-2">{s.name}</h2>
+                <p className="text-[14.5px] leading-[1.65] text-muted">{meta?.tagline ?? s.summary}</p>
+                <p className="mt-2 text-[13px] text-light">{count} documented details</p>
               </Link>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </section>
     </>
