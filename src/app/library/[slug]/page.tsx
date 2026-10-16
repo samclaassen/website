@@ -72,7 +72,7 @@ export default async function LibraryEntryPage({ params }: { params: Promise<Par
         ))}</span>]] as [string, React.ReactNode][])
       : []),
     [entry.dateLabel || "Date", entry.dateDisplay],
-    ["Maker or designer", entry.maker],
+    [entry.dateLabel === "Photograph" ? "Photographer" : "Maker or designer", entry.maker],
     ["Recorded medium", entry.medium],
     ["Dimensions", entry.dimensions],
     ["Evidence", provenanceLabel(entry)],

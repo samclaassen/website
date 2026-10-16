@@ -37,6 +37,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // Google Search Console: set GOOGLE_SITE_VERIFICATION in Vercel to the token from the HTML-tag method.
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
   robots: {
     index: true,
     follow: true,

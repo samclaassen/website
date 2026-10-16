@@ -39,7 +39,10 @@ export default async function ElementPage({ params }: { params: Promise<Params> 
   if (!el) notFound();
   const list = entriesForElement(element);
   const group = groupForElement(element);
-  const byStyle = STYLES.map((s) => ({ s, items: photoEntries(list.filter((e) => e.style === s.slug)) })).filter((g) => g.items.length > 0);
+  const byStyle = STYLES.map((s) => ({ s, items: photoEntries(list.filter((e) => e.style === s.slug)) }))
+    .filter((g) => g.items.length > 0)
+    // Styles with documented photographs first, then those shown through period catalogs.
+    .sort((a, b) => b.items.filter((e) => !isCatalogPlate(e)).length - a.items.filter((e) => !isCatalogPlate(e)).length);
   const siblings = (group?.elements ?? []).filter((x) => x !== element).map((x) => getElement(x)).filter(Boolean);
   const reading = articlesForElement(element).slice(0, 3);
   const hub = ELEMENT_HUBS[element] ?? [];

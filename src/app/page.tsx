@@ -9,7 +9,7 @@ import { COLLECTIONS } from "@/lib/collections";
 import { ENTRIES, STYLES, entriesFor, entriesForElement, entriesForStyle, getElement, getEntry, hasComboPage, isCatalogPlate, type Entry } from "@/lib/details";
 import { STYLE_META } from "@/data/styleMeta";
 import { ELEMENT_GROUPS, groupHref } from "@/data/elementGroups";
-import { ARTICLES } from "@/data/journal";
+import { ARTICLES, getArticle } from "@/data/journal";
 
 export const metadata = generatePageMetadata({
   title: `${SITE_NAME} — The Architectural Design Library`,
@@ -27,9 +27,9 @@ const ALPINE_FEATURE = {
   src: "/images/details/painted-farmhouse-stube-appenzell-folk-museum-stein-2400.jpg",
   entry: "painted-farmhouse-stube-appenzell-folk-museum-stein",
   details: [
+    "carved-gothic-door-in-the-niederdorf-stube",
+    "painted-star-door-gasthof-tiroler-weinhaus-achenkirch",
     "bench-with-chip-carved-back-luneburg-heath",
-    "14th-century-stube-from-the-pifing-farm-south-tyrolean-folklore-museum-dietenhei",
-    "rhaetian-stube-from-the-tschaggen-farm-south-tyrolean-folklore-museum-dietenheim",
   ],
 };
 
@@ -39,9 +39,9 @@ const DETAILS_WORTH_EXPLORING = [
   "spiral-stair-in-the-trustees-office-shaker-village-of-pleasant-hill",
   "marquetry-elevator-doors-chrysler-building-new-york",
   "painted-beam-bracket-musee-de-l-ecole-de-nancy",
-  "end-dresser-in-the-kitchen-lanhydrock-house-cornwall",
+  "painted-door-at-red-house-bexleyheath",
   "samuel-mcintire-mantel-from-the-elias-hasket-derby-house-salem",
-  "painted-corner-cupboard-from-lancaster-county-pennsylvania",
+  "inglenook-fireplace-wightwick-manor",
 ];
 
 const CRAFT_CLOSEUPS = [
@@ -323,8 +323,15 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col gap-3 items-start">
-              <Link href="/journal/wainscoting-vs-wall-paneling" className="text-link">Wainscoting vs. wall paneling <span aria-hidden="true">→</span></Link>
-              <Link href="/journal/traditional-interior-door-styles" className="text-link">A visual guide to traditional doors <span aria-hidden="true">→</span></Link>
+              {["wainscoting-vs-wall-paneling", "traditional-interior-door-styles", "alpine-chalet-interiors"]
+                .map((slug) => getArticle(slug))
+                .filter(Boolean)
+                .slice(0, 2)
+                .map((a) => (
+                  <Link key={a!.slug} href={`/journal/${a!.slug}`} className="text-link">
+                    {a!.shortTitle ?? a!.title} <span aria-hidden="true">→</span>
+                  </Link>
+                ))}
             </div>
           </div>
           <div className="lg:col-span-7 grid grid-cols-2 gap-4 sm:gap-5">

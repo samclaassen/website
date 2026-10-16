@@ -3,9 +3,8 @@
  * and render through /journal/[slug]. Articles with `custom: true` have their own
  * route file (for tables or other bespoke layouts) and only contribute metadata here.
  */
-import doors from "./journal/traditional-interior-door-styles.json";
-import paneling from "./journal/wainscoting-vs-wall-paneling.json";
-import alpine from "./journal/alpine-chalet-interiors.json";
+import fs from "node:fs";
+import path from "node:path";
 
 export type ArticleBlock =
   | { type: "p"; text: string }
@@ -32,11 +31,24 @@ export interface Article {
   custom?: boolean;
 }
 
-const JSON_ARTICLES = [
-  { ...(doors as unknown as Article), shortTitle: "Traditional interior door styles", kicker: "Visual guide" },
-  { ...(paneling as unknown as Article), shortTitle: "Wainscoting vs. wall paneling", kicker: "Explainer" },
-  { ...(alpine as unknown as Article), shortTitle: "What defines an Alpine chalet interior?", kicker: "Style guide" },
-].map((a) => ({ ...a, published: a.published ?? "2026-10-16", reviewed: a.reviewed ?? "2026-10-16" })) as Article[];
+/** Editorial order and display labels; any researched JSON article present is included. */
+const ORDER: Record<string, { shortTitle: string; kicker: string }> = {
+  "alpine-chalet-interiors": { shortTitle: "What defines an Alpine chalet interior?", kicker: "Style guide" },
+  "traditional-interior-door-styles": { shortTitle: "Traditional interior door styles", kicker: "Visual guide" },
+  "wainscoting-vs-wall-paneling": { shortTitle: "Wainscoting vs. wall paneling", kicker: "Explainer" },
+};
+
+function loadJsonArticles(): Article[] {
+  const dir = path.join(process.cwd(), "src/data/journal");
+  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith(".json")) : [];
+  const list = files.map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article);
+  const keys = Object.keys(ORDER);
+  return list
+    .map((a) => ({ ...a, ...(ORDER[a.slug] ?? { kicker: "Guide" }), published: a.published ?? "2026-10-16", reviewed: a.reviewed ?? "2026-10-16" }))
+    .sort((a, b) => (keys.indexOf(a.slug) + 1 || 99) - (keys.indexOf(b.slug) + 1 || 99));
+}
+
+const JSON_ARTICLES = loadJsonArticles();
 
 const CUSTOM_ARTICLES: Article[] = [
   {
