@@ -3,6 +3,8 @@ import { breadcrumbJsonLd, generatePageMetadata, webPageJsonLd } from "@/lib/seo
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { PIECES } from "@/lib/pieces";
+import { CreditedImage } from "@/components/media/CreditedImage";
+import { libraryPhoto } from "@/data/image-library";
 
 const DESCRIPTION =
   "Legacy Homeware is a curated guide to new home items made the way they used to be, so they last long enough to hand down.";
@@ -15,6 +17,14 @@ export default function AboutPage() {
       <JsonLd data={webPageJsonLd({ title: "About Legacy Homeware", description: DESCRIPTION, path: "/about" })} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "About", href: "/about" }])} />
       <PageHeader kicker="About" title="Why Legacy Homeware" />
+      <div className="wrap max-w-[1040px] pb-14">
+        <CreditedImage
+          photo={libraryPhoto("craft-bronze-pour")}
+          frame="aspect-[16/9]"
+          sizes="(min-width: 1040px) 980px, 100vw"
+          priority
+        />
+      </div>
       <div className="wrap max-w-[720px] pb-24 prose-lh text-[19px]">
         <p>
           Most of what fills a home today is made to be replaced. A nonstick pan lasts a few years. A
@@ -26,12 +36,31 @@ export default function AboutPage() {
           line pans with tin, and bronze is still poured into sand. Legacy Homeware is a guide to them: new pieces
           you can buy today, made the way they used to be, that should last long enough to hand down.
         </p>
+        <div className="not-prose my-12 grid gap-6 sm:grid-cols-2">
+          <CreditedImage
+            photo={libraryPhoto("hist-pancake-cook")}
+            frame="aspect-[4/5]"
+            sizes="(min-width: 640px) 340px, 100vw"
+          />
+          <CreditedImage
+            photo={libraryPhoto("hist-kitchen-interior")}
+            frame="aspect-[4/5]"
+            sizes="(min-width: 640px) 340px, 100vw"
+          />
+        </div>
         <h2>What we do</h2>
         <ul>
           <li>We choose pieces against a published test, the <Link href="/standard">Heirloom Standard</Link>.</li>
           <li>We say what we haven&apos;t confirmed yet, and what&apos;s worth knowing before you buy.</li>
           <li>We link to the maker or retailer. We don&apos;t sell anything ourselves.</li>
         </ul>
+        <div className="not-prose my-12">
+          <CreditedImage
+            photo={libraryPhoto("craft-woodturning")}
+            frame="aspect-[3/2]"
+            sizes="(min-width: 720px) 680px, 100vw"
+          />
+        </div>
         <h2>How we&apos;re paid</h2>
         <p>
           Some links are affiliate links, which may earn us a commission. That never decides what we include: we

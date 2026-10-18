@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { breadcrumbJsonLd, generatePageMetadata, productJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PieceVisual } from "@/components/media/PieceVisual";
+import { CreditedImage } from "@/components/media/CreditedImage";
+import { libraryPhoto } from "@/data/image-library";
 import { BuyCard } from "@/components/pieces/BuyCard";
 import { StandardPanel } from "@/components/pieces/StandardPanel";
 import { PieceCard } from "@/components/pieces/PieceCard";
@@ -90,9 +92,15 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
           <div className="lg:sticky lg:top-8">
             <PieceVisual piece={p} size="hero" priority />
             {!p.photo && (
-              <p className="mt-3 text-[13px] text-caption font-label">
-                No photo yet. We only show maker photos once we have permission to.
+              <p className="mt-2 text-[12.5px] leading-snug text-caption font-label">
+                We only show photos of the piece itself once the maker gives permission.
               </p>
+            )}
+            {p.materialFamily === "soapstone" && (
+              <div className="mt-8">
+                <p className="lab mb-2">The material: soapstone, close up</p>
+                <CreditedImage photo={libraryPhoto("mat-soapstone")} frame="aspect-[3/1]" sizes="(min-width: 1024px) 600px, 100vw" />
+              </div>
             )}
           </div>
 

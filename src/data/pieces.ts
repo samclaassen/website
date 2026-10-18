@@ -19,6 +19,7 @@ import type {
   CheckKey,
   MaterialFamily,
   Piece,
+  PieceKind,
   StandardCheck,
   StandardChecks,
   Tier,
@@ -28,7 +29,7 @@ export const PRICE_CHECKED = "2026-10-18";
 export const PRICE_CHECKED_DISPLAY = "Oct 18, 2026";
 
 /** What sort of object it is; drives the default repair and ageing reasons. */
-type Kind = "cookware" | "stove" | "blade" | "tool" | "hardware" | "board";
+type Kind = PieceKind;
 
 interface Raw {
   id: string;
@@ -1203,6 +1204,7 @@ export const PIECES: Piece[] = RAW.map((r) => {
     maker: r.maker,
     makerBase: r.makerBase,
     category: CATEGORY[r.id[0]],
+    kind: r.kind,
     tier: TIER[r.tier],
     price: r.price,
     priceNote: r.priceNote,

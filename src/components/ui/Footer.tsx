@@ -36,6 +36,7 @@ export function Footer() {
             <li><Link className={linkClass} href="/care">Care &amp; Keeping</Link></li>
             <li><Link className={linkClass} href="/journal">Journal</Link></li>
             <li><Link className={linkClass} href="/about">About Legacy Homeware</Link></li>
+            <li><Link className={linkClass} href="/credits">Photo credits</Link></li>
           </ul>
         </div>
       </div>

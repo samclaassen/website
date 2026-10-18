@@ -6,6 +6,8 @@ import { Ornament } from "@/components/ui/Ornament";
 import { DISQUALIFIERS, STANDARD_TESTS, StandardList } from "@/components/pieces/StandardList";
 import { CHECK_LABEL, CHECK_ORDER } from "@/lib/piece-types";
 import { PIECES } from "@/lib/pieces";
+import { CreditedImage } from "@/components/media/CreditedImage";
+import { libraryPhoto } from "@/data/image-library";
 
 const DESCRIPTION =
   "The five tests every Legacy Homeware piece must pass: solid materials, built to be repaired, ages well, lasting design, and a maker that stands behind it. Plus what we reject, how we evaluate, and our affiliate policy.";
@@ -45,6 +47,20 @@ export default function StandardPage() {
           and be handed down?</em> These five tests are how we answer it.
         </p>
       </PageHeader>
+
+      <div className="wrap pb-16 sm:pb-20 grid gap-8 sm:grid-cols-[1fr_1.35fr] items-end">
+        <CreditedImage
+          photo={libraryPhoto("craft-blacksmith-anvil")}
+          frame="aspect-[4/5]"
+          sizes="(min-width: 640px) 440px, 100vw"
+          priority
+        />
+        <CreditedImage
+          photo={libraryPhoto("craft-hot-iron")}
+          frame="aspect-[4/3]"
+          sizes="(min-width: 640px) 600px, 100vw"
+        />
+      </div>
 
       <section className="card-texture">
         <div className="wrap py-16 sm:py-20">
@@ -88,6 +104,18 @@ export default function StandardPage() {
           on October 18, 2026 and change often, so always confirm on the retailer&apos;s site.
         </p>
 
+        <div className="not-prose my-12 grid gap-6 sm:grid-cols-[minmax(0,300px)_1fr] items-end">
+          <CreditedImage
+            photo={libraryPhoto("hist-rim-lock")}
+            frame="aspect-square"
+            sizes="300px"
+          />
+          <p className="italic text-caption text-[16px] leading-relaxed">
+            An 18th-century rim lock, recorded by the Historic American Buildings Survey. A rim lock is screwed to
+            the face of the door, so it can be taken off, oiled and mended: the idea behind test two.
+          </p>
+        </div>
+
         <h2 id="affiliate-policy">Our affiliate policy</h2>
         <p>
           Legacy Homeware isn&apos;t a store. We earn money through affiliate links: if you buy through some of our
@@ -103,8 +131,10 @@ export default function StandardPage() {
         <h2 id="images">Photos</h2>
         <p>
           We only show a maker&apos;s photos once we have the right to: through an affiliate program, a press kit or
-          written permission, always credited and linked. Until then, pieces are shown with a plain material card.
-          We never use AI-generated images of products.
+          written permission, always credited and linked. Until then, a piece is shown with an openly licensed
+          photograph of its material, clearly labelled &ldquo;Material photo — not this exact piece&rdquo;. Every
+          photo on the site is a real photograph or a public-domain artwork, credited and linked to its source; the
+          full list is on our <Link href="/credits">photo credits</Link> page. We never use AI-generated images.
         </p>
 
         <div className="not-prose mt-16 text-center">

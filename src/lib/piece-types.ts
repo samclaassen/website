@@ -34,6 +34,9 @@ export interface Affiliate {
   joined: boolean;
 }
 
+/** What sort of object it is. */
+export type PieceKind = "cookware" | "stove" | "blade" | "tool" | "hardware" | "board";
+
 export type CheckKey = "solid" | "repair" | "ages" | "design" | "maker";
 /**
  * pass = verified; partial = verified but falls short (e.g. a 1–5 year or finish-only warranty);
@@ -60,6 +63,7 @@ export interface Piece {
   /** Where the maker is based, as given in the shortlist. Not the same as country of manufacture. */
   makerBase?: string;
   category: Category;
+  kind: PieceKind;
   tier: Tier;
   /** Price exactly as displayed, e.g. "$180", "~£1,049", "from $1,800". */
   price: string;
@@ -87,7 +91,11 @@ export interface Piece {
   warranty?: string;
   /** Note on image rights from the shortlist. */
   imageRights?: string;
-  /** A cleared, credited photo. Empty until rights are in place. */
+  /**
+   * A cleared, credited photo of this exact piece (rightsBasis "maker-permission",
+   * "affiliate-program", "press-kit" or "own-photo"). Empty until rights are in place;
+   * until then the piece shows a labelled material photo (see lib/piece-media.ts).
+   */
   photo?: CreditedPhoto;
   isNew?: boolean;
 }

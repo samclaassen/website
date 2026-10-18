@@ -2,12 +2,13 @@ import Link from "next/link";
 import { generatePageMetadata, itemListJsonLd } from "@/lib/seo";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Ornament } from "@/components/ui/Ornament";
 import { PieceCard } from "@/components/pieces/PieceCard";
 import { StandardList } from "@/components/pieces/StandardList";
 import { CATEGORIES, PIECES, featured, fullName, piecesIn } from "@/lib/pieces";
 import { CATEGORY_BLURB, CATEGORY_LABEL } from "@/lib/piece-types";
-import { MaterialMotif } from "@/components/media/MaterialMotif";
+import Image from "next/image";
+import { CreditedImage, PhotoCredit } from "@/components/media/CreditedImage";
+import { libraryPhoto } from "@/data/image-library";
 
 export const metadata = generatePageMetadata({
   title: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
@@ -15,7 +16,13 @@ export const metadata = generatePageMetadata({
   path: "",
 });
 
-const CATEGORY_MOTIF = { hearth: "soapstone", kitchen: "cast-iron", hardware: "brass" } as const;
+const HERO = libraryPhoto("hero-cabin-stove");
+const CATEGORY_PHOTO = {
+  hearth: libraryPhoto("cat-hearth-fireplace"),
+  kitchen: libraryPhoto("cat-kitchen-skillets"),
+  hardware: libraryPhoto("cat-hardware-lock"),
+} as const;
+const STANDARD_PHOTO = libraryPhoto("craft-blacksmith-forge");
 
 export default function HomePage() {
   const picks = featured();
@@ -28,18 +35,42 @@ export default function HomePage() {
         )}
       />
 
-      {/* Typographic hero */}
-      <section className="linen-texture border-b border-line">
-        <div className="wrap py-24 sm:py-32 lg:py-40 text-center">
-          <p className="lab">A curated guide · Wave 1</p>
-          <h1 className="display font-light text-[46px] sm:text-[68px] lg:text-[88px] leading-[1.02] mt-6 mx-auto max-w-[13ch] text-balance">
-            Home items that become heirlooms.
-          </h1>
-          <Ornament className="mx-auto mt-10 w-[200px] text-caption/60" />
-          <p className="lab mt-8 text-umber/80">
-            Cast iron · Brass &amp; bronze · Forged iron · Copper · Hardwood
-          </p>
+      {/* Photographic hero */}
+      <section className="relative h-[min(78vh,720px)] min-h-[520px] overflow-hidden bg-umber" aria-labelledby="hero-heading">
+        <Image
+          src={HERO.src}
+          alt={HERO.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: HERO.focus }}
+        />
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(30,22,15,.62) 0%, rgba(30,22,15,.30) 45%, rgba(30,22,15,0) 70%), linear-gradient(to bottom, rgba(30,22,15,.10) 0%, rgba(30,22,15,.05) 35%, rgba(30,22,15,.55) 68%, rgba(30,22,15,.85) 100%)",
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="wrap pb-20 sm:pb-16 lg:pb-20">
+            <p className="lab text-linen/85">A curated guide · Wave 1</p>
+            <h1
+              id="hero-heading"
+              className="display font-light text-linen text-[44px] sm:text-[64px] lg:text-[84px] leading-[1.02] mt-5 max-w-[13ch] text-balance [text-shadow:0_1px_24px_rgba(30,22,15,.35)]"
+            >
+              Home items that become heirlooms.
+            </h1>
+            <p className="lab mt-7 text-linen/80">
+              Cast iron · Brass &amp; bronze · Forged iron · Copper · Hardwood
+            </p>
+          </div>
         </div>
+        <p className="absolute bottom-3 left-[22px] right-4 sm:left-auto sm:right-6 sm:max-w-[70%] sm:text-right">
+          <PhotoCredit photo={HERO} tone="light" />
+        </p>
       </section>
 
       {/* Standfirst */}
@@ -72,18 +103,23 @@ export default function HomePage() {
       {/* Heirloom Standard teaser */}
       <section className="card-texture" aria-labelledby="standard-heading">
         <div className="wrap py-20 sm:py-24">
-          <div className="grid gap-10 lg:grid-cols-[1.15fr_1.6fr] lg:gap-16 items-end mb-12">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 items-center mb-14">
+            <CreditedImage
+              photo={STANDARD_PHOTO}
+              frame="aspect-[3/2]"
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
             <div>
               <p className="lab">The Heirloom Standard</p>
               <h2 id="standard-heading" className="display text-[34px] sm:text-[40px] leading-tight mt-2">
                 Five tests. Every piece.
               </h2>
-            </div>
-            <p className="text-[18px] text-caption max-w-[56ch]">
+            <p className="text-[18px] text-caption max-w-[56ch] mt-5">
               A piece is only featured if it passes all five. Plating, zinc or pot metal, &ldquo;brass finish&rdquo;,
               nonstick and MDF are out from the start. Where we haven&apos;t confirmed a fact yet, the piece page says
               so.
             </p>
+            </div>
           </div>
           <StandardList compact />
           <div className="mt-12">
@@ -98,20 +134,32 @@ export default function HomePage() {
         <h2 id="browse-heading" className="display text-[34px] sm:text-[38px] leading-tight mt-2 mb-10">
           By category
         </h2>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
           {CATEGORIES.map((c) => (
-            <Link
-              key={c}
-              href={`/pieces?category=${c}`}
-              className="group block border border-line p-8 hover:border-umber transition-colors"
-            >
-              <MaterialMotif family={CATEGORY_MOTIF[c]} className="w-[64px] text-terracotta" />
-              <h3 className="display text-[28px] mt-6 group-hover:text-terracotta transition-colors">
-                {CATEGORY_LABEL[c]}
-              </h3>
-              <p className="italic text-caption text-[16px] mt-2">{CATEGORY_BLURB[c]}</p>
-              <p className="lab mt-6">{piecesIn(c).length} pieces →</p>
-            </Link>
+            <article key={c} className="group">
+              <Link href={`/pieces?category=${c}`} className="block" tabIndex={-1} aria-hidden="true">
+                <div className="relative aspect-[4/3] overflow-hidden bg-card">
+                  <Image
+                    src={CATEGORY_PHOTO[c].src}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 360px, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    style={{ objectPosition: CATEGORY_PHOTO[c].focus }}
+                  />
+                </div>
+              </Link>
+              <p className="mt-2">
+                <PhotoCredit photo={CATEGORY_PHOTO[c]} />
+              </p>
+              <Link href={`/pieces?category=${c}`} className="block">
+                <h3 className="display text-[28px] mt-3 group-hover:text-terracotta transition-colors">
+                  {CATEGORY_LABEL[c]}
+                </h3>
+                <p className="italic text-caption text-[16px] mt-1">{CATEGORY_BLURB[c]}</p>
+                <p className="lab mt-4">{piecesIn(c).length} pieces →</p>
+              </Link>
+            </article>
           ))}
         </div>
       </section>
