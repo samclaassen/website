@@ -115,8 +115,8 @@ export default function HomePage() {
                 Five tests. Every piece.
               </h2>
             <p className="text-[18px] text-caption max-w-[56ch] mt-5">
-              A piece is only featured if it passes all five. Plating, zinc or pot metal, &ldquo;brass finish&rdquo;,
-              nonstick and MDF are out from the start. Where we haven&apos;t confirmed a fact yet, the piece page says
+              Every piece is checked against all five, and anything that fails is left out. Plating, zinc or pot metal, &ldquo;brass finish&rdquo;,
+              nonstick and MDF are out from the start. Where we haven&apos;t confirmed a fact yet, or a maker falls a little short, the piece page says
               so.
             </p>
             </div>
