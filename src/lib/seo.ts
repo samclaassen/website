@@ -19,7 +19,7 @@ export function generatePageMetadata({
   title,
   description,
   path = "",
-  ogImage = "/og-default.jpg",
+  ogImage,
   noIndex = false,
   keywords = [],
 }: PageSeoOptions): Metadata {
@@ -39,7 +39,7 @@ export function generatePageMetadata({
       description,
       url,
       siteName: SITE_NAME,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] } : {}),
       locale: "en_US",
       type: "website",
     },
@@ -47,7 +47,7 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      images: [ogImage],
+      ...(ogImage ? { images: [ogImage] } : {}),
       ...(SOCIAL.twitter ? { creator: `@${SOCIAL.twitter}` } : {}),
     },
   };
@@ -126,7 +126,7 @@ export function breadcrumbJsonLd(
 }
 
 /**
- * WebSite JSON-LD with a SearchAction pointing at the details search page.
+ * WebSite JSON-LD with a SearchAction pointing at the pieces filter.
  */
 export function websiteJsonLd() {
   return {
@@ -136,14 +136,14 @@ export function websiteJsonLd() {
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
+      target: `${SITE_URL}/pieces?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
   };
 }
 
 /**
- * ItemList JSON-LD for hub pages (style, element, combo pages).
+ * ItemList JSON-LD for listing pages.
  */
 export function itemListJsonLd(name: string, items: { name: string; path: string }[]) {
   return {
@@ -161,41 +161,54 @@ export function itemListJsonLd(name: string, items: { name: string; path: string
 }
 
 /**
- * JSON-LD for a single architectural detail entry: an Article about the
- * example, with the image's license and credit recorded as an ImageObject.
+ * Product JSON-LD for a piece page. We are not the seller: the offer points at the
+ * retailer's page. No ratings or reviews are emitted (we don't collect them).
  */
-export function entryJsonLd(entry: {
+export function productJsonLd(p: {
   slug: string;
-  title: string;
-  summary: string;
-  styleName: string;
-  elementName: string;
-  imageUrl: string;
-  credit: string;
-  license: string;
-  licenseUrl?: string;
-  sourceUrl: string;
-  dateDisplay?: string;
+  name: string;
+  maker: string;
+  material: string;
+  category: string;
+  description: string;
+  productUrl: string;
+  retailer: string;
+  price: { currency: string; low: number; high?: number; open: boolean } | null;
+  priceChecked: string;
+  image?: string;
 }) {
-  const url = `${SITE_URL}/details/${entry.slug}`;
-  const image: Record<string, unknown> = {
-    "@type": "ImageObject",
-    contentUrl: entry.imageUrl.startsWith("http") ? entry.imageUrl : `${SITE_URL}${entry.imageUrl}`,
-    creditText: entry.credit,
-    acquireLicensePage: entry.sourceUrl,
-  };
-  if (entry.licenseUrl) image.license = entry.licenseUrl;
-  return {
+  const url = `${SITE_URL}/pieces/${p.slug}`;
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: entry.title,
-    description: entry.summary,
+    "@type": "Product",
+    name: p.name,
+    description: p.description,
     url,
-    mainEntityOfPage: url,
-    image,
-    about: [entry.styleName, entry.elementName],
-    isBasedOn: entry.sourceUrl,
-    dateModified: "2026-10-15",
-    publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    brand: { "@type": "Brand", name: p.maker },
+    material: p.material,
+    category: p.category,
   };
+  if (p.image) data.image = p.image.startsWith("http") ? p.image : `${SITE_URL}${p.image}`;
+  if (p.price) {
+    const seller = { "@type": "Organization", name: p.retailer };
+    data.offers =
+      p.price.open || p.price.high
+        ? {
+            "@type": "AggregateOffer",
+            priceCurrency: p.price.currency,
+            lowPrice: p.price.low,
+            ...(p.price.high ? { highPrice: p.price.high } : {}),
+            offerCount: 1,
+            url: p.productUrl,
+            seller,
+          }
+        : {
+            "@type": "Offer",
+            priceCurrency: p.price.currency,
+            price: p.price.low,
+            url: p.productUrl,
+            seller,
+          };
+  }
+  return data;
 }
