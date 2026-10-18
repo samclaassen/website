@@ -1,5 +1,5 @@
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
-import { CATEGORIES, PIECES, fullName, piecesIn, verifiedCount } from "@/lib/pieces";
+import { CATEGORIES, PIECES, fullName, piecesIn, verifiedSummary } from "@/lib/pieces";
 import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
 import { DISQUALIFIERS } from "@/components/pieces/StandardList";
@@ -37,7 +37,7 @@ export function GET() {
     lines.push("", `### ${CATEGORY_LABEL[c]}`, "");
     for (const p of piecesIn(c)) {
       lines.push(
-        `- [${fullName(p)}](${SITE_URL}/pieces/${p.slug}): ${p.material}; ${p.price}; ${verifiedCount(p)}/5 Standard tests verified. ${p.line}`,
+        `- [${fullName(p)}](${SITE_URL}/pieces/${p.slug}): ${p.material}; ${p.price}; ${verifiedSummary(p, "Standard tests verified")}. ${p.line}`,
       );
     }
   }

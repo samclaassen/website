@@ -35,6 +35,17 @@ export function verifiedCount(p: Piece) {
   return CHECK_ORDER.filter((k) => p.checks[k].status === "pass").length;
 }
 
+/** Tests that are verified but fall short (shown as "Partial"). */
+export function partialCount(p: Piece) {
+  return CHECK_ORDER.filter((k) => p.checks[k].status === "partial").length;
+}
+
+/** "4 of 5 verified" or "4 of 5 verified · 1 partial". */
+export function verifiedSummary(p: Piece, suffix = "verified") {
+  const partial = partialCount(p);
+  return `${verifiedCount(p)} of 5 ${suffix}${partial ? ` · ${partial} partial` : ""}`;
+}
+
 /** Up to three passing tests, in priority order, for the badge row. */
 export function badgesFor(p: Piece) {
   const priority = ["solid", "repair", "maker", "ages", "design"] as const;

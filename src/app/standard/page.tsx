@@ -78,6 +78,12 @@ export default function StandardPage() {
           not that the piece fails. Where something is worth knowing before you buy, we say it plainly on the page.
         </p>
         <p>
+          Some facts are confirmed but fall short. For test 5, a lifetime or &ldquo;forever&rdquo; guarantee, a
+          warranty of 10 years or more, or free repair and service for life earns a tick. A 1&ndash;5 year warranty,
+          cover on the finish only, or a return guarantee with no warranty is marked <b>Partial</b>, with the reason
+          given. Where the made-in country is known we show it, but it isn&apos;t one of the five tests.
+        </p>
+        <p>
           This is Wave 1: {PIECES.length} pieces across Hearth &amp; Heat, Kitchen and Hardware. Prices were checked
           on October 18, 2026 and change often, so always confirm on the retailer&apos;s site.
         </p>

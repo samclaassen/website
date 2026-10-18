@@ -7,9 +7,9 @@
  * Writing rules for this file:
  * - `why` and `line` use only facts from the shortlist (maker, material, price, origin
  *   as listed) plus widely known facts about the material or form. No invented specs.
- * - `madeIn` and `warranty` are set only where the shortlist states them.
- * - A Standard check is "pass" only when the shortlist supports it. Anything the
- *   shortlist flags, or doesn't record (most warranties), is "unverified".
+ * - `madeIn` and `warranty` come from the FACTS table (researched 2026-10-18); unknowns stay unset.
+ * - A Standard check is "pass" only when the research supports it. Test 5 can also be
+ *   "partial" (short, finish-only or return-only cover). Anything unknown is "unverified".
  * - No maker photos until image rights are cleared (see src/lib/images.ts).
  */
 
@@ -275,15 +275,12 @@ const RAW: Raw[] = [
     id: "H21", name: "Bakeheart Cook Stove", maker: "ESSE", makerBase: "UK",
     retailer: "Stoves Online (UK)", tier: "P", price: "~£3,045", priceNote: "Approximate UK price.",
     material: "Cast iron", family: "cast-iron", kind: "stove", matBadge: "Cast iron",
-    flag: "2-year warranty; US EPA status", warranty: "2 years",
+    flag: "2-year warranty; US EPA status",
     worth: "The warranty is 2 years, and we haven't confirmed US EPA certification or a US price.",
     aff: ["none"], url: "https://www.stovesonline.co.uk/wood_burning_stoves/Esse-Bakeheart-Stoves.html",
     line: "A British cast-iron cook stove.",
     why: "ESSE, a British stove maker, makes the Bakeheart, a cast-iron cook stove that heats the room and cooks from the same fire.",
     form: "The wood-fired cook stove, the old heart of the kitchen.",
-    checks: {
-      maker: { status: "unverified", reason: "2-year warranty, shorter than we'd like; US EPA status not yet confirmed." },
-    },
   },
   {
     id: "H22", name: "250 Multi-fuel Stove", maker: "Dovre",
@@ -299,14 +296,12 @@ const RAW: Raw[] = [
     id: "H23", name: "Morsø 1410 (squirrel sides)", maker: "Morsø", makerBase: "Denmark",
     retailer: "The Firebird", tier: "P", price: "$1,900", material: "Cast iron, EPA-approved",
     family: "cast-iron", kind: "stove", matBadge: "Cast iron",
-    warranty: "10 years on the castings",
     aff: ["none"], url: "https://thefirebird.com/products/morso-1410-radiant-wood-stove",
     line: "Danish cast iron, with squirrels cast into the sides.",
-    why: "Morsø, the Danish foundry, casts the 1410 with squirrel side panels, and it's EPA-approved for US homes. Its 10-year warranty on the castings is the clearest maker guarantee among our stoves.",
+    why: "Morsø, the Danish foundry, casts the 1410 with squirrel side panels, and it's EPA-approved for US homes. It carries a 10-year warranty on the castings, and Morsø keeps parts for 10 years after a model is discontinued.",
     form: "A small cast-iron stove with decorative cast side panels.",
     checks: {
       solid: { status: "pass", reason: "Cast iron, EPA-approved.", badge: "Cast iron" },
-      maker: { status: "pass", reason: "10-year warranty on the castings.", badge: "10-year castings warranty" },
     },
   },
   {
@@ -403,7 +398,7 @@ const RAW: Raw[] = [
     id: "K8", name: "Maple Board R-Series", maker: "John Boos", makerBase: "USA",
     retailer: "John Boos", tier: "A", price: "$94.95+", material: "Hard maple",
     family: "hardwood", kind: "board", matBadge: "Solid hard maple",
-    flag: "1-year warranty", warranty: "1 year", worth: "John Boos's warranty is 1 year.",
+    flag: "1-year warranty", worth: "John Boos's warranty is 1 year.",
     aff: ["likely", "FlexOffers / Amazon"], url: "https://www.johnboos.com/products/maple-cutting-boards-1-1-2-thick-r-board-series",
     line: "Hard maple, 1½ inches thick.",
     why: "John Boos makes this board from solid hard maple, 1½ inches thick. Wood boards like this can be sanded and re-oiled for decades.",
@@ -522,7 +517,7 @@ const RAW: Raw[] = [
     id: "K20", name: "Walnut End-Grain Block", maker: "John Boos", makerBase: "USA",
     retailer: "John Boos", tier: "M", price: "$541.95", material: "Black walnut",
     family: "hardwood", kind: "board", matBadge: "Solid black walnut",
-    flag: "1-year warranty", warranty: "1 year", worth: "John Boos's warranty is 1 year.",
+    flag: "1-year warranty", worth: "John Boos's warranty is 1 year.",
     aff: ["likely", "Amazon"], url: "https://www.johnboos.com/products/walnut-chopping-block-reversible-end-grain-2-1-4-thick-ccb-series",
     line: "End-grain black walnut, 2¼ inches thick.",
     why: "An end-grain chopping block in black walnut from John Boos, 2¼ inches thick. End grain is the traditional butcher's surface: the knife edge slips between the wood fibres instead of cutting across them.",
@@ -550,7 +545,7 @@ const RAW: Raw[] = [
     id: "K23", name: "AA Maple Butcher Block", maker: "John Boos", makerBase: "USA",
     retailer: "John Boos", tier: "P", price: "$1,559+", material: "End-grain maple",
     family: "hardwood", kind: "board", matBadge: "End-grain maple",
-    flag: "1-year warranty", warranty: "1 year", worth: "John Boos's warranty is 1 year.",
+    flag: "1-year warranty", worth: "John Boos's warranty is 1 year.",
     aff: ["likely", "Amazon"], url: "https://www.johnboos.com/products/aa-maple-butcher-block-with-16-thick-end-grain-top",
     line: "A butcher block with a 16-inch-thick end-grain top.",
     why: "John Boos's butcher block, built around a 16-inch-thick top of end-grain maple. It's the traditional butcher's block, made to be resurfaced rather than replaced.",
@@ -607,9 +602,6 @@ const RAW: Raw[] = [
     line: "A forged-iron rim latch from Massachusetts.",
     why: "Acorn Manufacturing, a Massachusetts maker that's still operating, makes this forged-iron rim latch with heart-shaped tips. A rim latch mounts on the face of the door, as latches did before mortise locks.",
     form: "The surface-mounted rim latch.",
-    checks: {
-      maker: { status: "unverified", reason: "The maker is confirmed still operating; the warranty isn't verified yet." },
-    },
   },
   {
     id: "W4", name: "Prairie Crystal Knob Set", maker: "Nostalgic Warehouse",
@@ -822,17 +814,283 @@ const RAW: Raw[] = [
     id: "W25", name: "Solid Bronze Arched Thumb-Latch Mortise Entry", maker: "Ashley Norton",
     retailer: "House of Antique Hardware", tier: "P", price: "$1,874.90", material: "Sand-cast bronze",
     family: "bronze", kind: "hardware", matBadge: "Sand-cast bronze",
-    flag: "2-year warranty; stock", warranty: "2 years",
+    flag: "2-year warranty; stock",
     worth: "The warranty is 2 years, and stock needs checking before you order.",
     aff: ["none"], url: "https://www.houseofantiquehardware.com/solid-bronze-arched-thumb-latch-mortise-entry-set", isNew: true,
     line: "A sand-cast bronze thumb-latch entry.",
     why: "Ashley Norton's arched thumb-latch entry set, sand-cast in bronze, joins the old thumb-latch form to a mortise lock.",
     form: "The thumb-latch entry, an early American form.",
-    checks: {
-      maker: { status: "unverified", reason: "2-year warranty, shorter than we'd like; stock to be confirmed." },
-    },
   },
 ];
+
+// ───────────────────────────── Made in & warranty ─────────────────────────────
+//
+// Researched 2026-10-18. Use exactly what was found; where something is unverified it stays
+// unverified (madeIn / warranty left undefined so the page says "Not yet verified").
+//
+// Test 5 ("Maker stands behind it"):
+//   pass     lifetime / forever, 10 years or more, or lifetime repair/service
+//   partial  1–5 year warranties (or shorter), finish-only cover, or a return guarantee only
+//   (no w)   warranty unknown -> "Not yet verified"
+
+type WarrantyStatus = "pass" | "partial";
+
+interface MakerFacts {
+  madeIn?: string;
+  warranty?: string;
+  /** Test 5 result. Omit when the warranty is unknown. */
+  w?: WarrantyStatus;
+  /** Test 5 reason; defaults to the warranty text. */
+  reason?: string;
+  /** Badge text for passing warranties. */
+  badge?: string;
+}
+
+const PONDEROSA: MakerFacts = { madeIn: "Sisters, Oregon, USA" };
+const URBAN_FORGE: MakerFacts = {
+  madeIn: "USA",
+  warranty: "Iron \"Guaranteed Forever\"",
+  w: "pass",
+  reason: "Urban Forge guarantees its iron forever.",
+  badge: "Iron guaranteed forever",
+};
+const LODGE: MakerFacts = {
+  madeIn: "USA",
+  warranty: "Lodge \"Made Right\" limited lifetime warranty",
+  w: "pass",
+  reason: "Lodge's \"Made Right\" limited lifetime warranty.",
+  badge: "Limited lifetime warranty",
+};
+const SMITHEY: MakerFacts = { madeIn: "USA", warranty: "Lifetime guarantee", w: "pass", badge: "Lifetime guarantee" };
+const BOOS: MakerFacts = {
+  madeIn: "USA (domestic and imported materials)",
+  warranty: "1 year",
+  w: "partial",
+  reason: "A 1-year warranty: real, but short for a board meant to last decades.",
+};
+const MAUVIEL_HERITAGE: MakerFacts = {
+  warranty: "Limited lifetime",
+  w: "pass",
+  reason: "Mauviel's limited lifetime warranty.",
+  badge: "Limited lifetime warranty",
+};
+const DUPARQUET: MakerFacts = {
+  madeIn: "USA (hand-made in Norwood, Massachusetts)",
+  warranty: "Lifetime warranty; retinning offered",
+  w: "pass",
+  reason: "Lifetime warranty, and Duparquet offers retinning.",
+  badge: "Lifetime warranty & retinning",
+};
+const BLENHEIM: MakerFacts = {
+  madeIn: "London, UK",
+  warranty: "Free sharpening, service and repair for life",
+  w: "pass",
+  reason: "Blenheim Forge sharpens, services and repairs its knives free for life.",
+  badge: "Lifetime service & repair",
+};
+const HISTORIC_HOUSEFITTERS: MakerFacts = {
+  madeIn: "USA",
+  warranty: "No formal warranty (return guarantee only)",
+  w: "partial",
+  reason: "No formal warranty, only a return guarantee.",
+};
+const NOSTALGIC: MakerFacts = {
+  madeIn: "Hand assembled in USA",
+  warranty: "5-year mechanical, 5-year finish",
+  w: "partial",
+  reason: "5 years on the mechanism and 5 on the finish: real, but shorter than we'd like.",
+};
+const ROCKY_MOUNTAIN: MakerFacts = {
+  madeIn: "Hailey, Idaho, USA",
+  warranty: "Lifetime residential guarantee",
+  w: "pass",
+  badge: "Lifetime guarantee",
+};
+const SUN_VALLEY: MakerFacts = {
+  madeIn: "Idaho, USA",
+  warranty: "Lifetime mechanical warranty",
+  w: "pass",
+  badge: "Lifetime mechanical warranty",
+};
+const ARMAC_MARTIN: MakerFacts = { madeIn: "Birmingham, England" };
+const FINISH_ONLY = "Lifetime cover on the finish only; no mechanical warranty recorded.";
+
+const FACTS: Record<string, MakerFacts> = {
+  // Hearth
+  H1: PONDEROSA,
+  H2: URBAN_FORGE,
+  H3: { madeIn: "Minnesota, USA (per the maker's site)" },
+  H5: { madeIn: "Morioka, Japan" },
+  H6: { madeIn: "Morioka, Japan" },
+  H7: { warranty: "Limited Lifetime Guarantee", w: "pass", reason: "Limited Lifetime Guarantee.", badge: "Limited lifetime guarantee" },
+  H8: { warranty: "90-day guarantee", w: "partial", reason: "A 90-day guarantee only." },
+  H9: {},
+  H10: LODGE,
+  H11: PONDEROSA,
+  H12: PONDEROSA,
+  H13: URBAN_FORGE,
+  H14: {
+    ...URBAN_FORGE,
+    warranty: "Iron \"Guaranteed Forever\"; broom covered 1 year",
+    reason: "Urban Forge guarantees the iron forever; the broom is covered for 1 year.",
+  },
+  H15: {},
+  H16: {},
+  H17: { madeIn: "Isle of Wight, UK (per the retailer)" },
+  H18: {
+    madeIn: "New Hampshire, USA",
+    warranty: "Warranty offered; length not yet verified",
+    reason: "Woodstock offers a warranty; we haven't verified its length yet.",
+  },
+  H19: {
+    madeIn: "Vermont, USA (castings from HearthStone's own foundry in Spain)",
+    warranty: "Written warranty; length not yet verified",
+    reason: "HearthStone has a written warranty; we haven't verified its length yet.",
+  },
+  H20: PONDEROSA,
+  H21: {
+    madeIn: "Barnoldswick, UK",
+    warranty: "2 years",
+    w: "partial",
+    reason: "A 2-year warranty, shorter than we'd like. US EPA status not yet confirmed.",
+  },
+  H22: {
+    madeIn: "Norway, per the retailer (not yet confirmed)",
+    warranty: "10 years on solid-fuel stoves (requires annual servicing)",
+    w: "pass",
+    reason: "10-year warranty on solid-fuel stoves, as long as the stove is serviced every year.",
+    badge: "10-year warranty",
+  },
+  H23: {
+    warranty: "10 years on the castings; parts for 10 years after discontinuation",
+    w: "pass",
+    reason: "10 years on the castings, and parts for 10 years after a model is discontinued.",
+    badge: "10-year castings warranty",
+  },
+  H24: { madeIn: "Norway" },
+  H25: { madeIn: "Hand crafted in USA" },
+
+  // Kitchen
+  K1: { ...LODGE, warranty: "\"Made Right\" limited lifetime" },
+  K2: {
+    warranty: "Limited lifetime, including enamel chipping provisions",
+    w: "pass",
+    reason: "Limited lifetime warranty, with provisions for enamel chipping.",
+    badge: "Limited lifetime warranty",
+  },
+  K3: SMITHEY,
+  K13: SMITHEY,
+  K4: { madeIn: "USA", warranty: "Lifetime warranty", w: "pass", badge: "Lifetime warranty" },
+  K5: {
+    madeIn: "USA",
+    warranty: "\"Guaranteed Good Forever\" (repair or replace)",
+    w: "pass",
+    reason: "FINEX's \"Guaranteed Good Forever\": they repair or replace it.",
+    badge: "Guaranteed good forever",
+  },
+  K6: {
+    madeIn: "France",
+    warranty: "Lifetime warranty (per product data)",
+    w: "pass",
+    reason: "Lifetime warranty, per the product data.",
+    badge: "Lifetime warranty",
+  },
+  K7: {
+    madeIn: "Sydney, Australia",
+    warranty: "\"Multi-century warranty\"",
+    w: "pass",
+    reason: "Solidteknics offers a \"multi-century warranty\".",
+    badge: "Multi-century warranty",
+  },
+  K8: BOOS,
+  K20: BOOS,
+  K23: BOOS,
+  K9: { madeIn: "Pennsylvania, USA" },
+  K10: { madeIn: "Shropshire, UK" },
+  K11: { madeIn: "France", warranty: "Limited lifetime", w: "pass", reason: "Le Creuset's limited lifetime warranty.", badge: "Limited lifetime warranty" },
+  K12: { madeIn: "France", warranty: "Lifetime", w: "pass", reason: "Staub's lifetime warranty.", badge: "Lifetime warranty" },
+  K14: { madeIn: "Sweden", warranty: "25-year warranty on cast iron", w: "pass", reason: "25-year warranty on the cast iron.", badge: "25-year warranty" },
+  K15: MAUVIEL_HERITAGE,
+  K21: MAUVIEL_HERITAGE,
+  K16: DUPARQUET,
+  K17: DUPARQUET,
+  K18: BLENHEIM,
+  K22: BLENHEIM,
+  K19: {
+    madeIn: "USA",
+    warranty: "Lifetime on all parts except grinding plates",
+    w: "pass",
+    reason: "Lifetime warranty on every part except the grinding plates.",
+    badge: "Lifetime parts warranty",
+  },
+  K24: { madeIn: "Telford, UK" },
+  K25: {
+    madeIn: "Villedieu-les-Poêles, France",
+    warranty: "Limited lifetime",
+    w: "pass",
+    reason: "Mauviel's limited lifetime warranty.",
+    badge: "Limited lifetime warranty",
+  },
+
+  // Hardware
+  W1: HISTORIC_HOUSEFITTERS,
+  W2: HISTORIC_HOUSEFITTERS,
+  W15: HISTORIC_HOUSEFITTERS,
+  W3: {
+    madeIn: "Mansfield, Massachusetts factory (not yet confirmed for this piece)",
+    reason: "The maker is confirmed still operating; the warranty isn't verified yet.",
+  },
+  W4: NOSTALGIC,
+  W14: NOSTALGIC,
+  W5: {
+    madeIn: "Assembled in Los Angeles from global components",
+    warranty: "Limited lifetime mechanical, 5-year finish",
+    w: "pass",
+    reason: "Limited lifetime warranty on the mechanism; 5 years on the finish.",
+    badge: "Lifetime mechanical warranty",
+  },
+  W6: {},
+  W23: {},
+  W7: ROCKY_MOUNTAIN,
+  W16: ROCKY_MOUNTAIN,
+  W17: ROCKY_MOUNTAIN,
+  W24: ROCKY_MOUNTAIN,
+  W8: SUN_VALLEY,
+  W18: SUN_VALLEY,
+  W9: ARMAC_MARTIN,
+  W10: ARMAC_MARTIN,
+  W20: ARMAC_MARTIN,
+  W11: {},
+  W12: { madeIn: "India", warranty: "10-year mechanical", w: "pass", reason: "10-year warranty on the mechanism.", badge: "10-year mechanical warranty" },
+  W13: {
+    warranty: "Lifetime finish warranty (Estate PVD); mechanical not yet verified",
+    w: "partial",
+    reason: "Lifetime cover on the PVD finish only; we haven't verified the mechanical warranty.",
+  },
+  W19: {
+    madeIn: "Assembled in USA, materials from China",
+    warranty: "Limited lifetime mechanical, 5-year finish",
+    w: "pass",
+    reason: "Limited lifetime warranty on the mechanism; 5 years on the finish.",
+    badge: "Lifetime mechanical warranty",
+  },
+  W21: { madeIn: "Mexico", warranty: "Lifetime finish warranty", w: "partial", reason: FINISH_ONLY },
+  W22: { warranty: "Lifetime finish warranty", w: "partial", reason: FINISH_ONLY },
+  W25: {
+    madeIn: "Lock made in USA; trim not yet verified",
+    warranty: "2 years",
+    w: "partial",
+    reason: "A 2-year warranty, shorter than we'd like. Stock to be confirmed before ordering.",
+  },
+};
+
+function makerCheck(f: MakerFacts | undefined): StandardCheck {
+  if (!f?.w) {
+    return { status: "unverified", reason: f?.reason ?? "Warranty and parts support not yet verified." };
+  }
+  const reason = f.reason ?? `${f.warranty}.`;
+  return f.w === "pass" ? { status: "pass", reason, badge: f.badge ?? f.warranty } : { status: "partial", reason };
+}
 
 // ───────────────────────────── Derivation ─────────────────────────────
 
@@ -932,9 +1190,7 @@ function buildChecks(r: Raw): StandardChecks {
     repair: defaultRepair(r),
     ages: defaultAges(r),
     design: { status: "pass", reason: r.form, badge: "Traditional form" },
-    maker: r.warranty
-      ? { status: "unverified", reason: `${r.warranty} warranty, shorter than we'd like.` }
-      : { status: "unverified", reason: "Warranty and parts support not yet verified." },
+    maker: makerCheck(FACTS[r.id]),
   };
   return { ...base, ...r.checks };
 }
@@ -961,8 +1217,8 @@ export const PIECES: Piece[] = RAW.map((r) => {
     line: r.line,
     whyHeirloom: r.why,
     checks: buildChecks(r),
-    madeIn: r.madeIn,
-    warranty: r.warranty,
+    madeIn: FACTS[r.id]?.madeIn ?? r.madeIn,
+    warranty: FACTS[r.id]?.warranty ?? r.warranty,
     imageRights: r.imageRights,
     photo: undefined,
     isNew: r.isNew,

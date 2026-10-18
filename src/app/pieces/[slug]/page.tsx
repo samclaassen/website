@@ -6,7 +6,7 @@ import { PieceVisual } from "@/components/media/PieceVisual";
 import { BuyCard } from "@/components/pieces/BuyCard";
 import { StandardPanel } from "@/components/pieces/StandardPanel";
 import { PieceCard } from "@/components/pieces/PieceCard";
-import { PIECES, badgesFor, fullName, getPiece, parsePrice, related, verifiedCount } from "@/lib/pieces";
+import { PIECES, badgesFor, fullName, getPiece, parsePrice, related, verifiedSummary } from "@/lib/pieces";
 import { CATEGORY_LABEL, MATERIAL_LABEL, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
 
@@ -112,7 +112,7 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
                   <span key={b} className="pill bg-linen">✓ {b}</span>
                 ))}
                 <span className="pill border-transparent text-caption underline underline-offset-4 decoration-line">
-                  {verifiedCount(p)} of 5 verified
+                  {verifiedSummary(p)}
                 </span>
               </a>
             )}

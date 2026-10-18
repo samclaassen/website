@@ -35,7 +35,11 @@ export interface Affiliate {
 }
 
 export type CheckKey = "solid" | "repair" | "ages" | "design" | "maker";
-export type CheckStatus = "pass" | "unverified";
+/**
+ * pass = verified; partial = verified but falls short (e.g. a 1–5 year or finish-only warranty);
+ * unverified = not yet confirmed.
+ */
+export type CheckStatus = "pass" | "partial" | "unverified";
 
 export interface StandardCheck {
   status: CheckStatus;
@@ -77,9 +81,9 @@ export interface Piece {
   /** 1–2 sentences, written only from shortlist facts. */
   whyHeirloom: string;
   checks: StandardChecks;
-  /** Country of manufacture. Only set when the shortlist states it. */
+  /** Where it is made, as researched. Unset when unknown. */
   madeIn?: string;
-  /** Warranty. Only set when the shortlist states it. */
+  /** Warranty as researched. Unset when unknown. */
   warranty?: string;
   /** Note on image rights from the shortlist. */
   imageRights?: string;
