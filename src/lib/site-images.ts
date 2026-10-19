@@ -13,7 +13,7 @@ import { productPhoto } from "./piece-media";
 export const SITE_IMAGES = {
   homeHero: "hero-hearth-room",
   category: {
-    hearth: "stove-hut-woodstove",
+    hearth: "cat-hearth-woodstove",
     hardware: "mat-brass-knocker",
     kitchen: "mat-wooden-spoons",
   } satisfies Record<Category, string>,

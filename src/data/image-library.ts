@@ -634,6 +634,24 @@ export const IMAGE_LIBRARY: LibraryImage[] = [
     focus: "50% 50%",
     roles: ["historic"],
   },
+  {
+    id: "cat-hearth-woodstove",
+    file: "/images/library/cat-hearth-woodstove.webp",
+    alt: "A cast-iron wood stove against an old brick wall in a pine-panelled room, a wooden bench and cushion beside it",
+    title: "Furnace for heating a hut",
+    creator: "Jonathan Cooper",
+    credit: "Photo: Jonathan Cooper / Pexels",
+    source: "Pexels",
+    sourceUrl: "https://www.pexels.com/photo/furnace-for-heating-a-hut-8951846/",
+    license: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+    rightsBasis: "pexels-license",
+    checkedAt: "2026-10-19",
+    width: 2400,
+    height: 1600,
+    focus: "50% 45%",
+    roles: ["category:hearth", "stove"],
+  },
 ];
 
 const BY_ID = new Map(IMAGE_LIBRARY.map((img) => [img.id, img]));
