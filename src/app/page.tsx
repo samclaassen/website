@@ -8,7 +8,7 @@ import { CATEGORIES, PIECES, featured, fullName, piecesIn } from "@/lib/pieces";
 import { CATEGORY_BLURB, CATEGORY_LABEL } from "@/lib/piece-types";
 import Image from "next/image";
 import { CreditedImage, PhotoCredit } from "@/components/media/CreditedImage";
-import { libraryPhoto } from "@/data/image-library";
+import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
 
 export const metadata = generatePageMetadata({
   title: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
@@ -16,13 +16,13 @@ export const metadata = generatePageMetadata({
   path: "",
 });
 
-const HERO = libraryPhoto("hero-cabin-stove");
+const HERO = sitePhoto(SITE_IMAGES.homeHero);
 const CATEGORY_PHOTO = {
-  hearth: libraryPhoto("cat-hearth-fireplace"),
-  kitchen: libraryPhoto("cat-kitchen-skillets"),
-  hardware: libraryPhoto("cat-hardware-lock"),
+  hearth: sitePhoto(SITE_IMAGES.category.hearth),
+  hardware: sitePhoto(SITE_IMAGES.category.hardware),
+  kitchen: sitePhoto(SITE_IMAGES.category.kitchen),
 } as const;
-const STANDARD_PHOTO = libraryPhoto("craft-blacksmith-forge");
+const STANDARD_PHOTO = sitePhoto(SITE_IMAGES.homeStandard);
 
 export default function HomePage() {
   const picks = featured();
@@ -64,7 +64,7 @@ export default function HomePage() {
               Home items that become heirlooms.
             </h1>
             <p className="lab mt-7 text-linen/80">
-              Cast iron · Brass &amp; bronze · Forged iron · Copper · Hardwood
+              For the hearth, the door and the table
             </p>
           </div>
         </div>
@@ -75,14 +75,15 @@ export default function HomePage() {
 
       {/* Standfirst */}
       <p className="max-w-[680px] mx-auto my-20 sm:my-24 px-6 text-center text-[20px] sm:text-[21px] leading-[1.6]">
-        We find new pieces made the way they used to be: solid cast iron, solid brass and bronze, forged iron,
-        tinned copper and hardwood. They&apos;re built to be used every day and{" "}
+        We find new pieces made the way they used to be, for the whole house: andirons and stoves for the hearth,
+        forged latches and solid brass and bronze for the door, hardwood and copper for the table. They&apos;re
+        built to be used every day and{" "}
         <em className="text-terracotta">handed down</em>. Every one is checked against our{" "}
         <Link href="/standard" className="link-underline">Heirloom Standard</Link>. We don&apos;t sell anything; we
         point you to the maker.
       </p>
 
-      {/* Featured: one per category */}
+      {/* Featured: one per category, hearth and door first */}
       <section className="wrap pb-24" aria-labelledby="featured-heading">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <div>

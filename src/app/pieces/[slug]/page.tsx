@@ -3,8 +3,7 @@ import { notFound } from "next/navigation";
 import { breadcrumbJsonLd, generatePageMetadata, productJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PieceVisual } from "@/components/media/PieceVisual";
-import { CreditedImage } from "@/components/media/CreditedImage";
-import { libraryPhoto } from "@/data/image-library";
+import { productPhoto } from "@/lib/piece-media";
 import { BuyCard } from "@/components/pieces/BuyCard";
 import { StandardPanel } from "@/components/pieces/StandardPanel";
 import { PieceCard } from "@/components/pieces/PieceCard";
@@ -30,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
     title: fullName(p),
     description: `${p.whyHeirloom} ${p.material}. ${p.price} at ${p.retailer}.`.slice(0, 300),
     path: `/pieces/${slug}`,
-    ogImage: p.photo?.src,
+    ogImage: productPhoto(p)?.src,
   });
 }
 
@@ -64,7 +63,7 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
           retailer: p.retailer,
           price: parsePrice(p.price),
           priceChecked: PRICE_CHECKED,
-          image: p.photo?.src,
+          image: productPhoto(p)?.src,
         })}
       />
       <JsonLd
@@ -91,16 +90,10 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
         <section className="wrap pt-8 pb-20 grid gap-12 lg:gap-[72px] lg:grid-cols-[1.1fr_1fr] items-start">
           <div className="lg:sticky lg:top-8">
             <PieceVisual piece={p} size="hero" priority />
-            {!p.photo && (
-              <p className="mt-2 text-[12.5px] leading-snug text-caption font-label">
-                We only show photos of the piece itself once the maker gives permission.
+            {!productPhoto(p) && (
+              <p className="mt-3 text-[12.5px] leading-snug text-caption font-label">
+                An illustration, not a photo. We only show photos of the piece itself once the maker gives permission.
               </p>
-            )}
-            {p.materialFamily === "soapstone" && (
-              <div className="mt-8">
-                <p className="lab mb-2">The material: soapstone, close up</p>
-                <CreditedImage photo={libraryPhoto("mat-soapstone")} frame="aspect-[3/1]" sizes="(min-width: 1024px) 600px, 100vw" />
-              </div>
             )}
           </div>
 

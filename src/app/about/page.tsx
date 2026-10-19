@@ -4,10 +4,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { PIECES } from "@/lib/pieces";
 import { CreditedImage } from "@/components/media/CreditedImage";
-import { libraryPhoto } from "@/data/image-library";
+import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
 
 const DESCRIPTION =
-  "Legacy Homeware is a curated guide to new home items made the way they used to be, so they last long enough to hand down.";
+  "Legacy Homeware is a curated guide to new home items for the hearth, the door and the table, made the way they used to be so they last long enough to hand down.";
 
 export const metadata = generatePageMetadata({ title: "About", description: DESCRIPTION, path: "/about" });
 
@@ -19,7 +19,7 @@ export default function AboutPage() {
       <PageHeader kicker="About" title="Why Legacy Homeware" />
       <div className="wrap max-w-[1040px] pb-14">
         <CreditedImage
-          photo={libraryPhoto("craft-bronze-pour")}
+          photo={sitePhoto(SITE_IMAGES.about.lead)}
           frame="aspect-[16/9]"
           sizes="(min-width: 1040px) 980px, 100vw"
           priority
@@ -27,23 +27,24 @@ export default function AboutPage() {
       </div>
       <div className="wrap max-w-[720px] pb-24 prose-lh text-[19px]">
         <p>
-          Most of what fills a home today is made to be replaced. A nonstick pan lasts a few years. A
-          &ldquo;brass&rdquo; knob turns out to be plated zinc. Yet the things people inherit, a grandmother&apos;s
-          skillet or the iron latch on an old door, were made of solid materials by makers who expected them to last.
+          Most of what fills a home today is made to be replaced. A &ldquo;brass&rdquo; knob turns out to be plated
+          zinc; a fire set bends in its first winter; a board splits at the glue line. Yet the things people inherit,
+          the iron latch on an old door, the andirons in the hearth, the table everyone sat at, were made of solid
+          materials by makers who expected them to last.
         </p>
         <p>
-          Those things are still being made. Foundries still cast iron, smiths still forge it, coppersmiths still
-          line pans with tin, and bronze is still poured into sand. Legacy Homeware is a guide to them: new pieces
+          Those things are still being made. Smiths still forge iron, bronze is still poured into sand, brass is
+          still turned and cast, woodworkers still glue up end-grain blocks, and coppersmiths still line pans with tin. Legacy Homeware is a guide to them: new pieces
           you can buy today, made the way they used to be, that should last long enough to hand down.
         </p>
         <div className="not-prose my-12 grid gap-6 sm:grid-cols-2">
           <CreditedImage
-            photo={libraryPhoto("hist-pancake-cook")}
+            photo={sitePhoto(SITE_IMAGES.about.door)}
             frame="aspect-[4/5]"
             sizes="(min-width: 640px) 340px, 100vw"
           />
           <CreditedImage
-            photo={libraryPhoto("hist-kitchen-interior")}
+            photo={sitePhoto(SITE_IMAGES.about.hearth)}
             frame="aspect-[4/5]"
             sizes="(min-width: 640px) 340px, 100vw"
           />
@@ -56,7 +57,7 @@ export default function AboutPage() {
         </ul>
         <div className="not-prose my-12">
           <CreditedImage
-            photo={libraryPhoto("craft-woodturning")}
+            photo={sitePhoto(SITE_IMAGES.about.workshop)}
             frame="aspect-[3/2]"
             sizes="(min-width: 720px) 680px, 100vw"
           />
@@ -69,7 +70,7 @@ export default function AboutPage() {
         </p>
         <h2>Where we are now</h2>
         <p>
-          This is Wave 1: {PIECES.length} pieces across Hearth &amp; Heat, Kitchen and Hardware. Lighting and
+          This is Wave 1: {PIECES.length} pieces across Hearth &amp; Heat, Hardware and Kitchen. Lighting and
           Tableware come next, then Textiles and Furniture &amp; Wood.
         </p>
       </div>

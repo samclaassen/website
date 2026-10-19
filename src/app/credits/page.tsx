@@ -3,37 +3,49 @@ import Link from "next/link";
 import { breadcrumbJsonLd, generatePageMetadata, webPageJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { IMAGE_LIBRARY } from "@/data/image-library";
+import { displayedLibraryImages, displayedProductPhotos } from "@/lib/site-images";
 import { RIGHTS_LABEL } from "@/lib/images";
+import type { LibraryImage } from "@/data/image-library";
 
 const DESCRIPTION =
   "Every photograph on Legacy Homeware, with its creator, source and license. All are real photographs or public-domain artworks, openly licensed and credited.";
 
 export const metadata = generatePageMetadata({ title: "Photo credits", description: DESCRIPTION, path: "/credits" });
 
-const CHECKED = "October 18, 2026";
+
+/** "public domain, CC0, CC BY 2.0 and the Pexels License", linked, from the images actually shown. */
+function licenseSummary(images: LibraryImage[]) {
+  const seen = new Map<string, string>();
+  for (const img of images) if (!seen.has(img.license)) seen.set(img.license, img.licenseUrl);
+  const items = [...seen.entries()].sort(([a], [b]) => a.localeCompare(b));
+  return items.map(([name, url], i) => (
+    <span key={name}>
+      {i > 0 && (i === items.length - 1 ? " and " : ", ")}
+      <a className="link-underline" href={url} rel="noopener license" target="_blank">{name}</a>
+    </span>
+  ));
+}
 
 export default function CreditsPage() {
-  const images = [...IMAGE_LIBRARY].sort((a, b) => a.title.localeCompare(b.title));
+  const images = displayedLibraryImages().sort((a, b) => a.title.localeCompare(b.title));
+  const products = displayedProductPhotos();
   return (
     <>
       <JsonLd data={webPageJsonLd({ title: "Photo credits", description: DESCRIPTION, path: "/credits" })} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Photo credits", href: "/credits" }])} />
       <PageHeader kicker="Photo credits" title="Where our photos come from">
         <p>
-          We don&apos;t have permission to show makers&apos; product photos yet, so the photographs here set the scene
-          and show materials. Each one is a real photograph or a public-domain artwork, used under an open license
-          that we checked on the image&apos;s own page on {CHECKED}. None shows the exact piece it sits beside.
+          The photographs on our editorial pages set the scene: the hearth, the door, the table and the workshops
+          where things are still made. Each one is a real photograph or a public-domain artwork, used under an open
+          license that we checked on the image&apos;s own page. Pieces are shown as illustrations until a maker
+          gives us the right to show the piece itself.
         </p>
       </PageHeader>
 
       <div className="wrap max-w-[980px] pb-24">
         <p className="text-[15px] text-caption font-label mb-8">
-          {images.length} images. Files were resized and converted to WebP; nothing else was changed. Licenses:{" "}
-          public domain, <a className="link-underline" href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener license" target="_blank">CC0</a>,{" "}
-          Creative Commons Attribution (<a className="link-underline" href="https://creativecommons.org/licenses/by/2.0/" rel="noopener license" target="_blank">CC BY 2.0</a>,{" "}
-          <a className="link-underline" href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license" target="_blank">4.0</a>) and the{" "}
-          <a className="link-underline" href="https://unsplash.com/license" rel="noopener license" target="_blank">Unsplash License</a>.
+          {images.length + products.length} images, exactly the ones shown on the site. Files were resized and converted
+          to WebP; nothing else was changed. Licenses: {licenseSummary(images)}.
         </p>
         <ul className="border-t border-line">
           {images.map((img) => (
@@ -67,6 +79,19 @@ export default function CreditsPage() {
             </li>
           ))}
         </ul>
+        {products.length > 0 && (
+          <>
+            <h2 className="display text-[26px] mt-14 mb-4">Photos of the pieces</h2>
+            <ul className="border-t border-line">
+              {products.map(({ piece, photo }) => (
+                <li key={piece.slug} className="py-5 border-b border-line text-[15px]">
+                  <Link href={`/pieces/${piece.slug}`} className="display text-[19px] link-underline">{piece.name}</Link>
+                  <span className="text-caption"> · {photo.credit} · {RIGHTS_LABEL[photo.rightsBasis]} · checked {photo.dateCleared}</span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <p className="mt-10 text-[15px] text-caption">
           See something credited wrongly? Tell us and we&apos;ll fix it. Our photo policy is part of{" "}
           <Link href="/standard#images" className="link-underline text-umber">the Heirloom Standard</Link>.

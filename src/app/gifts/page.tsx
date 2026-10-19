@@ -8,7 +8,7 @@ import { PRICE_CHECKED_DISPLAY } from "@/data/pieces";
 
 export const metadata = generatePageMetadata({
   title: "Heirlooms under $100",
-  description: "Gift ideas under $100 that pass the Heirloom Standard: cast iron, forged iron, bronze, brass and hardwood.",
+  description: "Gift ideas under $100 that pass the Heirloom Standard: forged iron for the hearth and the door, bronze and brass hooks, hardwood for the table.",
   path: "/gifts",
 });
 

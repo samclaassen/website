@@ -3,7 +3,8 @@ import type { Piece } from "@/lib/piece-types";
 import { MATERIAL_LABEL } from "@/lib/piece-types";
 import Image from "next/image";
 import { PieceVisual, PieceVisualCaption } from "@/components/media/PieceVisual";
-import { pieceMedia } from "@/lib/piece-media";
+import { productPhoto } from "@/lib/piece-media";
+import { MaterialMotif } from "@/components/media/MaterialMotif";
 
 /** Grid card: visual, serif name, italic "why it lasts" line, material tag. No prices. */
 export function PieceCard({ piece, priority = false }: { piece: Piece; priority?: boolean }) {
@@ -15,10 +16,10 @@ export function PieceCard({ piece, priority = false }: { piece: Piece; priority?
           <PieceVisual piece={piece} priority={priority} caption={false} />
         </div>
       </Link>
-      {/* Credit sits outside the card link so its source link is a real, separate link. */}
+      {/* Only a product photo has a credit; it sits outside the card link so its source link is separate. */}
       <PieceVisualCaption piece={piece} />
       <Link href={href} className="block">
-        <h3 className="display text-[24px] leading-[1.15] mt-3 group-hover:text-terracotta transition-colors">
+        <h3 className="display text-[24px] leading-[1.15] mt-4 group-hover:text-terracotta transition-colors">
           {piece.name}
         </h3>
         <p className="lab mt-1 text-umber/80">{piece.maker}</p>
@@ -32,28 +33,32 @@ export function PieceCard({ piece, priority = false }: { piece: Piece; priority?
 /** Compact row used on small screens for long lists. */
 export function PieceRow({ piece }: { piece: Piece }) {
   const material = piece.checks.solid.badge ?? piece.material;
-  const { photo } = pieceMedia(piece);
+  const photo = productPhoto(piece);
+  const href = `/pieces/${piece.slug}`;
   return (
     <article className="group border-b border-line py-5">
       <div className="grid grid-cols-[104px_1fr] gap-5 items-start">
-        <Link href={`/pieces/${piece.slug}`} tabIndex={-1} aria-hidden="true" className="relative block aspect-[4/5] overflow-hidden bg-card">
-          <Image
-            src={photo.src}
-            alt=""
-            fill
-            sizes="104px"
-            className="object-cover"
-            style={photo.focus ? { objectPosition: photo.focus } : undefined}
-          />
-          <span
-            className="absolute inset-x-0 bottom-0 px-2 pb-1.5 pt-5 display text-[12.5px] leading-tight text-linen"
-            style={{ background: "linear-gradient(to top, rgba(30,22,15,.82), rgba(30,22,15,0))" }}
-          >
-            {material}
-          </span>
+        <Link href={href} tabIndex={-1} aria-hidden="true" className="block">
+          {photo ? (
+            <span className="relative block aspect-[4/5] overflow-hidden bg-card">
+              <Image
+                src={photo.src}
+                alt=""
+                fill
+                sizes="104px"
+                className="object-cover"
+                style={photo.focus ? { objectPosition: photo.focus } : undefined}
+              />
+            </span>
+          ) : (
+            <span className="card-texture aspect-[4/5] flex flex-col items-center justify-center p-3 text-center">
+              <MaterialMotif family={piece.materialFamily} className="w-[44px] text-terracotta" />
+              <span className="display text-[13px] leading-tight mt-2">{material}</span>
+            </span>
+          )}
         </Link>
         <div>
-          <Link href={`/pieces/${piece.slug}`} className="block">
+          <Link href={href} className="block">
             <h3 className="display text-[22px] leading-[1.15] group-hover:text-terracotta transition-colors">{piece.name}</h3>
             <p className="lab mt-1 text-umber/80">{piece.maker}</p>
             <p className="italic text-[15.5px] leading-snug text-caption mt-2">{piece.line}</p>

@@ -1,9 +1,9 @@
 import { CHECK_LABEL, CHECK_ORDER } from "@/lib/piece-types";
 
 export const STANDARD_TESTS: Record<(typeof CHECK_ORDER)[number], string> = {
-  solid: "Solid, not plated, veneered over particleboard, or a \"-look\" finish. Cast iron is cast iron; brass is solid brass.",
+  solid: "Solid, not plated, veneered over particleboard, or a \"-look\" finish. Brass is solid brass; bronze is solid bronze.",
   repair: "Held together with screws, rivets and joinery rather than glue and sealed plastic, so it can be taken apart, fixed and refinished.",
-  ages: "It develops a patina instead of falling apart: wood darkens, brass mellows, cast iron seasons.",
+  ages: "It develops a patina instead of falling apart: brass mellows, bronze darkens, wood deepens in color.",
   design: "Rooted in a proven traditional form, not a trend.",
   maker: "A real warranty, parts you can get, and a maker with a track record.",
 };

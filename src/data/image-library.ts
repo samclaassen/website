@@ -5,9 +5,11 @@
  * license confirmed on the image's own page on the date in `checkedAt`. Files live in
  * public/images/library/ (WebP, about 2000–2400px on the long edge, under 400 KB).
  *
- * These are NOT photos of the pieces we feature. Where one stands in for a piece it is
- * labelled "Material photo — not this exact piece". A cleared product photo on the piece
- * (piece.photo) always overrides the material photo.
+ * These are NOT photos of the pieces we feature, and they are used on editorial surfaces only
+ * (home, category tiles, /standard, /about, journal). Pieces show their illustrated card unless
+ * they have a cleared product photo (piece.photo). Which images are on screen is set in
+ * src/lib/site-images.ts; /credits lists exactly those. Images not currently displayed stay
+ * here with their records so they can be reused.
  *
  * Allowed sources: museum open access / public domain, Wikimedia Commons (public domain,
  * CC0 or CC BY only; no BY-SA or NC), Unsplash License, Pexels License.
@@ -77,7 +79,7 @@ export const IMAGE_LIBRARY: LibraryImage[] = [
     width: 2400,
     height: 1600,
     focus: "50% 62%",
-    roles: ["hero"],
+    roles: ["hero-alt"],
   },
   {
     id: "hero-antique-range",
@@ -577,6 +579,60 @@ export const IMAGE_LIBRARY: LibraryImage[] = [
     width: 2357,
     height: 2400,
     roles: ["material:cast-iron"],
+  },
+  {
+    id: "hero-hearth-room",
+    file: "/images/library/hero-hearth-room.webp",
+    alt: "A wood fire burning behind a scrolled iron grate in a whitewashed brick fireplace, in a wood-panelled room with a log basket, a spinning wheel and an armchair",
+    title: "Fire in fireplace in room",
+    creator: "Vilnis Husko",
+    credit: "Photo: Vilnis Husko / Pexels",
+    source: "Pexels",
+    sourceUrl: "https://www.pexels.com/photo/fire-in-fireplace-in-room-6832351/",
+    license: "Pexels License",
+    licenseUrl: "https://www.pexels.com/license/",
+    rightsBasis: "pexels-license",
+    checkedAt: "2026-10-19",
+    width: 2400,
+    height: 1600,
+    focus: "50% 55%",
+    roles: ["hero"],
+  },
+  {
+    id: "hist-open-doors",
+    file: "/images/library/hist-open-doors.webp",
+    alt: "Painting of an empty room with two pairs of white panelled doors standing open, brass handles catching the light",
+    title: "Open Doors (White Doors), Vilhelm Hammershøi, 1905",
+    creator: "Vilhelm Hammershøi",
+    credit: "Vilhelm Hammershøi / The David Collection via Wikimedia Commons",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Vilhelm_Hammersh%C3%B8i-_Wei%C3%9Fe_T%C3%BCren,_offene_T%C3%BCren,_1905.jpg",
+    license: "Public domain",
+    licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+    rightsBasis: "public-domain",
+    checkedAt: "2026-10-19",
+    width: 2400,
+    height: 2033,
+    focus: "50% 50%",
+    roles: ["historic"],
+  },
+  {
+    id: "hist-old-stove",
+    file: "/images/library/hist-old-stove.webp",
+    alt: "Painting of a quiet room with an old iron stove in the corner and a white door open to the next room",
+    title: "Interior: The Old Stove, Albertines Lyst, Lyngby, Vilhelm Hammershøi, 1888",
+    creator: "Vilhelm Hammershøi",
+    credit: "Vilhelm Hammershøi / Statens Museum for Kunst via Wikimedia Commons",
+    source: "Wikimedia Commons",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Vilhelm_Hammersh%C3%B8i,_Interi%C3%B8r_Den_gamle_bil%C3%A6ggerovn_Albertines_Lyst,_Lyngby,_1888,_KMS7246,_Statens_Museum_for_Kunst.jpg",
+    license: "Public domain",
+    licenseUrl: "https://creativecommons.org/publicdomain/mark/1.0/",
+    rightsBasis: "public-domain",
+    checkedAt: "2026-10-19",
+    width: 1964,
+    height: 2400,
+    focus: "50% 50%",
+    roles: ["historic"],
   },
 ];
 

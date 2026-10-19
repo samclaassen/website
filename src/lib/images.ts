@@ -6,11 +6,11 @@
  *
  * Two kinds of photo:
  * - Library photos (src/data/image-library.ts): openly licensed or public-domain photographs
- *   used for atmosphere and as MATERIAL photos. They never depict the exact piece.
+ *   used on editorial surfaces only. They never depict the exact piece.
  * - Product photos (piece.photo): the actual piece. Only once the rights basis is real:
  *   "maker-permission" (written permission, keep the email on file), "affiliate-program"
  *   (a program we have joined), "press-kit" or "own-photo". A product photo always
- *   overrides the material photo.
+ *   replaces the illustrated card.
  */
 
 /** Rights bases for openly licensed library images. */

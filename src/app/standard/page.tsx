@@ -7,7 +7,7 @@ import { DISQUALIFIERS, STANDARD_TESTS, StandardList } from "@/components/pieces
 import { CHECK_LABEL, CHECK_ORDER } from "@/lib/piece-types";
 import { PIECES } from "@/lib/pieces";
 import { CreditedImage } from "@/components/media/CreditedImage";
-import { libraryPhoto } from "@/data/image-library";
+import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
 
 const DESCRIPTION =
   "The five tests every Legacy Homeware piece must pass: solid materials, built to be repaired, ages well, lasting design, and a maker that stands behind it. Plus what we reject, how we evaluate, and our affiliate policy.";
@@ -50,13 +50,13 @@ export default function StandardPage() {
 
       <div className="wrap pb-16 sm:pb-20 grid gap-8 sm:grid-cols-[1fr_1.35fr] items-end">
         <CreditedImage
-          photo={libraryPhoto("craft-blacksmith-anvil")}
+          photo={sitePhoto(SITE_IMAGES.standard.lead)}
           frame="aspect-[4/5]"
           sizes="(min-width: 640px) 440px, 100vw"
           priority
         />
         <CreditedImage
-          photo={libraryPhoto("craft-hot-iron")}
+          photo={sitePhoto(SITE_IMAGES.standard.second)}
           frame="aspect-[4/3]"
           sizes="(min-width: 640px) 600px, 100vw"
         />
@@ -100,13 +100,13 @@ export default function StandardPage() {
           given. Where the made-in country is known we show it, but it isn&apos;t one of the five tests.
         </p>
         <p>
-          This is Wave 1: {PIECES.length} pieces across Hearth &amp; Heat, Kitchen and Hardware. Prices were checked
+          This is Wave 1: {PIECES.length} pieces across Hearth &amp; Heat, Hardware and Kitchen. Prices were checked
           on October 18, 2026 and change often, so always confirm on the retailer&apos;s site.
         </p>
 
         <div className="not-prose my-12 grid gap-6 sm:grid-cols-[minmax(0,300px)_1fr] items-end">
           <CreditedImage
-            photo={libraryPhoto("hist-rim-lock")}
+            photo={sitePhoto(SITE_IMAGES.standard.rimLock)}
             frame="aspect-square"
             sizes="300px"
           />
@@ -131,9 +131,9 @@ export default function StandardPage() {
         <h2 id="images">Photos</h2>
         <p>
           We only show a maker&apos;s photos once we have the right to: through an affiliate program, a press kit or
-          written permission, always credited and linked. Until then, a piece is shown with an openly licensed
-          photograph of its material, clearly labelled &ldquo;Material photo — not this exact piece&rdquo;. Every
-          photo on the site is a real photograph or a public-domain artwork, credited and linked to its source; the
+          written permission, always credited and linked. Until then, a piece is shown as an illustration: its
+          material, its maker and a small drawing, never a stand-in photo of something else. The photographs on our
+          editorial pages are real photographs or public-domain artworks, credited and linked to their sources; the
           full list is on our <Link href="/credits">photo credits</Link> page. We never use AI-generated images.
         </p>
 

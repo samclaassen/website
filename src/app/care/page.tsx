@@ -4,15 +4,16 @@ import { PageHeader } from "@/components/ui/PageHeader";
 
 export const metadata = generatePageMetadata({
   title: "Care & Keeping",
-  description: "Guides to caring for cast iron, brass, bronze, copper and wood so they last generations. Coming soon.",
+  description: "Guides to caring for brass, bronze, forged iron, wood, copper and cast iron so they last generations. Coming soon.",
   path: "/care",
   noIndex: true,
 });
 
 const PLANNED = [
-  "How to care for cast iron so it lasts generations",
   "Solid brass vs. brass-plated: how to tell",
   "Cleaning and patina for solid brass and bronze",
+  "Keeping forged iron latches, hinges and fire tools from rust",
+  "How to care for cast iron so it lasts generations",
   "When and how to re-tin copper",
   "Oiling and resurfacing wooden boards and spoons",
 ];

@@ -4,8 +4,32 @@ import { CHECK_ORDER } from "./piece-types";
 
 export { PIECES };
 
-export const CATEGORIES: Category[] = ["hearth", "kitchen", "hardware"];
+/** Display order: the hearth and the door lead, the kitchen follows. */
+export const CATEGORIES: Category[] = ["hearth", "hardware", "kitchen"];
 export const TIERS: Tier[] = ["accessible", "mid", "premium"];
+
+/**
+ * Default order for the full collection: categories interleaved (hearth, door, kitchen, ...) so
+ * the list reads as the whole house rather than one room at a time. Within a category the
+ * shortlist order is kept, except that a few pieces lead their category: the kitchen opens
+ * with wood and copper for the table rather than a skillet.
+ */
+const BROWSE_LEADS = ["K20", "K15", "K8"];
+export function browseOrder(pieces: Piece[] = PIECES): Piece[] {
+  const lead = (p: Piece) => {
+    const i = BROWSE_LEADS.indexOf(p.id);
+    return i === -1 ? BROWSE_LEADS.length : i;
+  };
+  const queues = CATEGORIES.map((c) =>
+    pieces.filter((p) => p.category === c).sort((a, b) => lead(a) - lead(b)),
+  );
+  const out: Piece[] = [];
+  for (let i = 0; out.length < pieces.length; i++) {
+    for (const q of queues) if (q[i]) out.push(q[i]);
+    if (queues.every((q) => i >= q.length)) break;
+  }
+  return out;
+}
 
 export function getPiece(slug: string) {
   return PIECES.find((p) => p.slug === slug);
@@ -15,17 +39,17 @@ export function piecesIn(category: Category) {
   return PIECES.filter((p) => p.category === category);
 }
 
-/** Material families in use, in a stable display order. */
+/** Material families in use, in a stable display order (hearth and door materials first). */
 export const MATERIAL_FAMILIES: MaterialFamily[] = (
   [
-    "cast-iron",
-    "enameled-cast-iron",
-    "soapstone",
-    "carbon-steel",
     "forged",
-    "copper",
     "brass",
     "bronze",
+    "soapstone",
+    "cast-iron",
+    "enameled-cast-iron",
+    "carbon-steel",
+    "copper",
     "hardwood",
     "other",
   ] as MaterialFamily[]
@@ -63,8 +87,12 @@ export function related(p: Piece, n = 3) {
   return [...sameFamily, ...rest].slice(0, n);
 }
 
-/** Featured pieces for the home page: one per category. */
-export const FEATURED_IDS = ["H18", "K3", "W15"];
+/**
+ * Featured pieces for the home page: one per category, in category order (hearth, door, table).
+ * Ring Andirons (Ponderosa Forge), Round Door Knocker (Rocky Mountain Hardware),
+ * Walnut End-Grain Block (John Boos).
+ */
+export const FEATURED_IDS = ["H20", "W16", "K20"];
 export function featured() {
   return FEATURED_IDS.map((id) => PIECES.find((p) => p.id === id)!).filter(Boolean);
 }

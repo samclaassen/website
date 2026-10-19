@@ -94,7 +94,7 @@ export interface Piece {
   /**
    * A cleared, credited photo of this exact piece (rightsBasis "maker-permission",
    * "affiliate-program", "press-kit" or "own-photo"). Empty until rights are in place;
-   * until then the piece shows a labelled material photo (see lib/piece-media.ts).
+   * until then the piece shows its illustrated card (see lib/piece-media.ts).
    */
   photo?: CreditedPhoto;
   isNew?: boolean;
@@ -108,7 +108,7 @@ export const CATEGORY_LABEL: Record<Category, string> = {
 
 export const CATEGORY_BLURB: Record<Category, string> = {
   hearth: "Forged fire tools, andirons and cast-iron stoves.",
-  kitchen: "Cast iron, carbon steel, copper and hardwood for cooking.",
+  kitchen: "Hardwood boards, tinned copper and iron pans for the table and the stove.",
   hardware: "Solid brass, bronze and forged-iron door sets, latches and hooks.",
 };
 

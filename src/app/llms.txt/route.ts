@@ -12,6 +12,8 @@ export function GET() {
     "",
     `> ${SITE_TAGLINE} ${SITE_DESCRIPTION}`,
     "",
+    "It covers the whole home: the hearth (andirons, fire tools, grates, stoves), the door (thumblatches, hinges, knobs, levers, knockers, hooks) and the table and kitchen (hardwood boards, tinned copper, iron pans).",
+    "",
     "Legacy Homeware is an editorial guide, not a store. It links to makers and retailers; some links are affiliate links, and pieces are included whether or not they pay a commission.",
     "",
     "## The Heirloom Standard",
