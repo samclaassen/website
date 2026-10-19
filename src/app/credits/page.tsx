@@ -8,7 +8,7 @@ import { RIGHTS_LABEL } from "@/lib/images";
 import type { LibraryImage } from "@/data/image-library";
 
 const DESCRIPTION =
-  "Every photograph on Legacy Homeware, with its creator, source and license. All are real photographs or public-domain artworks, openly licensed and credited.";
+  "Every photograph on Legacy Homeware, with its creator, source and license. All are real photographs, openly licensed and credited.";
 
 export const metadata = generatePageMetadata({ title: "Photo credits", description: DESCRIPTION, path: "/credits" });
 
@@ -35,9 +35,9 @@ export default function CreditsPage() {
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Photo credits", href: "/credits" }])} />
       <PageHeader kicker="Photo credits" title="Where our photos come from">
         <p>
-          The photographs on our editorial pages set the scene: the hearth, the door, the table and the workshops
-          where things are still made. Each one is a real photograph or a public-domain artwork, used under an open
-          license that we checked on the image&apos;s own page. Pieces are shown as illustrations until a maker
+          The photographs on our editorial pages show the kinds of things we look for: solid brass, cast iron,
+          copper and hardwood, in bright, everyday rooms. Each one is a real photograph, used under an open
+          license that we checked on the image&apos;s own page. They are not photos of the exact pieces we feature. Pieces are shown as illustrations until a maker
           gives us the right to show the piece itself.
         </p>
       </PageHeader>

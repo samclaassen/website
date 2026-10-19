@@ -16,7 +16,7 @@ export const metadata = generatePageMetadata({
   path: "",
 });
 
-const HERO = sitePhoto(SITE_IMAGES.homeHero);
+const HERO_PHOTOS = SITE_IMAGES.homeHero.map((id) => sitePhoto(id));
 const CATEGORY_PHOTO = {
   hearth: sitePhoto(SITE_IMAGES.category.hearth),
   hardware: sitePhoto(SITE_IMAGES.category.hardware),
@@ -35,42 +35,45 @@ export default function HomePage() {
         )}
       />
 
-      {/* Photographic hero */}
-      <section className="relative h-[min(78vh,720px)] min-h-[520px] overflow-hidden bg-umber" aria-labelledby="hero-heading">
-        <Image
-          src={HERO.src}
-          alt={HERO.alt}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          style={{ objectPosition: HERO.focus }}
-        />
-        <div
-          className="absolute inset-0"
-          aria-hidden="true"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(30,22,15,.62) 0%, rgba(30,22,15,.30) 45%, rgba(30,22,15,0) 70%), linear-gradient(to bottom, rgba(30,22,15,.10) 0%, rgba(30,22,15,.05) 35%, rgba(30,22,15,.55) 68%, rgba(30,22,15,.85) 100%)",
-          }}
-        />
-        <div className="absolute inset-x-0 bottom-0">
-          <div className="wrap pb-20 sm:pb-16 lg:pb-20">
-            <p className="lab text-linen/85">A curated guide · Wave 1</p>
+      {/* Hero: the tagline on linen beside a curated grid of four objects */}
+      <section className="wrap pt-12 pb-6 sm:pt-16 lg:pt-20" aria-labelledby="hero-heading">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16 items-center">
+          <div>
+            <p className="lab">A curated guide · Wave 1</p>
             <h1
               id="hero-heading"
-              className="display font-light text-linen text-[44px] sm:text-[64px] lg:text-[84px] leading-[1.02] mt-5 max-w-[13ch] text-balance [text-shadow:0_1px_24px_rgba(30,22,15,.35)]"
+              className="display font-light text-[44px] sm:text-[60px] lg:text-[72px] leading-[1.02] mt-5 max-w-[12ch] text-balance"
             >
               Home items that become heirlooms.
             </h1>
-            <p className="lab mt-7 text-linen/80">
-              For the hearth, the door and the table
-            </p>
+            <p className="lab mt-7 text-umber">For the hearth, the door and the table</p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link href="/pieces" className="btn-quiet">See the collection</Link>
+            </div>
           </div>
+          <figure>
+            <ul className="grid grid-cols-2 gap-2 sm:gap-3" aria-label="Brass, cast iron, copper and hardwood">
+              {HERO_PHOTOS.map((photo, i) => (
+                <li key={photo.src} className="relative aspect-square overflow-hidden bg-card">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    priority={i < 2}
+                    sizes="(min-width: 1024px) 340px, 50vw"
+                    className="object-cover"
+                    style={{ objectPosition: photo.focus }}
+                  />
+                </li>
+              ))}
+            </ul>
+            <figcaption className="mt-3 flex flex-wrap gap-x-3 gap-y-1">
+              {HERO_PHOTOS.map((photo) => (
+                <PhotoCredit key={photo.src} photo={photo} />
+              ))}
+            </figcaption>
+          </figure>
         </div>
-        <p className="absolute bottom-3 left-[22px] right-4 sm:left-auto sm:right-6 sm:max-w-[70%] sm:text-right">
-          <PhotoCredit photo={HERO} tone="light" />
-        </p>
       </section>
 
       {/* Standfirst */}

@@ -38,16 +38,14 @@ export default function AboutPage() {
           you can buy today, made the way they used to be, that should last long enough to hand down.
         </p>
         <div className="not-prose my-12 grid gap-6 sm:grid-cols-2">
-          <CreditedImage
-            photo={sitePhoto(SITE_IMAGES.about.door)}
-            frame="aspect-[4/5]"
-            sizes="(min-width: 640px) 340px, 100vw"
-          />
-          <CreditedImage
-            photo={sitePhoto(SITE_IMAGES.about.hearth)}
-            frame="aspect-[4/5]"
-            sizes="(min-width: 640px) 340px, 100vw"
-          />
+          {SITE_IMAGES.about.pair.map((id) => (
+            <CreditedImage
+              key={id}
+              photo={sitePhoto(id)}
+              frame="aspect-[4/5]"
+              sizes="(min-width: 640px) 340px, 100vw"
+            />
+          ))}
         </div>
         <h2>What we do</h2>
         <ul>
@@ -55,13 +53,6 @@ export default function AboutPage() {
           <li>We say what we haven&apos;t confirmed yet, and what&apos;s worth knowing before you buy.</li>
           <li>We link to the maker or retailer. We don&apos;t sell anything ourselves.</li>
         </ul>
-        <div className="not-prose my-12">
-          <CreditedImage
-            photo={sitePhoto(SITE_IMAGES.about.workshop)}
-            frame="aspect-[3/2]"
-            sizes="(min-width: 720px) 680px, 100vw"
-          />
-        </div>
         <h2>How we&apos;re paid</h2>
         <p>
           Some links are affiliate links, which may earn us a commission. That never decides what we include: we

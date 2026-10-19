@@ -11,15 +11,16 @@ import { productPhoto } from "./piece-media";
  * illustrated cards unless they have a cleared product photo.
  */
 export const SITE_IMAGES = {
-  homeHero: "hero-hearth-room",
+  /** A curated grid of four objects: brass, cast iron, copper, hardwood. */
+  homeHero: ["hero-brass-knob", "hero-cast-iron-skillet", "hero-copper-pans", "hero-cutting-board"],
   category: {
-    hearth: "cat-hearth-woodstove",
-    hardware: "mat-brass-knocker",
-    kitchen: "mat-wooden-spoons",
+    hearth: "cat-hearth-modern-stove",
+    hardware: "cat-hardware-brass-lever",
+    kitchen: "cat-kitchen-copper-saucepan",
   } satisfies Record<Category, string>,
-  homeStandard: "craft-blacksmith-forge",
-  standard: { lead: "craft-blacksmith-anvil", second: "craft-hot-iron", rimLock: "hist-rim-lock" },
-  about: { lead: "craft-bronze-pour", door: "hist-open-doors", hearth: "hist-old-stove", workshop: "craft-woodturning" },
+  homeStandard: "detail-brass-knob-sunlight",
+  standard: { lead: "detail-brass-pulls", second: "detail-dovetail" },
+  about: { lead: "about-copper-shelf", pair: ["about-wooden-spoons", "about-cutting-board-counter"] },
 } as const;
 
 export const sitePhoto = (id: string): CreditedPhoto => libraryPhoto(id);
