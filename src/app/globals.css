@@ -1,79 +1,215 @@
 @import "tailwindcss";
 
+/* Direction 1 — "Hearth & Journal" */
 @theme {
-  /* Aesop-inspired warm palette */
-  --color-cream: #F6F3ED;
-  --color-cream-dark: #EDE8DF;
-  --color-stone: #2B2B2B;
-  --color-stone-light: #3D3D3D;
-  --color-bark: #8B6914;
-  --color-muted: #767676;
-  --color-light: #A3A3A3;
-  --color-border: #D4CFC5;
+  --color-linen: #F6EFE6;
+  --color-card: #EDE3D6;
+  --color-umber: #3B3128;
+  --color-caption: #6E6155;
+  --color-terracotta: #A4502F;
+  --color-line: #D8CBBB;
 
-  --font-serif: "Cormorant Garamond", serif;
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-body: var(--font-source-serif), Georgia, serif;
+  --font-label: var(--font-work-sans), system-ui, sans-serif;
 }
 
+@layer base {
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  background: var(--color-linen);
+  color: var(--color-umber);
+  font-family: var(--font-body);
+  font-size: 18.5px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-stone);
-  outline-offset: 2px;
+@media (max-width: 640px) {
+  body {
+    font-size: 18px;
+  }
 }
 
-/* Aesop-style CTA buttons */
-.cta-button {
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: #e7d3c2;
+}
+
+}
+
+@layer components {
+/* Small tracked uppercase label (Work Sans) */
+.lab {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-caption);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.wrap {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+.prose-lh p + p {
+  margin-top: 1em;
+}
+
+.prose-lh h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 2.2em 0 0.6em;
+}
+
+.prose-lh h3 {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 1.8em 0 0.4em;
+}
+
+.prose-lh ul {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0;
+}
+
+.prose-lh ul li {
+  position: relative;
+  padding-left: 1.3em;
+  margin: 0.45em 0;
+}
+
+.prose-lh ul li::before {
+  content: "";
+  position: absolute;
+  left: 0.15em;
+  top: 0.72em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-terracotta);
+}
+
+.prose-lh a {
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 3px;
+}
+
+.prose-lh a:hover {
+  text-decoration-color: var(--color-terracotta);
+}
+
+/* Terracotta button */
+.btn {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 32px;
-  border: 1px solid currentColor;
-  font-size: 14px;
-  font-weight: 400;
-  transition: all 0.3s ease;
-}
-
-.cta-button:hover {
-  background: var(--color-stone);
-  color: var(--color-cream);
-  border-color: var(--color-stone);
-}
-
-.cta-button-light {
+  gap: 8px;
+  background: var(--color-terracotta);
   color: #fff;
-  border-color: rgba(255,255,255,0.5);
+  padding: 11px 18px;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  white-space: nowrap;
 }
 
-.cta-button-light:hover {
-  background: #fff;
-  color: var(--color-stone);
-  border-color: #fff;
+.btn:hover {
+  background: #8c4227;
 }
 
-/* Pull quote */
-.pull-quote {
-  font-style: italic;
-  border-left: 2px solid var(--color-stone);
-  padding-left: 1.5rem;
+.btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--color-umber);
+  padding: 11px 18px;
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  transition: all 0.2s ease;
 }
 
-/* Scrollbar hide for carousels */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.btn-quiet:hover {
+  background: var(--color-umber);
+  color: var(--color-linen);
 }
 
-/* Hero text shadow for readability over images */
-.text-shadow-hero {
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+.pill {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+/* Subtle linen texture: fine cross-hatched threads, drawn in CSS (no imagery). */
+.linen-texture {
+  background-color: var(--color-linen);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(59, 49, 40, 0.025) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(59, 49, 40, 0.02) 0 1px, transparent 1px 4px);
+}
+
+.card-texture {
+  background-color: var(--color-card);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(59, 49, 40, 0.03) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(59, 49, 40, 0.025) 0 1px, transparent 1px 4px);
+}
+
+.link-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 4px;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.link-underline:hover {
+  text-decoration-color: var(--color-terracotta);
+}
 }

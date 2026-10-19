@@ -1,274 +1,167 @@
-import { generatePageMetadata, webPageJsonLd } from "@/lib/seo";
-import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/constants";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { COLLECTIONS } from "@/lib/collections";
-import { STYLE_PRODUCTS } from "@/data/styleProducts";
-import { ELEMENTS, ENTRIES, STYLES, coverEntry, entriesForElement, entriesForStyle, getEntry, hasComboPage } from "@/lib/details";
-import { fromPrice, pricingFor } from "@/lib/pricing";
-import { STYLE_HUBS } from "@/data/hubs";
-import { EntryImage } from "@/components/details/EntryImage";
 import Link from "next/link";
+import { generatePageMetadata, itemListJsonLd } from "@/lib/seo";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE } from "@/lib/constants";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { PieceCard } from "@/components/pieces/PieceCard";
+import { StandardList } from "@/components/pieces/StandardList";
+import { CATEGORIES, PIECES, featured, fullName, piecesIn } from "@/lib/pieces";
+import { CATEGORY_BLURB, CATEGORY_LABEL } from "@/lib/piece-types";
 import Image from "next/image";
+import { CreditedImage, PhotoCredit } from "@/components/media/CreditedImage";
+import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
 
 export const metadata = generatePageMetadata({
-  title: `${SITE_NAME} — Architectural Details, Made for Your Home`,
+  title: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
   description: SITE_DESCRIPTION,
-  path: "/",
+  path: "",
 });
 
-const QUICK_SEARCHES = ["Inglenook", "Linenfold", "Copper hood", "Built-in sideboard", "Peg rail", "Marquetry", "Denver"];
+const HERO = sitePhoto(SITE_IMAGES.homeHero);
+const CATEGORY_PHOTO = {
+  hearth: sitePhoto(SITE_IMAGES.category.hearth),
+  hardware: sitePhoto(SITE_IMAGES.category.hardware),
+  kitchen: sitePhoto(SITE_IMAGES.category.kitchen),
+} as const;
+const STANDARD_PHOTO = sitePhoto(SITE_IMAGES.homeStandard);
 
 export default function HomePage() {
-  const featuredStyle = STYLES.find((s) => s.slug === "arts-and-crafts")!;
-  const featuredEntry = getEntry("stickley-living-room-with-boulder-fireplace-and-built-in-bookcase-nook") ?? coverEntry(entriesForStyle("arts-and-crafts"));
-  const customEntry = getEntry("entrance-hall-eltham-palace-london") ?? ENTRIES[0];
-  const orderable = ELEMENTS.filter((e) => e.custom_status === "orderable");
-  const hardware = COLLECTIONS.slice(0, 4);
-
+  const picks = featured();
   return (
     <>
-      <JsonLd data={webPageJsonLd({ title: SITE_NAME, description: SITE_DESCRIPTION, path: "/" })} />
+      <JsonLd
+        data={itemListJsonLd(
+          "Featured heirloom pieces",
+          picks.map((p) => ({ name: fullName(p), path: `/pieces/${p.slug}` })),
+        )}
+      />
 
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center justify-center">
+      {/* Photographic hero */}
+      <section className="relative h-[min(78vh,720px)] min-h-[520px] overflow-hidden bg-umber" aria-labelledby="hero-heading">
         <Image
-          src="/images/hero-hardware.png"
-          alt="Sunlit luxury home entryway with brass chandelier and decorative hardware"
+          src={HERO.src}
+          alt={HERO.alt}
           fill
-          className="object-cover"
           priority
-          quality={75}
+          sizes="100vw"
+          className="object-cover"
+          style={{ objectPosition: HERO.focus }}
         />
-        <div className="absolute inset-0 bg-cream/70" />
-
-        <div className="relative z-10 text-center px-6 max-w-3xl w-full">
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-semibold leading-[1.08] text-stone mb-6">
-            Make a home worth passing down
-          </h1>
-          <p className="text-base leading-[1.8] text-stone-light mb-10 max-w-xl mx-auto">
-            Search {ENTRIES.length} real examples of cabinetry, built-ins, mantels, paneling and doors across twelve styles, then
-            have any of them made to fit your home.
-          </p>
-
-          <form action="/search" method="get" role="search" className="flex max-w-xl mx-auto mb-6">
-            <label htmlFor="home-q" className="sr-only">Search the archive</label>
-            <input
-              id="home-q"
-              name="q"
-              type="search"
-              placeholder="Search a style, element, motif or wood…"
-              className="flex-1 bg-white/90 border border-stone/40 px-5 py-4 text-[15px] text-stone placeholder:text-muted focus:outline-none focus:border-stone"
-            />
-            <button type="submit" className="bg-stone text-cream px-6 text-[14px] hover:bg-stone-light transition-colors">
-              Search
-            </button>
-          </form>
-          <div className="flex flex-wrap justify-center gap-2">
-            {QUICK_SEARCHES.map((q) => (
-              <Link key={q} href={`/search?q=${encodeURIComponent(q)}`} className="text-[12px] text-stone border border-stone/30 bg-cream/60 px-3 py-1 hover:border-stone">
-                {q}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Explore by style */}
-      <section className="bg-cream">
-        <div className="px-6 lg:px-10 pt-20 pb-10 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-3">Explore by style</p>
-            <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">Twelve styles, told through their details</h2>
-            <p className="text-base leading-[1.8] text-muted max-w-2xl mt-4">
-              Doors, cabinetry, paneling, mantels, range hoods and built-ins in each style, made to order for your home.
+        <div
+          className="absolute inset-0"
+          aria-hidden="true"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(30,22,15,.62) 0%, rgba(30,22,15,.30) 45%, rgba(30,22,15,0) 70%), linear-gradient(to bottom, rgba(30,22,15,.10) 0%, rgba(30,22,15,.05) 35%, rgba(30,22,15,.55) 68%, rgba(30,22,15,.85) 100%)",
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0">
+          <div className="wrap pb-20 sm:pb-16 lg:pb-20">
+            <p className="lab text-linen/85">A curated guide · Wave 1</p>
+            <h1
+              id="hero-heading"
+              className="display font-light text-linen text-[44px] sm:text-[64px] lg:text-[84px] leading-[1.02] mt-5 max-w-[13ch] text-balance [text-shadow:0_1px_24px_rgba(30,22,15,.35)]"
+            >
+              Home items that become heirlooms.
+            </h1>
+            <p className="lab mt-7 text-linen/80">
+              For the hearth, the door and the table
             </p>
           </div>
-          <Link href="/styles" className="cta-button text-stone">All styles <span aria-hidden="true">→</span></Link>
         </div>
-        <div className="px-6 lg:px-10 pb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10">
-            {STYLES.map((s) => {
-              const product = STYLE_PRODUCTS[s.slug];
-              const cover = product ? null : coverEntry(entriesForStyle(s.slug));
-              return (
-                <div key={s.slug} className="group">
-                  <Link href={`/styles/${s.slug}`} className="block">
-                    <div className="relative aspect-[4/3] overflow-hidden bg-cream-dark mb-4">
-                      {product ? (
-                        <Image
-                          src={product.image}
-                          alt={`${product.product}: ${product.category.toLowerCase()} in the ${s.name} style`}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                          className="object-contain p-6 mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-                        />
-                      ) : (
-                        cover && (
-                          <EntryImage
-                            image={cover.image}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                        )
-                      )}
-                    </div>
-                    <h3 className="font-serif text-xl font-semibold text-stone mb-1 group-hover:text-muted transition-colors">{s.name}</h3>
-                    <p className="text-[13px] text-muted">{s.era}</p>
-                  </Link>
-                  {product && (
-                    <p className="text-[12px] text-light mt-2 leading-[1.6]">
-                      <Link
-                        href={hasComboPage(s.slug, product.element) ? `/styles/${s.slug}/${product.element}` : `/elements/${product.element}`}
-                        className="uppercase tracking-[0.1em] text-bark hover:text-stone"
-                      >
-                        {product.category}
-                      </Link>
-                      {" · Shown: "}
-                      <a href={product.url} target="_blank" rel="nofollow noopener noreferrer" className="underline decoration-border underline-offset-2 hover:text-muted">
-                        {product.product}
-                      </a>
-                      {" "}({product.seller})
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <p className="absolute bottom-3 left-[22px] right-4 sm:left-auto sm:right-6 sm:max-w-[70%] sm:text-right">
+          <PhotoCredit photo={HERO} tone="light" />
+        </p>
       </section>
 
-      {/* Featured style */}
-      <section className="bg-cream border-t border-border">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh]">
-          <div className="flex flex-col justify-center px-6 lg:px-10 xl:px-20 py-16">
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-4">Featured style</p>
-            <p className="text-[13px] text-muted mb-4">{featuredStyle.era}</p>
-            <h2 className="font-serif text-4xl font-semibold text-stone lg:text-5xl mb-6">{featuredStyle.name}</h2>
-            <p className="text-base leading-[1.8] text-muted max-w-md mb-8">{STYLE_HUBS[featuredStyle.slug]?.intro[0]}</p>
-            <Link href={`/styles/${featuredStyle.slug}`} className="cta-button text-stone self-start">
-              Explore {featuredStyle.name} <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-          <Link href={`/details/${featuredEntry.slug}`} className="relative min-h-[420px] group bg-cream-dark">
-            <EntryImage
-              image={featuredEntry.image}
-              fill
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-            />
-          </Link>
-        </div>
-      </section>
+      {/* Standfirst */}
+      <p className="max-w-[680px] mx-auto my-20 sm:my-24 px-6 text-center text-[20px] sm:text-[21px] leading-[1.6]">
+        We find new pieces made the way they used to be, for the whole house: andirons and stoves for the hearth,
+        forged latches and solid brass and bronze for the door, hardwood and copper for the table. They&apos;re
+        built to be used every day and{" "}
+        <em className="text-terracotta">handed down</em>. Every one is checked against our{" "}
+        <Link href="/standard" className="link-underline">Heirloom Standard</Link>. We don&apos;t sell anything; we
+        point you to the maker.
+      </p>
 
-      {/* Explore by element */}
-      <section className="bg-cream-dark">
-        <div className="px-6 lg:px-10 pt-20 pb-10 flex flex-wrap items-end justify-between gap-6">
+      {/* Featured: one per category, hearth and door first */}
+      <section className="wrap pb-24" aria-labelledby="featured-heading">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <div>
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-3">Made to order</p>
-            <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">Explore by element</h2>
-          </div>
-          <Link href="/custom" className="cta-button text-stone">Prices and process <span aria-hidden="true">→</span></Link>
-        </div>
-        <div className="px-6 lg:px-10 pb-20">
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-border">
-            {orderable.map((el) => (
-              <li key={el.slug} className="border-b border-border sm:odd:border-r lg:border-r lg:[&:nth-child(4n)]:border-r-0">
-                <Link href={`/elements/${el.slug}`} className="group block p-6 h-full hover:bg-cream transition-colors">
-                  <h3 className="font-serif text-xl font-semibold text-stone mb-2 group-hover:text-muted">{el.name}</h3>
-                  <p className="text-[13px] text-muted">
-                    {entriesForElement(el.slug).length} examples · from {fromPrice(el.slug)} {pricingFor(el.slug)?.unit.split(",")[0]}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Custom work editorial */}
-      <section className="bg-stone text-white">
-        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[60vh]">
-          <div className="relative min-h-[400px]">
-            <EntryImage image={customEntry.image} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
-          </div>
-          <div className="flex flex-col justify-center px-6 lg:px-16 xl:px-24 py-20">
-            <p className="text-[13px] tracking-[0.15em] uppercase text-white/50 mb-6">Custom work</p>
-            <h2 className="font-serif text-3xl font-semibold text-white lg:text-4xl mb-6 leading-snug">
-              Every detail in the archive can be made for your home
+            <p className="lab">From the collection</p>
+            <h2 id="featured-heading" className="display text-[34px] sm:text-[38px] leading-tight mt-2">
+              Three pieces worth keeping
             </h2>
-            <p className="text-base leading-[1.8] text-white/60 max-w-md mb-10">
-              Pick a reference, send your measurements, and we design and build it on our CNC with hand finishing where it
-              matters. Prices are published for every element, in three tiers from simple to heirloom.
+          </div>
+          <Link href="/pieces" className="lab text-umber link-underline">All {PIECES.length} pieces →</Link>
+        </div>
+        <div className="grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+          {picks.map((p, i) => (
+            <PieceCard key={p.slug} piece={p} priority={i === 0} />
+          ))}
+        </div>
+      </section>
+
+      {/* Heirloom Standard teaser */}
+      <section className="card-texture" aria-labelledby="standard-heading">
+        <div className="wrap py-20 sm:py-24">
+          <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 items-center mb-14">
+            <CreditedImage
+              photo={STANDARD_PHOTO}
+              frame="aspect-[3/2]"
+              sizes="(min-width: 1024px) 520px, 100vw"
+            />
+            <div>
+              <p className="lab">The Heirloom Standard</p>
+              <h2 id="standard-heading" className="display text-[34px] sm:text-[40px] leading-tight mt-2">
+                Five tests. Every piece.
+              </h2>
+            <p className="text-[18px] text-caption max-w-[56ch] mt-5">
+              Every piece is checked against all five, and anything that fails is left out. Plating, zinc or pot metal, &ldquo;brass finish&rdquo;,
+              nonstick and MDF are out from the start. Where we haven&apos;t confirmed a fact yet, or a maker falls a little short, the piece page says
+              so.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/request" className="cta-button cta-button-light">Start a request <span aria-hidden="true">→</span></Link>
-              <Link href="/custom" className="text-[14px] text-white/70 underline self-center hover:text-white">How it works</Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Colorado */}
-      <section className="bg-cream border-b border-border">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10 py-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7">
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-3">Colorado</p>
-            <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl mb-5">
-              Installed along the Front Range and in the mountains
-            </h2>
-            <p className="text-base leading-[1.8] text-muted max-w-xl">
-              Kitchens, built-ins, mudrooms and restoration woodwork for Denver Squares, Victorians, bungalows and mountain homes.
-            </p>
-          </div>
-          <div className="lg:col-span-5 flex flex-col gap-4 items-start">
-            <Link href="/colorado" className="cta-button text-stone">Custom work in Colorado <span aria-hidden="true">→</span></Link>
-            <Link href="/colorado/custom-cabinet-cost" className="text-[14px] underline text-muted hover:text-stone">
-              What custom cabinets cost in Colorado
-            </Link>
+          <StandardList compact />
+          <div className="mt-12">
+            <Link href="/standard" className="btn-quiet">Read the Standard</Link>
           </div>
         </div>
       </section>
 
-      {/* Hardware archive */}
-      <section className="bg-cream">
-        <div className="px-6 lg:px-10 pt-20 pb-10 flex flex-wrap items-end justify-between gap-6">
-          <div>
-            <p className="text-[13px] tracking-[0.15em] uppercase text-bark font-medium mb-3">The hardware archive</p>
-            <h2 className="font-serif text-3xl font-semibold text-stone sm:text-4xl">Lighting and hardware by era</h2>
-          </div>
-          <Link href="/collections" className="cta-button text-stone">All eras <span aria-hidden="true">→</span></Link>
-        </div>
-        <div className="px-6 lg:px-10 pb-20">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {hardware.map((col) => (
-              <Link key={col.slug} href={`/collections/${col.slug}`} className="group">
-                <div className="relative aspect-[4/3] overflow-hidden mb-5">
+      {/* Browse by category */}
+      <section className="wrap py-24" aria-labelledby="browse-heading">
+        <p className="lab">Browse</p>
+        <h2 id="browse-heading" className="display text-[34px] sm:text-[38px] leading-tight mt-2 mb-10">
+          By category
+        </h2>
+        <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+          {CATEGORIES.map((c) => (
+            <article key={c} className="group">
+              <Link href={`/pieces?category=${c}`} className="block" tabIndex={-1} aria-hidden="true">
+                <div className="relative aspect-[4/3] overflow-hidden bg-card">
                   <Image
-                    src={col.image}
-                    alt={`${col.era} era interior with decorative lighting and hardware`}
+                    src={CATEGORY_PHOTO[c].src}
+                    alt=""
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(min-width: 768px) 360px, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    style={{ objectPosition: CATEGORY_PHOTO[c].focus }}
                   />
                 </div>
-                <h3 className="font-serif text-lg font-semibold text-stone mb-1 group-hover:text-muted transition-colors">{col.era}</h3>
-                <p className="text-[13px] text-muted">{col.period} · {col.pieces.length} pieces</p>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Quote */}
-      <section className="bg-cream-dark py-24 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <blockquote className="font-serif text-2xl leading-[1.5] text-stone sm:text-3xl italic">
-            &ldquo;The details of a house are where its history lives, and where a new home earns its character.&rdquo;
-          </blockquote>
-          <div className="mt-8">
-            <Link href="/search" className="cta-button text-stone mx-auto">Search the archive <span aria-hidden="true">→</span></Link>
-          </div>
+              <p className="mt-2">
+                <PhotoCredit photo={CATEGORY_PHOTO[c]} />
+              </p>
+              <Link href={`/pieces?category=${c}`} className="block">
+                <h3 className="display text-[28px] mt-3 group-hover:text-terracotta transition-colors">
+                  {CATEGORY_LABEL[c]}
+                </h3>
+                <p className="italic text-caption text-[16px] mt-1">{CATEGORY_BLURB[c]}</p>
+                <p className="lab mt-4">{piecesIn(c).length} pieces →</p>
+              </Link>
+            </article>
+          ))}
         </div>
       </section>
     </>

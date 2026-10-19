@@ -1,31 +1,16 @@
 import Link from "next/link";
-import { SITE_NAME } from "@/lib/constants";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-1 items-center justify-center px-6 py-24">
-      <div className="text-center">
-        <p className="text-sm font-medium tracking-widest uppercase text-brand-gold">404</p>
-        <h1 className="mt-3 font-serif text-4xl font-semibold text-brand-dark">
-          Page Not Found
-        </h1>
-        <p className="mt-4 text-brand-muted max-w-md mx-auto">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-        </p>
-        <div className="mt-8 flex items-center justify-center gap-4">
-          <Link
-            href="/"
-            className="rounded-sm bg-brand-gold px-6 py-3 text-sm font-semibold tracking-wide uppercase text-white hover:bg-brand-gold/90 transition-colors"
-          >
-            Go Home
-          </Link>
-          <Link
-            href="/collections"
-            className="rounded-sm border border-brand-dark/20 px-6 py-3 text-sm font-semibold tracking-wide uppercase text-brand-muted hover:text-brand-dark hover:border-brand-dark/40 transition-colors"
-          >
-            Collections
-          </Link>
-        </div>
+    <div className="wrap py-28 text-center">
+      <p className="lab">404</p>
+      <h1 className="display font-light text-[44px] sm:text-[56px] mt-4">We couldn&apos;t find that page</h1>
+      <p className="mt-4 text-caption max-w-md mx-auto">
+        Legacy Homeware has changed. It&apos;s now a guide to new home items made to become heirlooms.
+      </p>
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <Link href="/pieces" className="btn">Browse the pieces</Link>
+        <Link href="/standard" className="btn-quiet">The Heirloom Standard</Link>
       </div>
     </div>
   );

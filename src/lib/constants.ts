@@ -1,7 +1,7 @@
 export const SITE_NAME = "Legacy Homeware";
-export const SITE_TAGLINE = "Architectural details, made for your home";
+export const SITE_TAGLINE = "Home items that become heirlooms.";
 export const SITE_DESCRIPTION =
-  "A searchable archive of architectural details across twelve styles, from Shaker cupboards to Art Deco doors, with custom cabinetry, built-ins, mantels, paneling and more made to order and installed in Colorado.";
+  "A curated guide to new home items made the way they used to be, for the hearth, the door and the table: forged iron, solid brass and bronze, stoves, hardwood and copper. Every piece is checked against the five-test Heirloom Standard.";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.legacyhomeware.com";
 
@@ -12,29 +12,12 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "Styles", href: "/styles" },
-  { label: "Elements", href: "/elements" },
-  { label: "Search", href: "/search" },
-  { label: "Custom", href: "/custom" },
+  { label: "Pieces", href: "/pieces" },
+  { label: "Makers", href: "/makers" },
+  { label: "Care", href: "/care" },
+  { label: "Gifts", href: "/gifts" },
+  { label: "Journal", href: "/journal" },
 ] as const;
 
-export const SECONDARY_NAV = [
-  { label: "Colorado", href: "/colorado" },
-  { label: "Hardware", href: "/collections" },
-  { label: "About", href: "/about" },
-] as const;
-
-export const HARDWARE_TYPES = [
-  "Switch Plate",
-  "Outlet Cover",
-  "Door Knob",
-  "Hinge",
-  "Cabinet Pull",
-  "Door Knocker",
-  "Chandelier",
-  "Wall Sconce",
-  "Pendant Light",
-  "Flush Mount",
-] as const;
-
-export type HardwareType = (typeof HARDWARE_TYPES)[number];
+export const AFFILIATE_DISCLOSURE =
+  "We may earn a commission from some links. It never decides what we include.";

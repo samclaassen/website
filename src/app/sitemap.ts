@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
-import { getAllCollectionSlugs } from "@/lib/collections";
-import { ELEMENTS, ENTRIES, STYLES, comboPages } from "@/lib/details";
+import { PIECES } from "@/lib/pieces";
+import { PRICE_CHECKED } from "@/data/pieces";
 
-const UPDATED = new Date("2026-10-15");
+const UPDATED = new Date(PRICE_CHECKED);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const page = (path: string, priority: number, changeFrequency: "weekly" | "monthly" = "monthly") => ({
@@ -13,23 +13,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   });
 
+  // /care and /journal are "coming soon" pages (noindex) and stay out of the sitemap.
   return [
     page("", 1, "weekly"),
-    page("/search", 0.9, "weekly"),
-    page("/styles", 0.9, "weekly"),
-    page("/elements", 0.9, "weekly"),
-    page("/custom", 0.9),
-    page("/colorado", 0.8),
-    page("/colorado/custom-cabinet-cost", 0.8),
-    page("/about", 0.6),
-    page("/collections", 0.6),
-    ...getAllCollectionSlugs().map((slug) => page(`/collections/${slug}`, 0.5)),
-    ...STYLES.map((s) => page(`/styles/${s.slug}`, 0.8, "weekly")),
-    ...ELEMENTS.map((e) => page(`/elements/${e.slug}`, 0.8, "weekly")),
-    // Only style × element pages with enough entries are indexable.
-    ...comboPages()
-      .filter((c) => c.indexable)
-      .map((c) => page(`/styles/${c.style}/${c.element}`, 0.7)),
-    ...ENTRIES.map((e) => page(`/details/${e.slug}`, 0.6)),
+    page("/pieces", 0.9, "weekly"),
+    page("/standard", 0.9),
+    page("/gifts", 0.7),
+    page("/makers", 0.6),
+    page("/about", 0.5),
+    page("/credits", 0.3),
+    ...PIECES.map((p) => page(`/pieces/${p.slug}`, 0.8)),
   ];
 }
