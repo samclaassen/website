@@ -32,6 +32,9 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
+  other: {
+    "commission-factory-verification": "545b37f5ce444f4cb150939252203d17",
+  },
   metadataBase: new URL(SITE_URL),
   title: {
     default: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
