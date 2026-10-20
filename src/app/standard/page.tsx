@@ -104,18 +104,6 @@ export default function StandardPage() {
           on October 18, 2026 and change often, so always confirm on the retailer&apos;s site.
         </p>
 
-        <div className="not-prose my-12 grid gap-6 sm:grid-cols-[minmax(0,300px)_1fr] items-end">
-          <CreditedImage
-            photo={sitePhoto(SITE_IMAGES.standard.rimLock)}
-            frame="aspect-square"
-            sizes="300px"
-          />
-          <p className="italic text-caption text-[16px] leading-relaxed">
-            An 18th-century rim lock, recorded by the Historic American Buildings Survey. A rim lock is screwed to
-            the face of the door, so it can be taken off, oiled and mended: the idea behind test two.
-          </p>
-        </div>
-
         <h2 id="affiliate-policy">Our affiliate policy</h2>
         <p>
           Legacy Homeware isn&apos;t a store. We earn money through affiliate links: if you buy through some of our
@@ -133,7 +121,7 @@ export default function StandardPage() {
           We only show a maker&apos;s photos once we have the right to: through an affiliate program, a press kit or
           written permission, always credited and linked. Until then, a piece is shown as an illustration: its
           material, its maker and a small drawing, never a stand-in photo of something else. The photographs on our
-          editorial pages are real photographs or public-domain artworks, credited and linked to their sources; the
+          editorial pages are real, openly licensed photographs of the kinds of things we feature, credited and linked to their sources; the
           full list is on our <Link href="/credits">photo credits</Link> page. We never use AI-generated images.
         </p>
 
