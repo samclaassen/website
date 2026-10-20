@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import { Newsreader, Source_Serif_4, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SITE_TAGLINE } from "@/lib/constants";
@@ -47,6 +48,14 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  // Search engine ownership verification. Set these in Vercel → Environment Variables
+  // with the token from Google Search Console / Bing Webmaster Tools (HTML tag method).
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
+  },
   robots: {
     index: true,
     follow: true,
@@ -77,6 +86,8 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* Vercel Web Analytics: privacy-friendly page view and visitor counts (no cookies). */}
+        <Analytics />
         {/* PromptWatch visitor analytics: counts visits that arrive from ChatGPT, Claude, Perplexity and other AI tools. */}
         <Script id="promptwatch-analytics" strategy="afterInteractive">
           {`(function() {
