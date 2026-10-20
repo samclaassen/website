@@ -34,7 +34,7 @@ const workSans = Work_Sans({
 
 export const metadata: Metadata = {
   other: {
-    "commission-factory-verification": "545b37f5ce444f4cb150939252203d17",
+    "commission-factory-verification": "1532fa74424f498f9c48ebb2a5dcae1b",
   },
   metadataBase: new URL(SITE_URL),
   title: {
