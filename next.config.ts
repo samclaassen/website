@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     const toHome = ["/styles/:path*", "/elements/:path*", "/details/:path*", "/colorado/:path*", "/custom", "/request", "/search"];
     return [
+      // The Colorado cabinet cost guide now lives on the Woodridge Cabinets site (separate business).
+      { source: "/colorado/custom-cabinet-cost", destination: "https://woodridgecabinets.com/guides/custom-cabinet-cost/", permanent: true },
+      { source: "/colorado/custom-cabinet-cost/", destination: "https://woodridgecabinets.com/guides/custom-cabinet-cost/", permanent: true },
       ...toHome.map((source) => ({ source, destination: "/", permanent: false })),
       { source: "/collections/:path*", destination: "/pieces", permanent: false },
       { source: "/styles", destination: "/", permanent: false },
