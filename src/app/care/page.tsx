@@ -1,43 +1,65 @@
 import Link from "next/link";
-import { generatePageMetadata } from "@/lib/seo";
+import { breadcrumbJsonLd, generatePageMetadata, itemListJsonLd, webPageJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { GuideCard } from "@/components/guides/GuideCard";
+import { SubscribeSection } from "@/components/ui/Subscribe";
+import { CARE_GUIDES } from "@/lib/guides";
+
+const DESCRIPTION =
+  "Plain guides to keeping cast iron, enameled iron, copper, brass and bronze, forged iron, hardwood and wood stoves in use for generations. The short answer first, then the method.";
 
 export const metadata = generatePageMetadata({
   title: "Care & Keeping",
-  description: "Guides to caring for brass, bronze, forged iron, wood, copper and cast iron so they last generations. Coming soon.",
+  description: DESCRIPTION,
   path: "/care",
-  noIndex: true,
 });
-
-const PLANNED = [
-  "Solid brass vs. brass-plated: how to tell",
-  "Cleaning and patina for solid brass and bronze",
-  "Keeping forged iron latches, hinges and fire tools from rust",
-  "How to care for cast iron so it lasts generations",
-  "When and how to re-tin copper",
-  "Oiling and resurfacing wooden boards and spoons",
-];
 
 export default function CarePage() {
   return (
     <>
-      <PageHeader kicker="Care & Keeping · Coming soon" title="Care guides are on the way">
-        <p>Step-by-step guides to keeping each material in use for generations. We&apos;re writing these now.</p>
+      <JsonLd data={webPageJsonLd({ title: "Care & Keeping", description: DESCRIPTION, path: "/care" })} />
+      <JsonLd
+        data={itemListJsonLd(
+          "Care & Keeping guides",
+          CARE_GUIDES.map((g) => ({ name: g.title, path: `/care/${g.slug}` })),
+        )}
+      />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", href: "/" }, { name: "Care & Keeping", href: "/care" }])} />
+
+      <PageHeader kicker="Care & Keeping" title="How to keep them for good">
+        <p>
+          A piece that passes the <Link href="/standard" className="link-underline">Heirloom Standard</Link> can be
+          handed down, but only if it is looked after. These are the guides to the materials behind every piece we
+          feature. Each one starts with the short answer, then gives the full method, then what not to do.
+        </p>
       </PageHeader>
-      <div className="wrap max-w-[640px] pb-24">
-        <p className="lab mb-4">Planned guides</p>
-        <ul className="border-t border-line">
-          {PLANNED.map((t) => (
-            <li key={t} className="py-4 border-b border-line text-[18px]">
-              {t} <span className="lab ml-2">Coming soon</span>
-            </li>
+
+      <div className="wrap pb-20">
+        <div className="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+          {CARE_GUIDES.map((g, i) => (
+            <GuideCard key={g.slug} guide={g} priority={i < 2} />
           ))}
-        </ul>
-        <p className="mt-10 text-caption">
-          In the meantime, every <Link href="/pieces" className="link-underline text-umber">piece page</Link> explains
-          how that piece can be repaired and how it ages.
+        </div>
+      </div>
+
+      <div className="wrap max-w-[760px] pb-12 prose-lh text-[19px]">
+        <h2 className="!mt-0">Why care is part of the Standard</h2>
+        <p>
+          Two of the five tests are about what happens after you buy: a piece must be{" "}
+          <em>built to be repaired</em> and it must <em>age well</em>. Solid materials make both possible, and the
+          guides here are the other half of the bargain: a cast-iron pan that is dried and oiled lasts a century; one
+          left in the sink does not. Nothing here needs special products or skill, and most of it takes minutes a
+          year.
+        </p>
+        <p>
+          Every piece page links to the guide for its material. If something you own is not covered yet, the{" "}
+          <Link href="/makers">makers</Link> we feature publish care instructions for their own pieces, and those come
+          first.
         </p>
       </div>
+
+      <SubscribeSection source="/care" />
     </>
   );
 }

@@ -2,22 +2,29 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
 import { PIECES } from "@/lib/pieces";
 import { PRICE_CHECKED } from "@/data/pieces";
+import { CARE_GUIDES } from "@/data/guides";
 
-const UPDATED = new Date(PRICE_CHECKED);
+const PIECES_UPDATED = new Date(PRICE_CHECKED);
+const GUIDES_UPDATED = new Date(CARE_GUIDES.map((g) => g.updated).sort().at(-1) ?? PRICE_CHECKED);
+const SITE_UPDATED = new Date(Math.max(PIECES_UPDATED.getTime(), GUIDES_UPDATED.getTime()));
+
+type Freq = "weekly" | "monthly";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const page = (path: string, priority: number, changeFrequency: "weekly" | "monthly" = "monthly") => ({
+  const page = (path: string, priority: number, changeFrequency: Freq = "monthly", lastModified: Date = PIECES_UPDATED) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: UPDATED,
+    lastModified,
     changeFrequency,
     priority,
   });
 
-  // /care and /journal are "coming soon" pages (noindex) and stay out of the sitemap.
+  // /journal is a "coming soon" page (noindex) and stays out of the sitemap.
   return [
-    page("", 1, "weekly"),
+    page("", 1, "weekly", SITE_UPDATED),
     page("/pieces", 0.9, "weekly"),
     page("/standard", 0.9),
+    page("/care", 0.9, "weekly", GUIDES_UPDATED),
+    ...CARE_GUIDES.map((g) => page(`/care/${g.slug}`, 0.8, "monthly", new Date(g.updated))),
     page("/gifts", 0.7),
     page("/makers", 0.6),
     page("/about", 0.5),

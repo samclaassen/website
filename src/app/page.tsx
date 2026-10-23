@@ -9,6 +9,9 @@ import { CATEGORY_BLURB, CATEGORY_LABEL } from "@/lib/piece-types";
 import Image from "next/image";
 import { CreditedImage, PhotoCredit } from "@/components/media/CreditedImage";
 import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
+import { GuideCard } from "@/components/guides/GuideCard";
+import { SubscribeSection } from "@/components/ui/Subscribe";
+import { homeGuides } from "@/lib/guides";
 
 export const metadata = generatePageMetadata({
   title: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
@@ -167,6 +170,32 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Care & Keeping: the guides behind the second and third tests */}
+      <section className="card-texture" aria-labelledby="care-heading">
+        <div className="wrap py-20 sm:py-24">
+          <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
+            <div>
+              <p className="lab">Care &amp; Keeping</p>
+              <h2 id="care-heading" className="display text-[34px] sm:text-[38px] leading-tight mt-2">
+                How to keep them for good
+              </h2>
+              <p className="text-[18px] text-caption max-w-[56ch] mt-4">
+                Plain guides to the materials behind every piece: the short answer first, then the method, then what
+                not to do.
+              </p>
+            </div>
+            <Link href="/care" className="btn-quiet">All guides</Link>
+          </div>
+          <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+            {homeGuides().map((g) => (
+              <GuideCard key={g.slug} guide={g} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SubscribeSection source="/" />
     </>
   );
 }

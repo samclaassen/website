@@ -7,8 +7,10 @@ import { productPhoto } from "@/lib/piece-media";
 import { BuyCard } from "@/components/pieces/BuyCard";
 import { StandardPanel } from "@/components/pieces/StandardPanel";
 import { PieceCard } from "@/components/pieces/PieceCard";
+import { SubscribeSection } from "@/components/ui/Subscribe";
 import { PIECES, badgesFor, fullName, getPiece, parsePrice, related, verifiedSummary } from "@/lib/pieces";
-import { CATEGORY_LABEL, MATERIAL_LABEL, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
+import { guidesFor } from "@/lib/guides";
+import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER, MATERIAL_LABEL, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
 
 interface Params {
@@ -40,6 +42,8 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
 
   const badges = badgesFor(p);
   const more = related(p);
+  const guides = guidesFor(p);
+  const care = guides[0];
   const specs: [string, string][] = [
     ["Material", p.material],
     ["Maker", p.maker],
@@ -47,6 +51,17 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
     ["Made in", p.madeIn ?? "Not yet verified"],
     ["Warranty", p.warranty ?? "Not yet verified"],
     ["Price band", `${TIER_LABEL[p.tier]} (${TIER_RANGE[p.tier]})`],
+  ];
+
+  // The Standard checks, as the pros and cons the page shows (see StandardPanel).
+  const positives = CHECK_ORDER.filter((k) => p.checks[k].status === "pass").map(
+    (k) => `${CHECK_LABEL[k]}: ${p.checks[k].reason}`,
+  );
+  const negatives = [
+    ...CHECK_ORDER.filter((k) => p.checks[k].status === "partial").map(
+      (k) => `${CHECK_LABEL[k]} (partial): ${p.checks[k].reason}`,
+    ),
+    ...(p.worthKnowing ? [p.worthKnowing] : []),
   ];
 
   return (
@@ -64,6 +79,7 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
           price: parsePrice(p.price),
           priceChecked: PRICE_CHECKED,
           image: productPhoto(p)?.src,
+          review: { positives, negatives },
         })}
       />
       <JsonLd
@@ -136,10 +152,25 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
               ))}
             </dl>
 
-            <p className="mt-6 text-[14px] text-caption font-label">
-              Care guide for {MATERIAL_LABEL[p.materialFamily].toLowerCase()}:{" "}
-              <Link href="/care" className="link-underline text-umber">coming soon</Link>
-            </p>
+            {care ? (
+              <div className="mt-6 text-[14px] text-caption font-label leading-relaxed">
+                <p>
+                  Care guide for {MATERIAL_LABEL[p.materialFamily].toLowerCase()}:{" "}
+                  <Link href={`/care/${care.slug}`} className="link-underline text-umber">{care.title}</Link>
+                </p>
+                {guides[1] && (
+                  <p className="mt-1">
+                    See also:{" "}
+                    <Link href={`/care/${guides[1].slug}`} className="link-underline text-umber">{guides[1].title}</Link>
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="mt-6 text-[14px] text-caption font-label">
+                Care guides for {MATERIAL_LABEL[p.materialFamily].toLowerCase()}:{" "}
+                <Link href="/care" className="link-underline text-umber">see Care &amp; Keeping</Link>
+              </p>
+            )}
           </div>
         </section>
 
@@ -161,6 +192,8 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
           </div>
         </section>
       )}
+
+      <SubscribeSection source={`/pieces/${p.slug}`} />
     </>
   );
 }
