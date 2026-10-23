@@ -3,6 +3,7 @@ import type { CreditedPhoto } from "./images";
 import { IMAGE_LIBRARY, libraryPhoto, type LibraryImage } from "@/data/image-library";
 import { PIECES } from "@/data/pieces";
 import { productPhoto } from "./piece-media";
+import { CARE_GUIDES } from "@/data/guides";
 
 /**
  * Every library photo the site displays, by surface. Pages read their photos from here, and
@@ -30,10 +31,11 @@ function collectIds(v: unknown, out: Set<string>) {
   else if (v && typeof v === "object") Object.values(v).forEach((x) => collectIds(x, out));
 }
 
-/** Library images shown somewhere on the site. */
+/** Library images shown somewhere on the site: the surfaces above plus the care guides' photos. */
 export function displayedLibraryImages(): LibraryImage[] {
   const ids = new Set<string>();
   collectIds(SITE_IMAGES, ids);
+  for (const g of CARE_GUIDES) if (g.image) ids.add(g.image);
   return IMAGE_LIBRARY.filter((img) => ids.has(img.id));
 }
 

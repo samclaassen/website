@@ -10,10 +10,12 @@ interface PageSeoOptions {
   keywords?: string[];
 }
 
+const abs = (src: string) => (src.startsWith("http") ? src : `${SITE_URL}${src}`);
+
 /**
  * Generate consistent metadata for any page.
  * Usage in page.tsx:
- *   export const metadata = generateMetadata({ title: "About", description: "..." });
+ *   export const metadata = generatePageMetadata({ title: "About", description: "..." });
  */
 export function generatePageMetadata({
   title,
@@ -52,6 +54,8 @@ export function generatePageMetadata({
     },
   };
 }
+
+const ORG = { "@type": "Organization", name: SITE_NAME, url: SITE_URL } as const;
 
 /**
  * Generate Organization JSON-LD structured data.
@@ -161,8 +165,98 @@ export function itemListJsonLd(name: string, items: { name: string; path: string
 }
 
 /**
+ * Article JSON-LD for a guide. The author and publisher are the site itself.
+ */
+export function articleJsonLd({
+  title,
+  description,
+  path,
+  image,
+  datePublished,
+  dateModified,
+  wordCount,
+  about,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  datePublished: string;
+  dateModified: string;
+  wordCount?: number;
+  about?: string;
+}) {
+  const url = `${SITE_URL}${path}`;
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    url,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    datePublished,
+    dateModified,
+    author: ORG,
+    publisher: ORG,
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
+  };
+  if (image) data.image = abs(image);
+  if (wordCount) data.wordCount = wordCount;
+  if (about) data.about = { "@type": "Thing", name: about };
+  return data;
+}
+
+/**
+ * HowTo JSON-LD for a guide's step-by-step method. Steps link to their anchors on the page.
+ */
+export function howToJsonLd({
+  name,
+  description,
+  path,
+  totalTime,
+  supplies,
+  tools,
+  steps,
+}: {
+  name: string;
+  description: string;
+  path: string;
+  totalTime?: string;
+  supplies?: string[];
+  tools?: string[];
+  steps: { name: string; text: string }[];
+}) {
+  const data: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      url: `${SITE_URL}${path}#step-${i + 1}`,
+    })),
+  };
+  if (totalTime) data.totalTime = totalTime;
+  if (supplies?.length) data.supply = supplies.map((s) => ({ "@type": "HowToSupply", name: s }));
+  if (tools?.length) data.tool = tools.map((t) => ({ "@type": "HowToTool", name: t }));
+  return data;
+}
+
+const noteList = (items: string[]) => ({
+  "@type": "ItemList",
+  itemListElement: items.map((n, i) => ({ "@type": "ListItem", position: i + 1, name: n })),
+});
+
+/**
  * Product JSON-LD for a piece page. We are not the seller: the offer points at the
- * retailer's page. No ratings or reviews are emitted (we don't collect them).
+ * retailer's page. No ratings are emitted (we don't collect them). When `review` is
+ * given, the Heirloom Standard checks are emitted as an editorial review with pros
+ * (tests passed) and cons (partial tests and "worth knowing" notes), which is what
+ * the piece page shows.
  */
 export function productJsonLd(p: {
   slug: string;
@@ -176,6 +270,7 @@ export function productJsonLd(p: {
   price: { currency: string; low: number; high?: number; open: boolean } | null;
   priceChecked: string;
   image?: string;
+  review?: { positives: string[]; negatives: string[] };
 }) {
   const url = `${SITE_URL}/pieces/${p.slug}`;
   const data: Record<string, unknown> = {
@@ -188,7 +283,7 @@ export function productJsonLd(p: {
     material: p.material,
     category: p.category,
   };
-  if (p.image) data.image = p.image.startsWith("http") ? p.image : `${SITE_URL}${p.image}`;
+  if (p.image) data.image = abs(p.image);
   if (p.price) {
     const seller = { "@type": "Organization", name: p.retailer };
     data.offers =
@@ -209,6 +304,16 @@ export function productJsonLd(p: {
             url: p.productUrl,
             seller,
           };
+  }
+  if (p.review && p.review.positives.length + p.review.negatives.length >= 2) {
+    data.review = {
+      "@type": "Review",
+      name: `${p.name} against the Heirloom Standard`,
+      author: ORG,
+      datePublished: p.priceChecked,
+      positiveNotes: noteList(p.review.positives),
+      ...(p.review.negatives.length ? { negativeNotes: noteList(p.review.negatives) } : {}),
+    };
   }
   return data;
 }

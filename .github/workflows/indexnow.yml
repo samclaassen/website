@@ -1,0 +1,30 @@
+name: IndexNow
+
+# Vercel reports each deployment to GitHub as a deployment status. When a production
+# deployment succeeds, tell Bing/Yandex (IndexNow) that the sitemap's URLs changed.
+# Google does not use IndexNow; it discovers changes through Search Console and the sitemap.
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       contains(github.event.deployment.environment, 'Production'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Let the CDN settle
+        run: sleep 60
+      - name: Submit sitemap URLs to IndexNow
+        run: node scripts/indexnow.mjs
+        env:
+          SITE_URL: https://www.legacyhomeware.com
