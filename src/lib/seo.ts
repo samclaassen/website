@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, SOCIAL, SITE_TAGLINE } from "./constants";
+import { SITE_NAME, SITE_DESCRIPTION, SITE_DISAMBIGUATION, SITE_URL, SOCIAL, SITE_TAGLINE } from "./constants";
 
 interface PageSeoOptions {
   title: string;
@@ -55,19 +55,36 @@ export function generatePageMetadata({
   };
 }
 
-const ORG = { "@type": "Organization", name: SITE_NAME, url: SITE_URL } as const;
+/** One stable identity for the site's Organization, referenced from every other block. */
+export const ORG_ID = `${SITE_URL}/#organization`;
+
+const ORG = { "@type": "Organization", "@id": ORG_ID, name: SITE_NAME, url: SITE_URL } as const;
 
 /**
- * Generate Organization JSON-LD structured data.
+ * Generate Organization JSON-LD structured data. disambiguatingDescription separates Legacy
+ * Homeware from similarly named companies and from the site's earlier positioning.
  */
 export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
+    disambiguatingDescription: SITE_DISAMBIGUATION,
     slogan: SITE_TAGLINE,
+    publishingPrinciples: `${SITE_URL}/standard`,
+    knowsAbout: [
+      "Heirloom-quality home goods",
+      "Cast iron and carbon steel cookware",
+      "Enameled cast iron",
+      "Tin-lined copper cookware",
+      "Solid brass and bronze hardware",
+      "Forged iron hardware and fire tools",
+      "Wood stoves",
+      "Hardwood cutting boards",
+    ],
   };
 }
 
@@ -138,6 +155,7 @@ export function websiteJsonLd() {
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
+    publisher: { "@id": ORG_ID },
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/pieces?q={search_term_string}`,

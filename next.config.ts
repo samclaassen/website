@@ -15,20 +15,42 @@ const nextConfig: NextConfig = {
     // ],
   },
 
-  // The site moved from an architectural-details archive to a curated guide to
-  // heirloom pieces. Old sections send visitors to the closest new page.
+  // The site moved from an architectural-details archive and period lighting/hardware
+  // collections to a curated guide to heirloom pieces. Every old section answers with a
+  // permanent (308) redirect to the closest new page, so search and AI engines replace the
+  // old pages instead of keeping them, and stop describing the site by them. The list comes
+  // from the URLs crawlers actually requested (PromptWatch crawler logs, Oct 2026). Order
+  // matters: the first matching rule wins, so specific rules come before catch-alls.
   async redirects() {
-    const toHome = ["/styles/:path*", "/elements/:path*", "/details/:path*", "/colorado/:path*", "/custom", "/request", "/search"];
+    const cabinetCostGuide = "https://woodridgecabinets.com/guides/custom-cabinet-cost/";
+    const toHome = [
+      "/styles",
+      "/styles/:path*",
+      "/elements",
+      "/elements/:path*",
+      "/details",
+      "/details/:path*",
+      "/library",
+      "/library/:path*",
+      "/colorado",
+      "/colorado/:path*",
+      "/custom",
+      "/request",
+      "/search",
+      // Old articles only; /journal itself and future articles keep working.
+      "/journal/alpine-chalet-interiors",
+      "/journal/traditional-interior-door-styles",
+      "/journal/wainscoting-vs-wall-paneling",
+    ];
     return [
       // The Colorado cabinet cost guide now lives on the Woodridge Cabinets site (separate business).
-      { source: "/colorado/custom-cabinet-cost", destination: "https://woodridgecabinets.com/guides/custom-cabinet-cost/", permanent: true },
-      { source: "/colorado/custom-cabinet-cost/", destination: "https://woodridgecabinets.com/guides/custom-cabinet-cost/", permanent: true },
-      ...toHome.map((source) => ({ source, destination: "/", permanent: false })),
-      { source: "/collections/:path*", destination: "/pieces", permanent: false },
-      { source: "/styles", destination: "/", permanent: false },
-      { source: "/elements", destination: "/", permanent: false },
-      { source: "/colorado", destination: "/", permanent: false },
-      { source: "/search-index.json", destination: "/llms.txt", permanent: false },
+      { source: "/colorado/custom-cabinet-cost", destination: cabinetCostGuide, permanent: true },
+      { source: "/colorado/custom-cabinet-cost/", destination: cabinetCostGuide, permanent: true },
+      { source: "/journal/custom-cabinet-cost-colorado", destination: cabinetCostGuide, permanent: true },
+      { source: "/collections", destination: "/pieces", permanent: true },
+      { source: "/collections/:path*", destination: "/pieces", permanent: true },
+      { source: "/search-index.json", destination: "/llms.txt", permanent: true },
+      ...toHome.map((source) => ({ source, destination: "/", permanent: true })),
     ];
   },
 

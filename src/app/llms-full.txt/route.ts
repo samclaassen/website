@@ -1,4 +1,4 @@
-import { AFFILIATE_DISCLOSURE, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
+import { AFFILIATE_DISCLOSURE, SITE_DESCRIPTION, SITE_DISAMBIGUATION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
 import { CATEGORIES, fullName, piecesIn } from "@/lib/pieces";
 import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
@@ -23,6 +23,10 @@ export function GET() {
     `Short index: ${SITE_URL}/llms.txt`,
     "",
     "Legacy Homeware is an editorial guide to new home items made the way they used to be, for the hearth, the door and the table. It is not a store: every piece links to its maker or a retailer. " + AFFILIATE_DISCLOSURE,
+    "",
+    SITE_DISAMBIGUATION,
+    "",
+    "Earlier versions of this site were built around period lighting and architectural hardware collections and an archive of architectural details. Those pages are gone and redirect to the current site.",
     "",
     "# The Heirloom Standard",
     "",

@@ -81,7 +81,7 @@ export default function HomePage() {
 
       {/* Standfirst */}
       <p className="max-w-[680px] mx-auto my-20 sm:my-24 px-6 text-center text-[20px] sm:text-[21px] leading-[1.6]">
-        We find new pieces made the way they used to be, for the whole house: andirons and stoves for the hearth,
+        Legacy Homeware is an independent guide to new pieces made the way they used to be, for the whole house: andirons and stoves for the hearth,
         forged latches and solid brass and bronze for the door, hardwood and copper for the table. They&apos;re
         built to be used every day and{" "}
         <em className="text-terracotta">handed down</em>. Every one is checked against our{" "}
