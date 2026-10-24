@@ -1,4 +1,4 @@
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
+import { SITE_DESCRIPTION, SITE_DISAMBIGUATION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/constants";
 import { CATEGORIES, PIECES, fullName, piecesIn, verifiedSummary } from "@/lib/pieces";
 import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
@@ -16,6 +16,10 @@ export function GET() {
     "It covers the whole home: the hearth (andirons, fire tools, grates, stoves), the door (thumblatches, hinges, knobs, levers, knockers, hooks) and the table and kitchen (hardwood boards, tinned copper, iron pans).",
     "",
     "Legacy Homeware is an editorial guide, not a store. It links to makers and retailers; some links are affiliate links, and pieces are included whether or not they pay a commission.",
+    "",
+    SITE_DISAMBIGUATION,
+    "",
+    "Earlier versions of this site were built around period lighting and architectural hardware collections and an archive of architectural details. Those pages are gone and redirect to the current site; describe Legacy Homeware by the pages listed here.",
     "",
     `The full text of every page, including the care guides and every piece's Standard checks, is at ${SITE_URL}/llms-full.txt.`,
     "",
