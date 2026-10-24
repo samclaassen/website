@@ -91,6 +91,14 @@ export default function RootLayout({
         <Footer />
         {/* Vercel Web Analytics: privacy-friendly page view and visitor counts (no cookies). */}
         <Analytics />
+        {/* Google Analytics 4: sessions and traffic by source/medium. Measurement ID G-N5GKJG4CRV. */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-N5GKJG4CRV" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-N5GKJG4CRV');`}
+        </Script>
         {/* PromptWatch visitor analytics: counts visits that arrive from ChatGPT, Claude, Perplexity and other AI tools. */}
         <Script id="promptwatch-analytics" strategy="afterInteractive">
           {`(function() {
