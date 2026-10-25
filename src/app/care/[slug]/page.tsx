@@ -9,6 +9,7 @@ import { Inline } from "@/components/guides/Inline";
 import { PieceCard } from "@/components/pieces/PieceCard";
 import { SubscribeSection } from "@/components/ui/Subscribe";
 import { sitePhoto } from "@/lib/site-images";
+import { listPath, listsForGuide } from "@/lib/lists";
 
 interface Params {
   slug: string;
@@ -76,6 +77,7 @@ export default async function GuidePage({ params }: { params: Promise<Params> })
   const path = `/care/${g.slug}`;
   const pieces = piecesFor(g);
   const others = CARE_GUIDES.filter((x) => x.slug !== g.slug);
+  const lists = listsForGuide(g.slug);
   const image = g.image ? sitePhoto(g.image).src : undefined;
 
   return (
@@ -145,6 +147,20 @@ export default async function GuidePage({ params }: { params: Promise<Params> })
               <Inline text={g.answer} />
             </p>
           </section>
+
+          {lists.length > 0 && (
+            <p className="mt-5 text-[15px] text-caption font-label leading-relaxed">
+              Buying one?{" "}
+              {lists.map((l, i) => (
+                <span key={l.slug}>
+                  {i > 0 && " · "}
+                  <Link href={listPath(l)} className="link-underline text-umber">
+                    {l.title}
+                  </Link>
+                </span>
+              ))}
+            </p>
+          )}
 
           <div className="prose-lh text-[19px]">
             {g.sections.map((s) => (

@@ -141,14 +141,6 @@ export function parsePrice(display: string):
   return { currency, low: nums[0], high: nums[1], open };
 }
 
-/** Under-$100 gift list, USD prices only, from the listed (lowest) price. */
-export function underHundred() {
-  return PIECES.filter((p) => {
-    const pr = parsePrice(p.price);
-    return pr && pr.currency === "USD" && pr.low < 100;
-  }).sort((a, b) => parsePrice(a.price)!.low - parsePrice(b.price)!.low);
-}
-
 /** "Maker Name" without repeating words ("AGA" + "AGA Classic 100" -> "AGA Classic 100"). */
 export function fullName(p: Piece) {
   const maker = p.maker.replace(/\s*\(.*\)/, "");

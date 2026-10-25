@@ -10,6 +10,7 @@ import { PieceCard } from "@/components/pieces/PieceCard";
 import { SubscribeSection } from "@/components/ui/Subscribe";
 import { PIECES, badgesFor, fullName, getPiece, parsePrice, related, verifiedSummary } from "@/lib/pieces";
 import { guidesFor } from "@/lib/guides";
+import { listPath, listsFor } from "@/lib/lists";
 import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER, MATERIAL_LABEL, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
 
@@ -44,6 +45,7 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
   const more = related(p);
   const guides = guidesFor(p);
   const care = guides[0];
+  const onLists = listsFor(p);
   const specs: [string, string][] = [
     ["Material", p.material],
     ["Maker", p.maker],
@@ -169,6 +171,19 @@ export default async function PiecePage({ params }: { params: Promise<Params> })
               <p className="mt-6 text-[14px] text-caption font-label">
                 Care guides for {MATERIAL_LABEL[p.materialFamily].toLowerCase()}:{" "}
                 <Link href="/care" className="link-underline text-umber">see Care &amp; Keeping</Link>
+              </p>
+            )}
+            {onLists.length > 0 && (
+              <p className="mt-3 text-[14px] text-caption font-label leading-relaxed">
+                On our lists:{" "}
+                {onLists.map(({ list, rank }, i) => (
+                  <span key={listPath(list)}>
+                    {i > 0 && " · "}
+                    <Link href={`${listPath(list)}#${p.slug}`} className="link-underline text-umber">
+                      {list.type === "bifl" ? `No. ${rank} in ${list.shortTitle.toLowerCase()}` : list.title}
+                    </Link>
+                  </span>
+                ))}
               </p>
             )}
           </div>

@@ -25,7 +25,8 @@ export function Footer() {
             {CATEGORIES.map((c) => (
               <li key={c}><Link className={linkClass} href={`/pieces?category=${c}`}>{CATEGORY_LABEL[c]}</Link></li>
             ))}
-            <li><Link className={linkClass} href="/gifts">Heirlooms under $100</Link></li>
+            <li><Link className={linkClass} href="/buy-it-for-life">Buy it for life</Link></li>
+            <li><Link className={linkClass} href="/gifts">Gift guides</Link></li>
           </ul>
         </div>
         <div className="md:col-span-4">
