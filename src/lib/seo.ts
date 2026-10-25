@@ -27,6 +27,9 @@ export function generatePageMetadata({
 }: PageSeoOptions): Metadata {
   const url = `${SITE_URL}${path}`;
   const fullTitle = path === "" || path === "/" ? title : `${title} | ${SITE_NAME}`;
+  // A page's openGraph object replaces the one it would inherit, so pages without their own
+  // photo point at the site card (app/opengraph-image.tsx) rather than sharing with no image.
+  const image = ogImage ?? `${SITE_URL}/opengraph-image`;
 
   return {
     title: { absolute: fullTitle },
@@ -41,7 +44,7 @@ export function generatePageMetadata({
       description,
       url,
       siteName: SITE_NAME,
-      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630, alt: title }] } : {}),
+      images: [{ url: image, width: 1200, height: 630, alt: title }],
       locale: "en_US",
       type: "website",
     },
@@ -49,7 +52,7 @@ export function generatePageMetadata({
       card: "summary_large_image",
       title: fullTitle,
       description,
-      ...(ogImage ? { images: [ogImage] } : {}),
+      images: [image],
       ...(SOCIAL.twitter ? { creator: `@${SOCIAL.twitter}` } : {}),
     },
   };

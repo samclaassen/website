@@ -2,8 +2,10 @@ import { AFFILIATE_DISCLOSURE, SITE_DESCRIPTION, SITE_DISAMBIGUATION, SITE_NAME,
 import { CATEGORIES, fullName, piecesIn } from "@/lib/pieces";
 import { CATEGORY_LABEL, CHECK_LABEL, CHECK_ORDER, TIER_LABEL, TIER_RANGE } from "@/lib/piece-types";
 import { PRICE_CHECKED } from "@/data/pieces";
-import { CARE_GUIDES, guideMarkdown } from "@/lib/guides";
+import { CARE_GUIDES, guideMarkdown, stripLinks } from "@/lib/guides";
 import { DISQUALIFIERS, STANDARD_TESTS } from "@/components/pieces/StandardList";
+import { BIFL_LISTS, BIFL_PATH, GIFTS_PATH, GIFT_GUIDES, listMarkdown } from "@/lib/lists";
+import { BIFL_HUB, GIFT_HUB } from "@/data/lists/hubs";
 
 export const dynamic = "force-static";
 
@@ -48,6 +50,22 @@ export function GET() {
     "Guides to the materials behind every piece: the short answer first, then the method, what not to do, and questions. Guides describe materials in general; for a specific piece, the maker's own instructions come first.",
     "",
     ...CARE_GUIDES.map((g) => guideMarkdown(g, SITE_URL)),
+    "# Buy it for life",
+    "",
+    `${SITE_URL}${BIFL_PATH}`,
+    "",
+    `**${BIFL_HUB.question}** ${stripLinks(BIFL_HUB.answer)}`,
+    "",
+    "Every list is ranked the same way: first by the Heirloom Standard (a confirmed pass counts fully, a partial counts for half, and an unconfirmed test counts for nothing until confirmed), then by the strength of the maker's guarantee, then by editorial judgement explained in each entry. The pieces have not been tested side by side; facts come from the makers' own published pages.",
+    "",
+    ...BIFL_LISTS.map((l) => listMarkdown(l, SITE_URL)),
+    "# Heirloom gift guides",
+    "",
+    `${SITE_URL}${GIFTS_PATH}`,
+    "",
+    `**${GIFT_HUB.question}** ${stripLinks(GIFT_HUB.answer)}`,
+    "",
+    ...GIFT_GUIDES.map((l) => listMarkdown(l, SITE_URL)),
     `# Pieces (prices as listed on ${PRICE_CHECKED}; check the retailer for current prices)`,
     "",
     `${SITE_URL}/pieces`,

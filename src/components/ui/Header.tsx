@@ -8,12 +8,12 @@ export function Header() {
         {SITE_NAME}
       </Link>
       <nav aria-label="Main" className="mt-1">
-        <ul className="flex flex-wrap justify-center gap-x-6 sm:gap-x-8 gap-y-2 px-4 pt-4 pb-5">
+        <ul className="flex flex-wrap justify-center gap-x-3 min-[400px]:gap-x-6 sm:gap-x-8 gap-y-2 px-3 pt-4 pb-5">
           {NAV_LINKS.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className="font-label text-[12px] font-medium tracking-[0.14em] uppercase hover:text-terracotta transition-colors"
+                className="font-label text-[12px] font-medium tracking-[0.1em] min-[400px]:tracking-[0.14em] uppercase hover:text-terracotta transition-colors"
               >
                 {l.label}
               </Link>

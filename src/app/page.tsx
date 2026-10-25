@@ -12,6 +12,7 @@ import { SITE_IMAGES, sitePhoto } from "@/lib/site-images";
 import { GuideCard } from "@/components/guides/GuideCard";
 import { SubscribeSection } from "@/components/ui/Subscribe";
 import { homeGuides } from "@/lib/guides";
+import { BIFL_LISTS, BIFL_PATH, GIFTS_PATH, GIFT_GUIDES, listPath, topPick } from "@/lib/lists";
 
 export const metadata = generatePageMetadata({
   title: `${SITE_NAME} — ${SITE_TAGLINE.replace(/\.$/, "")}`,
@@ -104,6 +105,53 @@ export default function HomePage() {
           {picks.map((p, i) => (
             <PieceCard key={p.slug} piece={p} priority={i === 0} />
           ))}
+        </div>
+      </section>
+
+      {/* Buy it for life: the ranked lists, then the holiday gift guides */}
+      <section className="wrap pb-24" aria-labelledby="bifl-heading">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
+          <div>
+            <p className="lab">Buy it for life</p>
+            <h2 id="bifl-heading" className="display text-[34px] sm:text-[38px] leading-tight mt-2">
+              The ranked lists
+            </h2>
+            <p className="text-[18px] text-caption max-w-[56ch] mt-4">
+              The pieces worth buying once, ranked against the Standard on what we can verify.
+            </p>
+          </div>
+          <Link href={BIFL_PATH} className="btn-quiet">All lists</Link>
+        </div>
+        <ol className="grid border-t border-line sm:grid-cols-2 sm:gap-x-10 lg:grid-cols-5 lg:gap-x-8">
+          {BIFL_LISTS.map((l) => {
+            const top = topPick(l);
+            return (
+              <li key={l.slug} className="border-b border-line">
+                <Link href={listPath(l)} className="group block py-5 lg:py-6">
+                  <h3 className="display text-[24px] leading-tight group-hover:text-terracotta transition-colors">
+                    {l.shortTitle}
+                  </h3>
+                  {top && (
+                    <p className="text-[15.5px] leading-snug text-caption mt-2">Number one: {fullName(top.piece)}</p>
+                  )}
+                </Link>
+              </li>
+            );
+          })}
+        </ol>
+        <div className="mt-10 flex flex-wrap items-baseline gap-x-6 gap-y-3">
+          <Link href={GIFTS_PATH} className="lab text-umber link-underline">
+            Holiday gift guides
+          </Link>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-[17px]">
+            {GIFT_GUIDES.map((g) => (
+              <li key={g.slug}>
+                <Link href={listPath(g)} className="link-underline">
+                  {g.shortTitle}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
