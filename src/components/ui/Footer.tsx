@@ -35,7 +35,6 @@ export function Footer() {
             <li><Link className={linkClass} href="/standard">The Heirloom Standard</Link></li>
             <li><Link className={linkClass} href="/makers">Makers</Link></li>
             <li><Link className={linkClass} href="/care">Care &amp; Keeping</Link></li>
-            <li><Link className={linkClass} href="/journal">Journal</Link></li>
             <li><Link className={linkClass} href="/about">About Legacy Homeware</Link></li>
             <li><Link className={linkClass} href="/credits">Photo credits</Link></li>
             <li><Link className={linkClass} href="/privacy">Privacy</Link></li>
