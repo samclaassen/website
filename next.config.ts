@@ -37,7 +37,10 @@ const nextConfig: NextConfig = {
       "/custom",
       "/request",
       "/search",
-      // Old articles only; /journal itself and future articles keep working.
+      // Sourced-object pages from the Oct 13, 2026 version (live for a few hours, then reverted).
+      "/objects",
+      "/objects/:path*",
+      // Old articles only; future articles under /journal/ keep working.
       "/journal/alpine-chalet-interiors",
       "/journal/traditional-interior-door-styles",
       "/journal/wainscoting-vs-wall-paneling",
@@ -50,6 +53,12 @@ const nextConfig: NextConfig = {
       { source: "/collections", destination: "/pieces", permanent: true },
       { source: "/collections/:path*", destination: "/pieces", permanent: true },
       { source: "/search-index.json", destination: "/llms.txt", permanent: true },
+      // The Journal has no articles yet. Its "coming soon" page was noindexed but linked from
+      // every footer, which Search Console reported as "Excluded by 'noindex' tag". Until the
+      // first article is published, /journal sends visitors home. The redirect is temporary
+      // (307) so browsers don't cache it: delete this rule and add app/journal/page.tsx (and a
+      // footer link and sitemap entry) when the Journal launches.
+      { source: "/journal", destination: "/", permanent: false },
       ...toHome.map((source) => ({ source, destination: "/", permanent: true })),
     ];
   },

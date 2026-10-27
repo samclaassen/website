@@ -20,7 +20,7 @@ npm run indexnow   # tell Bing/Yandex the sitemap changed (runs automatically af
 - `src/lib/piece-types.ts`: types and labels. `src/lib/pieces.ts`: piece helpers. `src/lib/guides.ts`: guide helpers (which guide applies to which piece, reading time, plain text).
 - `src/lib/images.ts` + `src/components/media/`: credited-photo records and the typographic linen panel used until photo rights are cleared. To add a photo, set `photo` on a piece with `src`, `credit`, `sourceUrl`, `rightsBasis` and `dateCleared`.
 - `src/lib/seo.ts`: metadata and JSON-LD (Organization, WebSite, Product with Standard pros/cons, Article, HowTo, FAQ, Breadcrumb, ItemList).
-- Routes: `/`, `/pieces`, `/pieces/[slug]`, `/standard`, `/care`, `/care/[slug]`, `/about`, `/makers`, `/gifts`, `/journal`, plus `/llms.txt`, `/llms-full.txt`, `/sitemap.xml`, `/robots.txt`.
+- Routes: `/`, `/pieces`, `/pieces/[slug]`, `/standard`, `/care`, `/care/[slug]`, `/about`, `/makers`, `/buy-it-for-life`, `/buy-it-for-life/[slug]`, `/gifts`, `/gifts/[slug]`, `/credits`, `/privacy`, plus `/llms.txt`, `/llms-full.txt`, `/sitemap.xml`, `/robots.txt`. `/journal` redirects home until the first article is published (see `next.config.ts`).
 - `src/proxy.ts`: PromptWatch AI-crawler logging (needs `PROMPTWATCH_LOGS_API_KEY`).
 - `src/lib/newsletter.ts` + `src/app/api/subscribe/route.ts`: the signup form ("The keeping list"). It renders only when a provider is configured, so there is never a form that goes nowhere.
 

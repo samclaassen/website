@@ -19,7 +19,7 @@ export const SOCIAL = {
   pinterest: "",
 } as const;
 
-/** Main navigation. The Journal is "coming soon" (noindex), so it lives in the footer for now. */
+/** Main navigation. (The Journal has no articles yet; /journal redirects home until it launches.) */
 export const NAV_LINKS = [
   { label: "Pieces", href: "/pieces" },
   { label: "Buy it for life", href: "/buy-it-for-life" },

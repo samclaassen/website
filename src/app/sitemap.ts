@@ -24,7 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
   });
 
-  // /journal is a "coming soon" page (noindex) and stays out of the sitemap.
+  // Every URL here must answer 200 with a self-referencing canonical and no noindex. Redirecting
+  // URLs (like /journal, which sends visitors home until it has articles) stay out.
   return [
     page("", 1, "weekly", SITE_UPDATED),
     page("/pieces", 0.9, "weekly"),
