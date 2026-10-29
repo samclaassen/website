@@ -273,8 +273,11 @@ const noteList = (items: string[]) => ({
 });
 
 /**
- * Product JSON-LD for a piece page. We are not the seller: the offer points at the
- * retailer's page. No ratings are emitted (we don't collect them). When `review` is
+ * Product JSON-LD for a piece page. We are not the seller, so no `offers` are
+ * emitted: with an offer, Google treats the page as a merchant listing and
+ * requires a product image, which fails until makers clear their photos. Price
+ * and retailer stay visible on the page itself. No ratings are emitted (we
+ * don't collect them). When `review` is
  * given, the Heirloom Standard checks are emitted as an editorial review with pros
  * (tests passed) and cons (partial tests and "worth knowing" notes), which is what
  * the piece page shows.
@@ -305,27 +308,6 @@ export function productJsonLd(p: {
     category: p.category,
   };
   if (p.image) data.image = abs(p.image);
-  if (p.price) {
-    const seller = { "@type": "Organization", name: p.retailer };
-    data.offers =
-      p.price.open || p.price.high
-        ? {
-            "@type": "AggregateOffer",
-            priceCurrency: p.price.currency,
-            lowPrice: p.price.low,
-            ...(p.price.high ? { highPrice: p.price.high } : {}),
-            offerCount: 1,
-            url: p.productUrl,
-            seller,
-          }
-        : {
-            "@type": "Offer",
-            priceCurrency: p.price.currency,
-            price: p.price.low,
-            url: p.productUrl,
-            seller,
-          };
-  }
   if (p.review && p.review.positives.length + p.review.negatives.length >= 2) {
     data.review = {
       "@type": "Review",
