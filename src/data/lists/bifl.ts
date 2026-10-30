@@ -856,7 +856,7 @@ const fireplaceTools: PieceListPage = {
           id: "H25",
           label: "Solid brass at the hearth",
           verdict:
-            "A double-rail fender made by hand in 100% solid brass in the USA. With solid brass there's no plating to wear through as it's polished.",
+            "A double-rail fender made by hand in 100% solid brass in the USA. With solid brass there's no plating to wear through as it's polished. Fireplace Treatments told us in October 2026 that this model is discontinued.",
         },
       ],
     },
