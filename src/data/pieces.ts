@@ -321,7 +321,7 @@ const RAW: Raw[] = [
     id: "H25", name: "RF70 Solid Brass Double Rail Fender", maker: "Fireplace Treatments", makerBase: "USA",
     retailer: "Fireplace Treatments", tier: "P", price: "from $1,800", priceNote: "Made to order; final price by custom quote.",
     material: "100% solid brass, handmade", family: "brass", kind: "hardware", matBadge: "100% solid brass",
-    flag: "Custom quote", worth: "It's priced by custom quote; the \"from\" price is a starting point.",
+    flag: "Discontinued", worth: "Fireplace Treatments told us on Oct 29, 2026 that the RF70 is discontinued. It was priced by custom quote; the \"from\" price was a starting point.",
     aff: ["none"], url: "https://fireplacetreatments.com/fireplace-chenets", isNew: true,
     line: "Handmade in 100% solid brass.",
     why: "A double-rail fender made by hand in 100% solid brass by Fireplace Treatments in the USA. With solid brass there's no plating to wear through as it's polished.",
